@@ -1,3 +1,12 @@
+## Running in Mock Mode
+
+To start the app, run the following commands to use with mock data:
+### `npm run mock:api`
+
+### `npm start`
+
+## Background Info
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
