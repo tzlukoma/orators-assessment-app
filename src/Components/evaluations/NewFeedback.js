@@ -98,7 +98,7 @@ class NewFeedback extends Component {
                                 name="projection_rating" 
                                 starCount={5}
                                 value={projection_rating}
-                                renderStarIcon={() => <div style={{margin:10,fontSize:40}}>█</div>}
+                                renderStarIcon={() => <div style={{margin:5,fontSize:60}}>■</div>}
                                 starColor={'orange'}
                                 emptyStarColor={'grey'}
                                 onStarClick={this.onProjectionStarClick.bind(this)}
@@ -113,7 +113,7 @@ class NewFeedback extends Component {
                             name="tone_rating" 
                             starCount={5}
                             value={tone_rating}
-                            renderStarIcon={() => <div style={{margin:10,fontSize:40}}>█</div>}
+                            renderStarIcon={() => <div style={{margin:5,fontSize:60}}>■</div>}
                             starColor={'orange'}
                             emptyStarColor={'grey'}
                             onStarClick={this.onToneStarClick.bind(this)}
@@ -128,7 +128,7 @@ class NewFeedback extends Component {
                             name="poise_rating" 
                             starCount={5}
                             value={poise_rating}
-                            renderStarIcon={() => <div style={{margin:10,fontSize:40}}>█</div>}
+                            renderStarIcon={() => <div style={{margin:5,fontSize:60}}>■</div>}
                             starColor={'orange'}
                             emptyStarColor={'grey'}
                             onStarClick={this.onPoiseStarClick.bind(this)}
@@ -143,7 +143,7 @@ class NewFeedback extends Component {
                             name="focus_rating" 
                             starCount={5}
                             value={focus_rating}
-                            renderStarIcon={() => <div style={{margin:10,fontSize:40}}>█</div>}
+                            renderStarIcon={() => <div style={{margin:5,fontSize:60}}>■</div>}
                             starColor={'orange'}
                             emptyStarColor={'grey'}
                             onStarClick={this.onFocusStarClick.bind(this)}
@@ -152,13 +152,13 @@ class NewFeedback extends Component {
                     </FormGroup>
 
                     <FormGroup style={{marginTop:10}}>
-                        <FormLabel style={{fontSize:20}}>Presentation Style - {this.state.presentation_rating}</FormLabel>
+                        <FormLabel style={{fontSize:20, height:14}}>Presentation Style - {this.state.presentation_rating}</FormLabel>
                         <div style={{marginTop:5}}>
                             <StarRatingComponent 
                             name="presentation_rating" 
                             starCount={5}
                             value={presentation_rating}
-                            renderStarIcon={() => <div style={{margin:10,fontSize:40}}>█</div>}
+                            renderStarIcon={() => <div style={{margin:5,fontSize:60}}>■</div>}
                             starColor={'orange'}
                             emptyStarColor={'grey'}
                             onStarClick={this.onPresentationStarClick.bind(this)}
