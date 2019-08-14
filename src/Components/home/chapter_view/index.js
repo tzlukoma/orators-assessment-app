@@ -1,7 +1,6 @@
 import React from 'react';
 import OratorListItems from '../../../ui/misc/OratorsListItems';
 import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 

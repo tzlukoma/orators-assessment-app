@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
@@ -11,8 +10,6 @@ import Evaluations from '../evaluations'
 
 
 const API = 'http://localhost:3002/';
-const QUERY_ID = '2' // will be contained in the state of the parent which determines who is looking
-const HEADER_VALUE = 'Thorny Jones' // will be contained in the state of the parent and displays either the family name or the chapter name
 
 class OratorView extends React.Component {
     
