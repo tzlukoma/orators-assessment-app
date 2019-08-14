@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -40,6 +41,10 @@ class OratorView extends React.Component {
 
           
       }
+
+
+
+      
     
     render() {
         // console.log(this.state.evaluations)
@@ -52,9 +57,14 @@ class OratorView extends React.Component {
                         {`${this.state.firstname} ${this.state.lastname}`} 
                     </Typography>
                     <Typography variant="subtitle1">
-                        {this.state.evaluations.length} Evaluations
+                        {this.state.evaluations.length} Feedback Summaries
                     </Typography>
-                    {this.state.coachview==='yes'?<Button variant="contained" style={{marginTop:20}}>Add Evaluation</Button>:''}
+                    {this.state.coachview==='yes'?
+                        <Link style={{textDecoration:'none'}}to={`/new_feedback/${this.state.oratorID}/${this.state.lastname}/${this.state.firstname}`}>
+                            <Button color="primary" variant="contained" style={{marginTop:20}} >Add Feedback</Button>
+                        </Link>
+                        :''
+                        }
                 </Paper>
                 <Evaluations evaluations={this.state.evaluations} coaches={this.state.coaches}{...this.props}/>
             </Container>
