@@ -2,6 +2,7 @@ import React from 'react';
 import FormLabel from '@material-ui/core/FormLabel'
 import Input from '@material-ui/core/Input'
 import FormGroup from '@material-ui/core/FormGroup'
+import TextField from '@material-ui/core/TextField'
 
 const FormFields = (props) => {
     
@@ -43,10 +44,10 @@ const FormFields = (props) => {
         switch(values.element){
             case('input'):
                 formTemplate = 
-                (<FormGroup style={{marginTop:30}}>
+                (<FormGroup style={{marginTop:20, }}>
                     { showLabel(values.label, values.labelText) }
-                    <br />
-                    <Input
+                    <TextField
+                        variant="outlined"
                         margin="dense"
                         {...values.config}
                         value={values.value}
