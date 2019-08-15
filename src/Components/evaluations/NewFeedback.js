@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import moment from 'moment'
+import FormFields from '../../ui/forms/FormFields'
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
-import FormLabel from '@material-ui/core/FormLabel'
 import FormGroup from '@material-ui/core/FormGroup'
-import StarRatingComponent from 'react-star-rating-component';
-import StarRating from 'react-star-rating';
+// import StarRatingComponent from 'react-star-rating-component';
+// import StarRating from 'react-star-rating';
 
 
 class NewFeedback extends Component {
@@ -47,9 +47,9 @@ class NewFeedback extends Component {
                     label: true,
                     labelText:'Last Name',
                     config:{
-                        name:'name_input',
+                        name:'lastname_input',
                         type:'text',
-                        placeholder:'Enter your name'
+                        placeholder:'Enter your last name'
                     }
                 }
             }
@@ -76,8 +76,26 @@ class NewFeedback extends Component {
     this.setState({presentation_rating: nextValue});
     }
 
+    updateForm = (newState) => {
+        this.setState({
+            formData: newState
+        })
+    }
+
+    submitForm = (event) => {
+        event.preventDefault();
+
+        let dataToSubmit = {};
+
+        for(let key in this.state.formData){
+            dataToSubmit[key] = this.state.formData[key].value
+        }
+
+        console.log(dataToSubmit)
+    }
+
     render() {
-        const { projection_rating, tone_rating, poise_rating, focus_rating, presentation_rating } = this.state;
+        // const { projection_rating, tone_rating, poise_rating, focus_rating, presentation_rating } = this.state;
         return (
             <Container className="container" style={{paddingTop:64}}>
                 {/* <Link to={`/orator_view/${this.state.oratorID}/${this.state.lastname}/${this.state.firstname}/yes`}>Back to Profile</Link> */}
@@ -90,7 +108,20 @@ class NewFeedback extends Component {
                         {moment(Date.now()).format("LLL")} 
                     </Typography>
                 </Paper>
-                <form style={{marginTop:30}}>
+
+                <form onSubmit={this.submitForm} style={{marginTop:30}}>
+
+                    <FormFields 
+                        formData={this.state.formData}
+                        change={(newState) => this.updateForm(newState)}
+                    />
+                    
+                    {/* TODO: Update FormFields to work for star ratings and comment list */}
+                    
+                    <Button type="submit" variant="contained" color="primary"style={{textAlign: 'center', marginTop: 30}}>Submit Feedback</Button>
+                </form>
+
+                {/* <form style={{marginTop:30}}>
                     <FormGroup>
                         <FormLabel style={{fontSize:20}}>Voice Projection - {this.state.projection_rating}</FormLabel>
                         <div style={{marginTop:5}}>
@@ -167,7 +198,7 @@ class NewFeedback extends Component {
                     </FormGroup>
                     
                     <Button color="primary" type="submit"variant="contained" style={{marginTop:20}} >Submit Feedback</Button>
-                </form>
+                </form> */}
             </Container>
            
          
