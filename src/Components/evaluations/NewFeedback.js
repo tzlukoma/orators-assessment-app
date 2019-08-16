@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom'
 import moment from 'moment'
 import FormFields from '../../ui/forms/FormFields'
+import FormLabel from '@material-ui/core/FormLabel'
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import FormGroup from '@material-ui/core/FormGroup'
-// import StarRatingComponent from 'react-star-rating-component';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Rating from 'react-rating'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import StarRatingComponent from 'react-star-rating-component';
 // import StarRating from 'react-star-rating';
 
 
@@ -30,26 +34,18 @@ class NewFeedback extends Component {
             presentation_rating:'',
             
             formData: {
-                name:{
+                comment:{
                     element:'input',
                     value:'',
                     label: true,
-                    labelText:'Name',
-                    config:{
-                        name:'name_input',
-                        type:'text',
-                        placeholder:'Enter your name'
-                    }
-                },
-                lastname:{
-                    element:'input',
-                    value:'',
-                    label: true,
-                    labelText:'Last Name',
+                    labelText:'Comment',
                     config:{
                         name:'lastname_input',
-                        type:'text',
-                        placeholder:'Enter your last name'
+                        type:'textarea',
+                        placeholder:'Enter your comment here',
+                        multiline:true,
+                        rows:4,
+                        rowsMax:6
                     }
                 }
             }
@@ -84,8 +80,13 @@ class NewFeedback extends Component {
 
     submitForm = (event) => {
         event.preventDefault();
-
-        let dataToSubmit = {};
+        let dataToSubmit = {
+            projection_rating:this.state.projection_rating,
+            tone_rating:this.state.tone_rating,
+            poise_rating:this.state.poise_rating,
+            focus_rating:this.state.focus_rating,
+            presentation_rating:this.state.presentation_rating
+        };
 
         for(let key in this.state.formData){
             dataToSubmit[key] = this.state.formData[key].value
@@ -95,9 +96,9 @@ class NewFeedback extends Component {
     }
 
     render() {
-        // const { projection_rating, tone_rating, poise_rating, focus_rating, presentation_rating } = this.state;
+        const { projection_rating, tone_rating, poise_rating, focus_rating, presentation_rating } = this.state;
         return (
-            <Container className="container" style={{paddingTop:64}}>
+            <Container className="container" style={{paddingTop:64, paddingBottom:64}}>
                 {/* <Link to={`/orator_view/${this.state.oratorID}/${this.state.lastname}/${this.state.firstname}/yes`}>Back to Profile</Link> */}
                 <Paper style={{padding:20, marginTop:20}} >
                     <Typography variant="h5" component="h3">
@@ -110,19 +111,7 @@ class NewFeedback extends Component {
                 </Paper>
 
                 <form onSubmit={this.submitForm} style={{marginTop:30}}>
-
-                    <FormFields 
-                        formData={this.state.formData}
-                        change={(newState) => this.updateForm(newState)}
-                    />
-                    
-                    {/* TODO: Update FormFields to work for star ratings and comment list */}
-                    
-                    <Button type="submit" variant="contained" color="primary"style={{textAlign: 'center', marginTop: 30}}>Submit Feedback</Button>
-                </form>
-
-                {/* <form style={{marginTop:30}}>
-                    <FormGroup>
+                <FormGroup>
                         <FormLabel style={{fontSize:20}}>Voice Projection - {this.state.projection_rating}</FormLabel>
                         <div style={{marginTop:5}}>
                             <StarRatingComponent 
@@ -136,7 +125,6 @@ class NewFeedback extends Component {
                             />
                         </div> 
                     </FormGroup>
-                    
                     <FormGroup style={{marginTop:10}}>
                         <FormLabel style={{fontSize:20}}>Voice Tone / Variation - {this.state.tone_rating}</FormLabel>
                         <div style={{marginTop:5}}>
@@ -151,7 +139,6 @@ class NewFeedback extends Component {
                             />
                         </div>
                     </FormGroup>
-
                     <FormGroup style={{marginTop:10}}>
                         <FormLabel style={{fontSize:20}}>Poise / Posture - {this.state.poise_rating}</FormLabel>
                         <div style={{marginTop:5}}>
@@ -166,7 +153,6 @@ class NewFeedback extends Component {
                             />
                         </div>
                     </FormGroup>
-
                     <FormGroup style={{marginTop:10}}>
                         <FormLabel style={{fontSize:20}}>Focus / Coachability - {this.state.focus_rating}</FormLabel>
                         <div style={{marginTop:5}}>
@@ -181,7 +167,6 @@ class NewFeedback extends Component {
                             />
                         </div>
                     </FormGroup>
-
                     <FormGroup style={{marginTop:10}}>
                         <FormLabel style={{fontSize:20, height:14}}>Presentation Style - {this.state.presentation_rating}</FormLabel>
                         <div style={{marginTop:5}}>
@@ -196,9 +181,12 @@ class NewFeedback extends Component {
                             />
                         </div>
                     </FormGroup>
-                    
-                    <Button color="primary" type="submit"variant="contained" style={{marginTop:20}} >Submit Feedback</Button>
-                </form> */}
+                    <FormFields 
+                        formData={this.state.formData}
+                        change={(newState) => this.updateForm(newState)}
+                    />
+                    <Button type="submit" variant="contained" color="primary"style={{textAlign: 'center', marginTop: 30}}>Submit Feedback</Button>
+                </form>
             </Container>
            
          
