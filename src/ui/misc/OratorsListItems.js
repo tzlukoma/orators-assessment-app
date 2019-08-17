@@ -17,8 +17,6 @@ const useStyles = makeStyles(theme => ({
 
 const OratorListItems = (props) => {
 
-    console.log(props)
-
     const classes = useStyles();
     const unsortedorators = props.orators;
     const orators = unsortedorators.sort((a,b)=> ((a.last_name+a.first_name) > (b.last_name+b.first_name)) ? 1: (((b.last_name+b.first_name) > (a.last_name+a.first_name))? -1:0));

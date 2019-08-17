@@ -119,7 +119,7 @@ const Assessments = (props) => {
                                         </TableRow>
                                     </TableBody>
                                 </Table>
-                            <Typography variant="body3" style={{fontStyle:"italic"}}>
+                            <Typography variant="body2" style={{fontStyle:"italic"}}>
                                 {`by ${assessment.coach} on ${moment.unix(assessment.timestamp).format("LLL")}`}
                             </Typography>
                         </React.Fragment>

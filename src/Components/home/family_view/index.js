@@ -24,7 +24,6 @@ class FamilyView extends React.Component {
 
     
       componentDidMount() {
-        console.log(this.props)
         this.setState({isLoading: true})
 
         fetch(`${API}orators?family_id=${this.state.familyID}`)
@@ -56,8 +55,6 @@ class FamilyView extends React.Component {
       }
     
     render() {
-        console.log(this.state)
-        console.log(this.props.location.pathname)
         const {isLoading} = this.state
         if(isLoading) {
             return<p>Loading...</p>

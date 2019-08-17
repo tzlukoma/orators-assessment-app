@@ -3,10 +3,10 @@ import { Switch, Route }  from 'react-router-dom';
 
 import Layout from './Hoc/Layout'
 
-import Home from './Components/home';
-import OratorView from './Components/orator_view';
-import NewAssessment from './Components/assessments/NewAssessment'
-import NotFound from "./Containers/not_found";
+import Home from './components/home';
+import OratorView from './components/orator_view';
+import NewAssessment from './components/assessments/NewAssessment'
+import NotFound from "./components/not_found";
 
 
 const Routes = (props) => {

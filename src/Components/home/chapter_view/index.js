@@ -26,7 +26,6 @@ class ChapterView extends React.Component {
 
     
       componentDidMount() {
-        console.log(this.props)
         this.setState({isLoading: true})
 
         fetch(`${API}orators?chapter_id=${this.state.chapterID}`)
@@ -59,7 +58,6 @@ class ChapterView extends React.Component {
       }
     
     render() {
-        console.log(this.state)
         const {isLoading, error} = this.state
         
         if (error) {

@@ -7,13 +7,10 @@ import Container from '@material-ui/core/Container'
 
 
 const Home = (props) => {
-    console.log(props.location.pathname)
     const familyregex = RegExp('family_view/*')
     const isFamily = familyregex.test(props.location.pathname);
     const chapterregex = RegExp('chapter_view/*')
-    const isChapter = chapterregex.test(props.location.pathname);
-    console.log(isFamily)
-    
+    const isChapter = chapterregex.test(props.location.pathname);    
     
     return (
         <Container>

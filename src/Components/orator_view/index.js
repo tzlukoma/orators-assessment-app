@@ -42,18 +42,13 @@ class OratorView extends React.Component {
           
       }
 
-
-
-      
     
     render() {
-        // console.log(this.state.assessments)
-        // console.log(this.props)
-        //, borderBottom:'solid grey 1px'
+
         return (
             <Container className="container" style={{paddingTop:64}}>
                 <Paper style={{padding:20, marginTop:20}} >
-                    <Typography variant="h5" component="h3">
+                    <Typography variant="h5" >
                         {`${this.state.firstname} ${this.state.lastname}`} 
                     </Typography>
                     <Typography variant="subtitle1">
