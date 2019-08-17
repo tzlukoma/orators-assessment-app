@@ -18,6 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import FormGroup from '@material-ui/core/FormGroup'
 import StarRatingComponent from 'react-star-rating-component';
+import uuidv4 from 'uuid'
 
 
 class NewFeedback extends Component {
@@ -107,6 +108,7 @@ class NewFeedback extends Component {
     submitForm = (event) => {
         event.preventDefault();
         let dataToSubmit = {
+            assessment_id: uuidv4(),
             orator_id:this.state.oratorID,
             coach_id:3, //coach_id will need to come from authentication
             projection_rating:this.state.projection_rating,
