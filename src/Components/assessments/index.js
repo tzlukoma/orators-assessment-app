@@ -38,34 +38,34 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-const Evaluations = (props) => {
+const Assessments = (props) => {
     const classes = useStyles();
-    const unsortedevaluations = props.evaluations;
+    const unsortedassessments = props.assessments;
     const coaches = props.coaches;
-    const evaluations = unsortedevaluations.sort((a,b)=> parseFloat(b.timestamp) - parseFloat(a.timestamp));
+    const assessments = unsortedassessments.sort((a,b)=> parseFloat(b.timestamp) - parseFloat(a.timestamp));
     const firstname = props.match.params.firstname
     const lastname = props.match.params.lastname
 
-    const mergedList = join(coaches, evaluations, "id", "coach_id", function(evaluation, coach){
+    const mergedList = join(coaches, assessments, "id", "coach_id", function(assessment, coach){
         return {
-            id: evaluation.id,
+            id: assessment.id,
             coach: (coach !== undefined ? coach.first_name+' '+coach.last_name: null),
-            comment: evaluation.comment,
-            timestamp: evaluation.timestamp,
-            projection_rating: evaluation.projection_rating,
-            tone_rating: evaluation.tone_rating,
-            poise_rating: evaluation.poise_rating,
-            focus_rating: evaluation.focus_rating,
-            presentation_rating: evaluation.presentation_rating
+            comment: assessment.comment,
+            timestamp: assessment.timestamp,
+            projection_rating: assessment.projection_rating,
+            tone_rating: assessment.tone_rating,
+            poise_rating: assessment.poise_rating,
+            focus_rating: assessment.focus_rating,
+            presentation_rating: assessment.presentation_rating
         }
     })
 
 
-    const listItems = mergedList.map((evaluation) =>
+    const listItems = mergedList.map((assessment) =>
         
-            <ListItem className={classes.root} key={evaluation.id} divider>
+            <ListItem className={classes.root} key={assessment.id} divider>
                 <ListItemText
-                    primary={`Evaluation for ${firstname} ${lastname}`}
+                    primary={`Assessment for ${firstname} ${lastname}`}
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -76,7 +76,7 @@ const Evaluations = (props) => {
                                 color="textPrimary"
                                 style={{backgroundColor:"#F5F5F5", padding:10, margin:"10 0"}}
                             >
-                                {`${evaluation.comment} `} 
+                                {`${assessment.comment} `} 
                             </Typography>
                             <Typography>
                             
@@ -93,36 +93,36 @@ const Evaluations = (props) => {
                                             <TableCell component="th" scope="row">
                                             Voice Projection
                                             </TableCell>
-                                            <TableCell align="right">{evaluation.projection_rating}</TableCell>
+                                            <TableCell align="right">{assessment.projection_rating}</TableCell>
                                         </TableRow>
                                         <TableRow >
                                             <TableCell component="th" scope="row">
                                             Voice Tone / Variation
                                             </TableCell>
-                                            <TableCell align="right">{evaluation.tone_rating}</TableCell>
+                                            <TableCell align="right">{assessment.tone_rating}</TableCell>
                                         </TableRow>
                                         <TableRow >
                                             <TableCell component="th" scope="row">
                                             Poise / Posture
                                             </TableCell>
-                                            <TableCell align="right">{evaluation.poise_rating}</TableCell>
+                                            <TableCell align="right">{assessment.poise_rating}</TableCell>
                                         </TableRow>
                                         <TableRow >
                                             <TableCell component="th" scope="row">
                                             Focus / Coachability
                                             </TableCell>
-                                            <TableCell align="right">{evaluation.focus_rating}</TableCell>
+                                            <TableCell align="right">{assessment.focus_rating}</TableCell>
                                         </TableRow>
                                         <TableRow >
                                             <TableCell component="th" scope="row">
                                             Presentation Style
                                             </TableCell>
-                                            <TableCell align="right">{evaluation.presentation_rating}</TableCell>
+                                            <TableCell align="right">{assessment.presentation_rating}</TableCell>
                                         </TableRow>
                                     </TableBody>
                                 </Table>
                             <Typography variant="body3" style={{fontStyle:"italic"}}>
-                                {`by ${evaluation.coach} on ${moment.unix(evaluation.timestamp).format("LLL")}`}
+                                {`by ${assessment.coach} on ${moment.unix(assessment.timestamp).format("LLL")}`}
                             </Typography>
                         </React.Fragment>
                     }
@@ -148,4 +148,4 @@ const Evaluations = (props) => {
     );
 };
 
-export default Evaluations;
+export default Assessments;
