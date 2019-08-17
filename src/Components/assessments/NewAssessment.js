@@ -134,7 +134,7 @@ class NewAssessment extends Component {
                 <Container style={{textAlign:'center',marginTop:20, paddingBottom:64}}>
                     <form onSubmit={this.submitForm}>
                     <FormGroup>
-                            <FormLabel style={{fontSize:18}}><span>Voice Projection ({this.state.projection_rating}/5)</span></FormLabel>
+                            <FormLabel style={{fontSize:20}}><span>Voice Projection ({this.state.projection_rating}/5)</span></FormLabel>
                             <div style={{marginTop:5}}>
                                 <StarRatingComponent 
                                     name="projection_rating" 
@@ -176,7 +176,7 @@ class NewAssessment extends Component {
                             </div>
                         </FormGroup>
                         <FormGroup style={{marginTop:10}}>
-                            <FormLabel style={{fontSize:15}}>Focus / Coachability ({this.state.focus_rating}/5)</FormLabel>
+                            <FormLabel style={{fontSize:20}}>Focus / Coachability ({this.state.focus_rating}/5)</FormLabel>
                             <div style={{marginTop:5}}>
                                 <StarRatingComponent 
                                 name="focus_rating" 
