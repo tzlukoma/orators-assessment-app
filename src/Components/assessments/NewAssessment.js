@@ -116,7 +116,7 @@ class NewAssessment extends Component {
     }
 
     render() {
-        const { projection_rating, tone_rating, poise_rating, focus_rating, presentation_rating, comment } = this.state;
+        const { projection_rating, tone_rating, poise_rating, focus_rating, presentation_rating} = this.state;
         return (
             <div>
                 <Container style={{paddingTop:64}}>

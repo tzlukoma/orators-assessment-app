@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -30,16 +29,16 @@ export function join(lookupTable, mainTable, lookupKey, mainKey, select) {
     return output;
 };
 
-const useStyles = makeStyles(theme => ({
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
-  }));
+// const useStyles = makeStyles(theme => ({
+//     root: {
+//       width: '100%',
+//       maxWidth: 360,
+//       backgroundColor: theme.palette.background.paper,
+//     },
+//   }));
 
 const Assessments = (props) => {
-    const classes = useStyles();
+
     const unsortedassessments = props.assessments;
     const coaches = props.coaches;
     const assessments = unsortedassessments.sort((a,b)=> parseFloat(b.timestamp) - parseFloat(a.timestamp));
@@ -63,7 +62,7 @@ const Assessments = (props) => {
 
     const listItems = mergedList.map((assessment) =>
         
-            <ListItem className={classes.root} key={assessment.id} divider>
+            <ListItem key={assessment.id} divider>
                 <ListItemText
                     primary={`Assessment for ${firstname} ${lastname}`}
                     secondary={
@@ -72,7 +71,6 @@ const Assessments = (props) => {
                                 // component="span"
                                 variant="body2"
                                 gutterBottom
-                                className={classes.inline}
                                 color="textPrimary"
                                 style={{backgroundColor:"#F5F5F5", padding:10, margin:"10 0"}}
                             >
@@ -81,7 +79,7 @@ const Assessments = (props) => {
                             <Typography>
                             
                             </Typography>
-                                <Table className={classes.table} size="small">
+                                <Table size="small">
                                     <TableHead>
                                     <TableRow>
                                         <TableCell>Learning Area</TableCell>
