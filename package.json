@@ -18,7 +18,8 @@
     "react-scripts": "3.0.1",
     "react-star-rating": "^1.4.2",
     "react-star-rating-component": "^1.4.1",
-    "react-time-ago": "^5.0.4"
+    "react-time-ago": "^5.0.4",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

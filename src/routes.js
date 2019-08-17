@@ -5,7 +5,7 @@ import Layout from './Hoc/Layout'
 
 import Home from './Components/home';
 import OratorView from './Components/orator_view';
-import NewFeedback from './Components/evaluations/NewFeedback'
+import NewAssessment from './Components/assessments/NewAssessment'
 import NotFound from "./Containers/not_found";
 
 
@@ -19,7 +19,7 @@ const Routes = (props) => {
             <Route path="/family_view/:family_id" component={Home} />
             <Route path="/chapter_view/:chapter_id" component={Home}/>
             <Route path="/chapter_view" component={Home}/>
-            <Route path="/new_feedback/:orator_id/:lastname/:firstname" component={NewFeedback} />
+            <Route path="/new_assessment/:orator_id/:lastname/:firstname" component={NewAssessment} />
             <Route path="/" exact component={Home} />
             <Route component={NotFound} />
             

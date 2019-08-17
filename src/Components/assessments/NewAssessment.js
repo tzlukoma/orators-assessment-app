@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom'
 import moment from 'moment'
 import FormFields from '../../ui/forms/FormFields'
-import Table from '@material-ui/core/Table'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import TableCell from '@material-ui/core/TableCell'
-import TableBody from '@material-ui/core/TableBody'
-import FormControl from '@material-ui/core/FormControl'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Radio from '@material-ui/core/Radio'
 import FormLabel from '@material-ui/core/FormLabel'
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
@@ -18,9 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import FormGroup from '@material-ui/core/FormGroup'
 import StarRatingComponent from 'react-star-rating-component';
+import uuidv4 from 'uuid'
 
 
-class NewFeedback extends Component {
+class NewAssessment extends Component {
     
     constructor(props) {
         super(props);
@@ -107,6 +98,7 @@ class NewFeedback extends Component {
     submitForm = (event) => {
         event.preventDefault();
         let dataToSubmit = {
+            assessment_id: uuidv4(),
             orator_id:this.state.oratorID,
             coach_id:3, //coach_id will need to come from authentication
             projection_rating:this.state.projection_rating,
@@ -132,7 +124,7 @@ class NewFeedback extends Component {
                     <Paper style={{padding:20, marginTop:20}} >
                         <Typography variant="h5" component="h3">
                         <span>{`${this.state.firstname} ${this.state.lastname}`} </span>
-                        <span style={{fontSize:15, fontStyle:'italic'}}>- New Feedback</span>
+                        <span style={{fontSize:15, fontStyle:'italic'}}>- New Assessment</span>
                         </Typography>
                         <Typography>
                             {moment(Date.now()).format("LLL")} 
@@ -213,35 +205,11 @@ class NewFeedback extends Component {
                         </FormGroup>
                         <Container style={{textAlign:'left', marginTop:10}}>
                             <FormLabel style={{fontSize:18, height:14}}>Select a comment:</FormLabel>
-                            
-                            {/* <FormControl component="fieldset" >
-                                <RadioGroup
-                                aria-label="gender"
-                                name="gender1"
-                                value={comment}
-                                onChange={()=>{console.log(comment)}}
-                                >
-                                    <FormControlLabel value="Excellent engagement, effort and participation" control={<Radio />} label="Excellent engagement, effort and participation" />
-                                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                    <FormControlLabel value="other" control={<Radio />} label="Other" />
-                                </RadioGroup>
-                            </FormControl>
-                            
-                            <ul>
-                                <li>Excellent engagement, effort and participation</li>
-                                <li>Be sure to incorporate feedback you have been given.</li>
-                                <li>Engage more with the lesson so that you can improve</li>
-                                <li>Well done!</li>
-                                <li>Nice improvement!</li>
-                                <li>Be sure to practice more.  You will improve.</li>
-                                <li>I see that you have been practicing.  Well done!</li>
-                                <li>More focus and effort will give you better results.</li>
-                            </ul> */}
                             <FormFields 
                                 formData={this.state.formData}
                                 change={(newState) => this.updateForm(newState)}
                             />
-                            <Button type="submit" variant="contained" color="primary"style={{textAlign: 'center', marginTop: 30}}>Submit Feedback</Button>
+                            <Button type="submit" variant="contained" color="primary"style={{textAlign: 'center', marginTop: 30}}>Submit Assessment</Button>
                         </Container>
                         
                     </form>
@@ -254,4 +222,4 @@ class NewFeedback extends Component {
     }
 }
 
-export default NewFeedback;
+export default NewAssessment;
