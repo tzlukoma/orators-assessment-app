@@ -29,7 +29,7 @@ class AdminContainer extends Component {
         return (
             <div>
                 <TopCard 
-                    usertype={'admin'} 
+                    usertype={'family'} 
                     chapters={this.props.chapters.chapterList}
                     coaches={this.props.coaches.coachList}
                     families={this.props.families.familyList}

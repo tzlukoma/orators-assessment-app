@@ -66,6 +66,16 @@ const renderAdminView = (chapters,coaches,families,orators) => {
         </div>
     )
 }
+
+const renderFamilyView = (families,orators)=>{
+    return(
+        <div style={{paddingTop:64}}>
+            {families} Families
+            {orators} Orators
+        </div>
+    )
+}
+
     
 
 const TopCard = (props) => {
@@ -85,7 +95,7 @@ const TopCard = (props) => {
                 props.families.length,
                 props.orators.length
                 )
-                :family && haveOrators ? <div style={{paddingTop:64}}>This is a family</div>
+                :family && haveFamilies && haveOrators ? renderFamilyView(props.families.length,props.orators.length)
             :null}
         </div>
         
