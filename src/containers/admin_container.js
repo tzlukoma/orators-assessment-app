@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { chaptersListAll } from '../actions';
+import { chaptersListAll, coachesListAll, familiesListAll, oratorsListAll } from '../actions';
 import { bindActionCreators } from 'redux'
 
 import TopCard from '../components/topcard'
@@ -15,18 +15,26 @@ class AdminContainer extends Component {
     
     componentDidMount(){
         this.props.chaptersListAll();
+        this.props.coachesListAll();
+        this.props.familiesListAll();
+        this.props.oratorsListAll();
 
-        //2_Request all coaches
         //3_Request all families
         //4_Request all orators
     }
     
     
     render() {
-        console.log(this.props)
+       
         return (
             <div>
-                <TopCard usertype={'admin'} chapters={this.props.chapters.chapterList}/>
+                <TopCard 
+                    usertype={'admin'} 
+                    chapters={this.props.chapters.chapterList}
+                    coaches={this.props.coaches.coachList}
+                    families={this.props.families.familyList}
+                    orators={this.props.orators.oratorList}
+                    />
                 <Container>
                     <Paper style={{ padding: 20, marginTop: 20 }}>
                         <Typography variant='h5'>Test Views</Typography>
@@ -48,12 +56,15 @@ class AdminContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        chapters: state.chapters
+        chapters: state.chapters,
+        coaches: state.coaches,
+        families: state.families,
+        orators: state.orators
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({chaptersListAll},dispatch)
+    return bindActionCreators({chaptersListAll, coachesListAll, familiesListAll, oratorsListAll},dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(AdminContainer)
