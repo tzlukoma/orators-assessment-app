@@ -9,7 +9,9 @@ const Navbar = () => {
         <div>
             <nav className="nav-wrapper grey darken-3">
                 <div className="container">
-                    <Link to='/' className="brand-logo">Orators App</Link>
+                    <ul className="left hide-on-med-and-down">
+                        <Link to='/' className="brand-logo">Orators App</Link>
+                    </ul>
                     <SignedInLinks />
                     <SignedOutLinks />
                 </div>

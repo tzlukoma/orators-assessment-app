@@ -4,6 +4,8 @@ import Navbar from './components/layout/Navbar'
 import Dashboard from './components/dashboard/Dashboard';
 import AssessmentDetails from './components/assessments/AssessmentDetails'
 import OratorDetails from './components/orators/OratorDetails'
+import CreateAssessment from './components/assessments/CreateAssessment'
+import CreateOrator from './components/orators/CreateOrator'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 
@@ -16,6 +18,8 @@ function App() {
           <Route exact path='/' component={Dashboard} />
           <Route path='/assessment/:id' component={AssessmentDetails} />
           <Route path='/orator/:id' component={OratorDetails} />
+          <Route path='/create_assessment' component={CreateAssessment} />
+          <Route path='/create_orator' component={CreateOrator} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
         </Switch>
