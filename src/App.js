@@ -18,7 +18,7 @@ function App() {
           <Route exact path='/' component={Dashboard} />
           <Route path='/assessment/:id' component={AssessmentDetails} />
           <Route path='/orator/:id' component={OratorDetails} />
-          <Route path='/create_assessment' component={CreateAssessment} />
+          <Route path='/create_assessment/:id/:firstname/:lastname' component={CreateAssessment} />
           <Route path='/create_orator' component={CreateOrator} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
