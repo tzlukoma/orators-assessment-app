@@ -1,13 +1,14 @@
 import React from 'react';
 import AssessmentSummary from './AssessmentSummary'
 
-const AssessmentList = () => {
+const AssessmentList = ({assessments}) => {
     return (
         <div className="assessment-list section">
-            <AssessmentSummary />
-            <AssessmentSummary />
-            <AssessmentSummary />
-            <AssessmentSummary />
+            { assessments && assessments.map(assessment => {
+                return (
+                    <AssessmentSummary assessment={assessment} key={assessment.id} />
+                )
+            })}
         </div>
     );
 };

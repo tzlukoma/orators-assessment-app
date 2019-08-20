@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment'
 import { Select } from 'react-materialize';
+import { connect } from 'react-redux'
+import { createAssessment } from '../../store/actions/assessmentActions'
 
 class CreateAssessment extends Component {
     state = {
@@ -26,7 +28,8 @@ class CreateAssessment extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        // console.log(this.state)
+        this.props.createAssessment(this.state)
     }
     render() {
         
@@ -192,4 +195,12 @@ class CreateAssessment extends Component {
     }
 }
 
-export default CreateAssessment;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createAssessment: (assessment) => {
+            dispatch(createAssessment(assessment))
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateAssessment);
