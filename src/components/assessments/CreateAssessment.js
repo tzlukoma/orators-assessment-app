@@ -7,7 +7,6 @@ import { createAssessment } from '../../store/actions/assessmentActions'
 class CreateAssessment extends Component {
     state = {
         orator_id: 3,
-        coach_id: 3,
         firstname: 'Ssanyu',
         lastname: 'Lukoma',
         projection_rating: '',
@@ -16,8 +15,7 @@ class CreateAssessment extends Component {
         focus_rating: '',
         presentation_rating: '',
         comment: '',
-        remarks: '',
-        date: Date.now()
+        remarks: ''
     }
     handleChange = (e) => {
         this.setState({

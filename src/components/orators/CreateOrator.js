@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { createOrator } from '../../store/actions/oratorActions'
 
 class CreateOrator extends Component {
     state = {
@@ -16,7 +18,8 @@ class CreateOrator extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        // console.log(this.state)
+        this.props.createOrator(this.state)
     }
     render() {
         return (
@@ -46,4 +49,13 @@ class CreateOrator extends Component {
     }
 }
 
-export default CreateOrator;
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        createOrator: (orator) => {
+            dispatch(createOrator(orator))
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateOrator);
+
