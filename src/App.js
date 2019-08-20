@@ -19,7 +19,7 @@ function App() {
           <Route path='/assessment/:id' component={AssessmentDetails} />
           <Route path='/orator/:id' component={OratorDetails} />
           <Route path='/create_assessment/:id/:firstname/:lastname' component={CreateAssessment} />
-          <Route path='/create_orator' component={CreateOrator} />
+          <Route path='/create_orator/:chapter_id/:family_id' component={CreateOrator} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
         </Switch>

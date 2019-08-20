@@ -14,7 +14,7 @@ class CreateAssessment extends Component {
         focus_rating: '',
         presentation_rating: '',
         comment: '',
-        remarks:'',
+        remarks: '',
         date: Date.now()
     }
     handleChange = (e) => {
@@ -29,10 +29,10 @@ class CreateAssessment extends Component {
         console.log(this.state)
     }
     render() {
-        console.log(this.state)
+        
         return (
 
-            <div className="container" style={{paddingBottom:64}}>
+            <div className="container" style={{ paddingBottom: 64 }}>
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3">{`New Assessment for ${this.state.firstname} ${this.state.lastname}`}</h5>
                     {moment.utc(Date()).format("LLL")}
@@ -153,35 +153,35 @@ class CreateAssessment extends Component {
                                 Comment : Select a comment
                             </option>
                             <option value="Excellent engagement, effort and participation">
-                            Excellent engagement, effort and participation
+                                Excellent engagement, effort and participation
                             </option>
                             <option value="Be sure to incorporate feedback you have been given.">
-                            Be sure to incorporate feedback you have been given.
+                                Be sure to incorporate feedback you have been given.
                             </option>
                             <option value="Engage more with the lesson so that you can improve">
                                 Engage more with the lesson so that you can improve
                             </option>
                             <option value="Well done!">
-                               Well done! 
+                                Well done!
                             </option>
                             <option value="Nice improvement!">
-                               Nice improvement! 
+                                Nice improvement!
                             </option>
                             <option value="Be sure to practice more.  You will improve.">
-                               Be sure to practice more.  You will improve.
+                                Be sure to practice more.  You will improve.
                             </option>
                             <option value="I see that you have been practicing.  Well done!">
-                            I see that you have been practicing.  Well done!
+                                I see that you have been practicing.  Well done!
                             </option>
                             <option value="More focus and effort will give you better results.">
-                            More focus and effort will give you better results.
+                                More focus and effort will give you better results.
                             </option>
                         </Select>
                     </div>
                     <div className="input-field">
-            <textarea id="remarks" className="materialize-textarea" onChange={this.handleChange}></textarea>
-            <label htmlFor="remarks">Additional Remarks</label>
-          </div>
+                        <textarea id="remarks" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                        <label htmlFor="remarks">Additional Remarks</label>
+                    </div>
                     <div className="input-field">
                         <button className="btn pink lighten-1 z-depth-0">Submit Assessment</button>
                     </div>
