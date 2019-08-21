@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AssessmentList from '../assessments/AssessmentList'
 import OratorList from '../orators/OratorList'
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 class Dashboard extends Component {
     render() {
@@ -26,9 +28,16 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        assessments: state.assessment.assessments
+        assessments: state.firestore.ordered.assessments
     }
 }
 
-export default connect(mapStateToProps)(Dashboard)
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'assessments' },
+        { collection: 'orators'}
+    ])
+)(Dashboard)
