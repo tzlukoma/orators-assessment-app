@@ -10,8 +10,13 @@ class Dashboard extends Component {
         return (
             <div className="dashboard container">
                 <div className="row">
-                    <div className="col s12 m6"><AssessmentList assessments={assessments} /></div>
+
+                    <div className="col s12 m6">
+                        <h4>Assessments</h4>
+                        <AssessmentList assessments={assessments} />
+                    </div>
                     <div className="col s12 m5 offset-m1">
+                        <h4>Orators</h4>
                         <OratorList />
                     </div>
                 </div>
@@ -22,8 +27,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      assessments: state.assessment.assessments
+        assessments: state.assessment.assessments
     }
-  }
-  
+}
+
 export default connect(mapStateToProps)(Dashboard)

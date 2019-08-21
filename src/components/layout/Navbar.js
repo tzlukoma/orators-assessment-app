@@ -7,10 +7,10 @@ import SignedOutLinks from './SignedOutLinks'
 const Navbar = () => {
     return (
         <div>
-            <nav className="nav-wrapper grey darken-3">
+            <nav className="nav-wrapper white ">
                 <div className="container">
-                    <ul className="left hide-on-med-and-down">
-                        <Link to='/' className="brand-logo">Orators App</Link>
+                    <ul className="left">
+                        <Link to='/' className="brand-logo"><img className="orator-logo" alt="coach-logo" src="/img/Logo-Long.png"></img></Link>
                     </ul>
                     <SignedInLinks />
                     <SignedOutLinks />
