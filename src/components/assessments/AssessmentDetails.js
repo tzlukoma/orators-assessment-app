@@ -4,7 +4,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
 const AssessmentDetails = (props) => {
-    console.log(props)
+    // console.log(props)
     const { assessment } = props;
     if (assessment) {
         return (

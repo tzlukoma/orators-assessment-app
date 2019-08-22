@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { createOrator } from '../../store/actions/oratorActions'
+import { Redirect } from 'react-router-dom'
 
 class CreateOrator extends Component {
     state = {
@@ -22,6 +23,8 @@ class CreateOrator extends Component {
         this.props.createOrator(this.state)
     }
     render() {
+        const { auth } = this.props
+        if(!auth.uid) return <Redirect to='/signin'/>
         return (
             
             <div className="container">
@@ -49,6 +52,11 @@ class CreateOrator extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         createOrator: (orator) => {
@@ -57,5 +65,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateOrator);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateOrator);
 

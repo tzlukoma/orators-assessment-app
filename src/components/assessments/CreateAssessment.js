@@ -3,6 +3,7 @@ import moment from 'moment'
 import { Select } from 'react-materialize';
 import { connect } from 'react-redux'
 import { createAssessment } from '../../store/actions/assessmentActions'
+import { Redirect } from 'react-router-dom'
 
 class CreateAssessment extends Component {
     state = {
@@ -30,7 +31,8 @@ class CreateAssessment extends Component {
         this.props.createAssessment(this.state)
     }
     render() {
-        
+        const { auth } = this.props
+        if(!auth.uid) return <Redirect to='/signin'/>
         return (
 
             <div className="container" style={{ paddingBottom: 64 }}>
@@ -193,6 +195,11 @@ class CreateAssessment extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
         createAssessment: (assessment) => {
@@ -201,4 +208,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateAssessment);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAssessment);

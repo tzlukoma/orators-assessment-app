@@ -4,11 +4,15 @@ import OratorList from '../orators/OratorList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 class Dashboard extends Component {
     render() {
         // console.log(this.props)
-        const { assessments } = this.props
+        const { assessments, auth } = this.props
+        
+        if(!auth.uid) return <Redirect to='/signin'/>
+        
         return (
             <div className="dashboard container">
                 <div className="row">
@@ -30,7 +34,8 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-        assessments: state.firestore.ordered.assessments
+        assessments: state.firestore.ordered.assessments,
+        auth: state.firebase.auth
     }
 }
 

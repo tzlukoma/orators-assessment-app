@@ -7,7 +7,7 @@ const AssessmentList = ({assessments}) => {
         <div className="assessment-list section">
             { assessments && assessments.map(assessment => {
                 return (
-                    <Link to={'/assessment/'+assessment.id}>
+                    <Link to={'/assessment/'+assessment.id} key={assessment.id}>
                         <AssessmentSummary assessment={assessment} key={assessment.id} />
                     </Link>
                     
