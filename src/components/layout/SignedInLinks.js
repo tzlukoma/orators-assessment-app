@@ -5,7 +5,7 @@ import { signOut } from '../../store/actions/authActions'
 
 const SignedInLinks = (props) => {
     return (
-        <ul className="right hide-on-med-and-down">
+        <ul className="right hide-on-small-only">
             <li><NavLink to='/create_assessment/3/Ssanyu/Lukoma'>New Assessment</NavLink></li>
             <li><a onClick={props.signOut}>Log out</a></li>
             <li><NavLink to='/' className="btn btn-floating pink lighten-1">TL</NavLink></li>

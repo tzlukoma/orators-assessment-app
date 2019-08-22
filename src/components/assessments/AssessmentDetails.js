@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 const AssessmentDetails = (props) => {
     // console.log(props)
-    const { assessment } = props;
+    const { assessment, auth } = props;
+    if(!auth.uid) return <Redirect to='/signin'/>
     if (assessment) {
         return (
             <div className="container section asessment-details">
@@ -81,7 +83,8 @@ const mapStateToProps = (state, ownProps) => {
     const assessments = state.firestore.data.assessments
     const assessment = assessments ? assessments[id] : null
     return {
-        assessment: assessment
+        assessment: assessment,
+        auth: state.firebase.auth
     }
 }
 

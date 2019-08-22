@@ -186,7 +186,7 @@ class CreateAssessment extends Component {
                         <label htmlFor="remarks">Additional Remarks</label>
                     </div>
                     <div className="input-field">
-                        <button className="btn pink lighten-1 z-depth-0">Submit Assessment</button>
+                        <button className="btn deep-purple lighten-1 z-depth-0">Submit Assessment</button>
                     </div>
                 </form>
             </div>
