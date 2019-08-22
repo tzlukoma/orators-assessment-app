@@ -5,10 +5,21 @@ import { signOut } from '../../store/actions/authActions'
 
 const SignedInLinks = (props) => {
     return (
-        <ul className="right hide-on-small-only">
-            <li><NavLink to='/create_assessment/3/Ssanyu/Lukoma'>New Assessment</NavLink></li>
-            <li><button className='btn-flat' onClick={props.signOut}>Log out</button></li>
-            <li><NavLink to='/' className="btn btn-floating deep-purple lighten-3">{props.profile.initials}</NavLink></li>
+        <ul className="right ">
+            <li className="hide-on-small-only"><NavLink to='/create_assessment/3/Ssanyu/Lukoma'>New Assessment</NavLink></li>
+            <li><button className='btn-flat hide-on-small-only' onClick={props.signOut}>Log out</button></li>
+            {/* Used for sign out on mobile */}
+            <li onClick={props.signOut}> 
+                <button className="btn btn-floating deep-purple lighten-3 hide-on-med-and-up">
+                    {props.profile.initials}
+                </button>
+            </li>
+            <li>
+                {/* Need to determine use on bigger screens */}
+                <button className="btn btn-floating deep-purple lighten-3 hide-on-small-only">
+                    {props.profile.initials}
+                </button>
+            </li>
 
         </ul>
     );
@@ -20,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null,mapDispatchToProps)(SignedInLinks);
+export default connect(null, mapDispatchToProps)(SignedInLinks);
