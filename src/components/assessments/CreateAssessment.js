@@ -29,6 +29,7 @@ class CreateAssessment extends Component {
         e.preventDefault();
         // console.log(this.state)
         this.props.createAssessment(this.state)
+        this.props.history.push('/')
     }
     render() {
         const { auth } = this.props

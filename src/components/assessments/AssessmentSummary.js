@@ -9,7 +9,7 @@ const AssessmentSummary = ({ assessment }) => {
                 <h6 style={{marginBottom:10}}>{assessment.comment} </h6>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>Posted by {assessment.coachFirstName} {assessment.coachLastName}</div>
-                    <div>{moment.unix(assessment.createdAt.seconds).format("LLL")}</div>
+                    <div>{moment(assessment.createdAt.toDate()).calendar()}</div>
                 </div>
             </div>
         </div>

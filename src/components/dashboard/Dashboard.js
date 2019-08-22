@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AssessmentList from '../assessments/AssessmentList'
-import OratorList from '../orators/OratorList'
+// import OratorList from '../orators/OratorList'
+import Notifications from '../dashboard/Notifications'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -21,9 +22,13 @@ class Dashboard extends Component {
                         <h4>Assessments</h4>
                         <AssessmentList assessments={assessments} />
                     </div>
-                    <div className="col s12 m5 offset-m1">
+                    {/* <div className="col s12 m5 offset-m1">
                         <h4>Orators</h4>
                         <OratorList orators={orators}/>
+                    </div> */}
+                    <div className="col s12 m5 offset-m1">
+                        <h4>Notifications</h4>
+                        <Notifications/>
                     </div>
                 </div>
             </div>

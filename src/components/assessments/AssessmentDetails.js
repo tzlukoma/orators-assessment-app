@@ -62,7 +62,7 @@ const AssessmentDetails = (props) => {
                         </div>
                     <div className="card-action grey lighten-4 grey-text">
                         <div>Posted by {assessment.coachFirstName} {assessment.coachLastName}</div>
-                        <div>{moment.unix(assessment.createdAt.seconds).format("LLL")}</div>/div>
+                        <div>{moment(assessment.createdAt.toDate()).calendar()}</div>
                     </div>
                 </div>
             </div>
