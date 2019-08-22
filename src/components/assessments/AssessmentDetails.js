@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -61,7 +62,7 @@ const AssessmentDetails = (props) => {
                         </div>
                     <div className="card-action grey lighten-4 grey-text">
                         <div>Posted by {assessment.coachFirstName} {assessment.coachLastName}</div>
-                        <div>23 Aug 2019</div>
+                        <div>{moment.unix(assessment.createdAt.seconds).format("LLL")}</div>/div>
                     </div>
                 </div>
             </div>

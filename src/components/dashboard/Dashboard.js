@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom'
 class Dashboard extends Component {
     render() {
         // console.log(this.props)
-        const { assessments, auth } = this.props
+        const { assessments, orators, auth } = this.props
         
         if(!auth.uid) return <Redirect to='/signin'/>
         
@@ -23,7 +23,7 @@ class Dashboard extends Component {
                     </div>
                     <div className="col s12 m5 offset-m1">
                         <h4>Orators</h4>
-                        <OratorList />
+                        <OratorList orators={orators}/>
                     </div>
                 </div>
             </div>
@@ -35,6 +35,7 @@ const mapStateToProps = (state) => {
     console.log(state)
     return {
         assessments: state.firestore.ordered.assessments,
+        orators: state.firestore.ordered.orators,
         auth: state.firebase.auth
     }
 }

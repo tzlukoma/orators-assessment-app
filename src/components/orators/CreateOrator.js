@@ -43,7 +43,7 @@ class CreateOrator extends Component {
                         <input type="date" id="dateOfBirth" onChange={this.handleChange} />
                     </div>
                     <div className="input-field">
-                        <button className="btn pink lighten-1 z-depth-0">Register Orator</button>
+                        <button className="btn deep-purple lighten-1 z-depth-0">Register Orator</button>
                     </div>
                 </form>
             </div>
