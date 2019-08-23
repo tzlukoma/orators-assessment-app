@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom'
 
 class CreateAssessment extends Component {
     state = {
-        orator_id: 3,
+        orator_id: 'N1TrGaoB4rBHb8EUVIZe',
         firstname: 'Ssanyu',
         lastname: 'Lukoma',
         projection_rating: '',

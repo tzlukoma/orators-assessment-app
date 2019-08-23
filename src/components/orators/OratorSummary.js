@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment'
 
 const OratorSummary = (props) => {
     console.log(props)
@@ -6,8 +7,8 @@ const OratorSummary = (props) => {
         <div className="card z-depth-1 orator-summary">
             <div className="card-content grey-text text-darken-3">
                 <span className="card-title">{props.orator.firstName} {props.orator.lastName}</span>
-                <p>Birthday: {props.orator.dateOfBirth}</p>
-                <p className="grey-text">Family ID: {props.orator.family_id}</p>
+                <p>{moment().diff(props.orator.dateOfBirth, 'years',false)} years old</p>
+                <p className="grey-text">{props.orator.family} Family</p>
             </div>
         </div>
     );
