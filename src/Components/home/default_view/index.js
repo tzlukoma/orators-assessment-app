@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button'
-import Paper from '@material-ui/core/Paper'
+import React from './node_modules/react';
+import { Link } from './node_modules/react-router-dom'
+import Container from './node_modules/@material-ui/core/Container';
+import Typography from './node_modules/@material-ui/core/Typography';
+import Button from './node_modules/@material-ui/core/Button'
+import Paper from './node_modules/@material-ui/core/Paper'
 
 const DefaultView = () => {
     return (

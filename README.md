@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Running in Mock Mode
 
 To start the app, run the following commands to use with mock data:
@@ -8,8 +7,6 @@ To start the app, run the following commands to use with mock data:
 
 ## Background Info
 
-=======
->>>>>>> 349e8da42fc15ddd0e685fc8f6035558d49322ad
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

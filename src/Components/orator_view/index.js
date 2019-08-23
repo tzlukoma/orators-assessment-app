@@ -1,8 +1,8 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button'
+import React from './node_modules/react';
+import Container from './node_modules/@material-ui/core/Container';
+import Paper from './node_modules/@material-ui/core/Paper';
+import Typography from './node_modules/@material-ui/core/Typography';
+import Button from './node_modules/@material-ui/core/Button'
 
 
 import Evaluations from '../evaluations'

@@ -1,23 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
-import './index.css'
-// import 'bootstrap/dist/css/bootstrap.css';
-// import './Resources/css/shards.css'
-
-import { BrowserRouter } from 'react-router-dom';
-import Routes from './routes';
-
-const App = () => {
-    return (
-        <BrowserRouter>
-            <Routes/>
-        </BrowserRouter>
-    )
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
-=======
 import App from './App';
 import './index.css'
 import * as serviceWorker from './serviceWorker';
@@ -45,4 +27,3 @@ store.firebaseAuthIsReady.then(() => {
 })
 
 
->>>>>>> 349e8da42fc15ddd0e685fc8f6035558d49322ad

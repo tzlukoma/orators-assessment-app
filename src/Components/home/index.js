@@ -1,8 +1,8 @@
-import React from 'react';
+import React from './node_modules/react';
 import FamilyView from './family_view'
 import ChapterView from './chapter_view'
 import DefaultView from './default_view'
-import Container from '@material-ui/core/Container'
+import Container from './node_modules/@material-ui/core/Container'
 
 
 

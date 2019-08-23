@@ -3,10 +3,10 @@ import { Switch, Route }  from 'react-router-dom';
 
 import Layout from './Hoc/Layout'
 
-import Home from './Components/home';
+import Home from './components/home';
 // import FamilyView from './Components/home/family_view';
 // import FamilyView2 from './Components/home/family_view/OratorListItems'
-import OratorView from './Components/orator_view';
+import OratorView from './components/orator_view';
 import NotFound from "./Containers/not_found";
 
 

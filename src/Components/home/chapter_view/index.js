@@ -1,8 +1,8 @@
-import React from 'react';
+import React from './node_modules/react';
 import OratorListItems from '../../../ui/misc/OratorsListItems';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import Container from './node_modules/@material-ui/core/Container';
+import Paper from './node_modules/@material-ui/core/Paper';
+import Typography from './node_modules/@material-ui/core/Typography';
 
 
 

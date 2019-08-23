@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AssessmentList from '../assessments/AssessmentList'
 import OratorList from '../orators/OratorList'
-import Notifications from '../dashboard/Notifications'
+import Notifications from './Notifications'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'

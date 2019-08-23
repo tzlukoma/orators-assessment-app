@@ -6,9 +6,6 @@
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
-<<<<<<< HEAD
-    }
-=======
     },
     {
       "src": "logo192.png",
@@ -20,7 +17,6 @@
       "type": "image/png",
       "sizes": "512x512"
     }	    
->>>>>>> 349e8da42fc15ddd0e685fc8f6035558d49322ad
   ],
   "start_url": ".",
   "display": "standalone",

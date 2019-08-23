@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "orators-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.3.1",
-    "@material-ui/icons": "^4.2.1",
-    "javascript-time-ago": "^2.0.1",
-    "json-server": "^0.15.0",
-    "lodash": "^4.17.15",
-    "material-ui": "^0.20.2",
-    "moment": "^2.24.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "react-time-ago": "^5.0.4"
-=======
   "name": "orators-refactor-app",
   "version": "0.1.0",
   "private": true,
@@ -40,18 +22,12 @@
     "redux": "^4.0.4",
     "redux-firestore": "^0.8.0",
     "redux-thunk": "^2.3.0"
->>>>>>> 349e8da42fc15ddd0e685fc8f6035558d49322ad
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-<<<<<<< HEAD
-    "eject": "react-scripts eject",
-    "mock:api": "json-server --watch src/api/db.json --port 3002"
-=======
     "eject": "react-scripts eject"
->>>>>>> 349e8da42fc15ddd0e685fc8f6035558d49322ad
   },
   "eslintConfig": {
     "extends": "react-app"
