@@ -1,3 +1,8 @@
+import {
+    CREATE_ASSESSMENT,
+    CREATE_ASSESSMENT_ERROR
+} from '../actions/types'
+
 export const createAssessment = (assessment) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // make async call to database
@@ -11,9 +16,9 @@ export const createAssessment = (assessment) => {
             coach_id: coach_id,
             createdAt: new Date()
         }).then(()=> {
-            dispatch({type: 'CREATE_ASSESSMENT', assessment})
+            dispatch({type: CREATE_ASSESSMENT, assessment})
         }).catch((err)=> {
-            dispatch({ type: 'CREATE_ASSESSMENT_ERROR', err})
+            dispatch({ type: CREATE_ASSESSMENT_ERROR, err})
         })
         
     }
