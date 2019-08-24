@@ -56,7 +56,7 @@ export const signUp = (newUser) => {
     }
 }
 
-export const CoachSignUp = (newUser) => {
+export const coachSignUp = (newUser) => {
     return (dispatch, getState, { getFirebase, getFirestore}) => {
         const firebase = getFirebase();
         const firestore = getFirestore();
@@ -70,7 +70,6 @@ export const CoachSignUp = (newUser) => {
                 lastName: newUser.lastName,
                 initials: newUser.firstName[0] + newUser.lastName[0],
                 chapter_id: newUser.chapter_id,
-                chapter: newUser.chapter,
                 coach: newUser.coach
             })
         }).then(() => {
