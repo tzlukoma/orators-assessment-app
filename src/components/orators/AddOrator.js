@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { createOrator } from '../../store/actions/oratorActions'
+import { addOrator } from '../../store/actions/oratorActions'
 import { Redirect } from 'react-router-dom'
 
-class CreateOrator extends Component {
+class AddOrator extends Component {
     state = {
         firstName: '',
         lastName: '',
@@ -20,7 +20,7 @@ class CreateOrator extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         // console.log(this.state)
-        this.props.createOrator(this.state)
+        this.props.addOrator(this.state)
     }
     render() {
         const { auth } = this.props
@@ -29,7 +29,7 @@ class CreateOrator extends Component {
             
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">Register Orator</h5>
+                    <h5 className="grey-text text-darken-3">Add Orator</h5>
                     <div className="input-field">
                         <label htmlFor="firstName">First Name</label>
                         <input type="text" id="firstName" onChange={this.handleChange} />
@@ -59,11 +59,11 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        createOrator: (orator) => {
-            dispatch(createOrator(orator))
+        addOrator: (orator) => {
+            dispatch(addOrator(orator))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateOrator);
+export default connect(mapStateToProps, mapDispatchToProps)(AddOrator);
 

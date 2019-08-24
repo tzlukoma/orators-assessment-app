@@ -5,7 +5,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import AssessmentDetails from './components/assessments/AssessmentDetails'
 import OratorDetails from './components/orators/OratorDetails'
 import CreateAssessment from './components/assessments/CreateAssessment'
-import CreateOrator from './components/orators/CreateOrator'
+import AddOrator from './components/orators/AddOrator'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 
@@ -19,7 +19,7 @@ function App() {
           <Route path='/assessment/:id' component={AssessmentDetails} />
           <Route path='/orator/:id' component={OratorDetails} />
           <Route path='/create_assessment/:id/:firstname/:lastname' component={CreateAssessment} />
-          <Route path='/create_orator/:chapter_id/:family_id' component={CreateOrator} />
+          <Route path='/add_orator/:chapter_id/:family_id' component={AddOrator} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
         </Switch>

@@ -1,4 +1,9 @@
-export const createOrator = (orator) => {
+import {
+    ADD_ORATOR,
+    ADD_ORATOR_ERROR
+  } from '../actions/types'
+
+export const addOrator = (orator) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // make async call to database
         const firestore = getFirestore();
@@ -8,9 +13,9 @@ export const createOrator = (orator) => {
             family_id: 3,
             createdAt: new Date()
         }).then(()=> {
-            dispatch({type: 'CREATE_ORATOR', orator})
+            dispatch({type: ADD_ORATOR, orator})
         }).catch((err)=> {
-            dispatch({ type: 'CREATE_ORATOR_ERROR', err})
+            dispatch({ type: ADD_ORATOR_ERROR, err})
         })
         
     }
