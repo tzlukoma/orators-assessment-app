@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment'
 
 const OratorSummary = (props) => {
-    console.log(props)
     return (
         <div className="card z-depth-1 orator-summary">
             <div className="card-content grey-text text-darken-3">

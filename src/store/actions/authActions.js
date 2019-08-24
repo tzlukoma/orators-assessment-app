@@ -70,6 +70,7 @@ export const coachSignUp = (newUser) => {
                 lastName: newUser.lastName,
                 initials: newUser.firstName[0] + newUser.lastName[0],
                 chapter_id: newUser.chapter_id,
+                chapter: newUser.chapter,
                 coach: newUser.coach
             })
         }).then(() => {

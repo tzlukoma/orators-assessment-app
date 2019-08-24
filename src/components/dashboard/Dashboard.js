@@ -8,16 +8,17 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
 class Dashboard extends Component {
+    
     render() {
         // console.log(this.props)
-        const { assessments, orators, notifications, auth } = this.props
+        const { assessments, orators, notifications, auth, profile } = this.props
         
         if(!auth.uid) return <Redirect to='/signin'/>
         
         return (
             <div className="dashboard container">
                 <div className="row">
-
+                    {profile.coach ? `This is the coach view`: null}
                     <div className="col s12 m6 l4">
                         <h4>Assessments</h4>
                         <AssessmentList assessments={assessments} />
@@ -38,11 +39,12 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state)
+    console.log(state)
     return {
         assessments: state.firestore.ordered.assessments,
         orators: state.firestore.ordered.orators,
         auth: state.firebase.auth,
+        profile: state.firebase.profile,
         notifications: state.firestore.ordered.notifications
     }
 }
@@ -51,7 +53,7 @@ export default compose(
     connect(mapStateToProps),
     firestoreConnect([
         { collection: 'assessments', limit: 2, orderBy: ['createdAt','desc'] },
-        { collection: 'orators', orderBy: ['dateOfBirth', 'asc']},
-        { collection: 'notifications', limit:3, orderBy: ['time', 'desc']}
+        { collection: 'orators', limit: 2, orderBy: ['dateOfBirth', 'asc']},
+        { collection: 'notifications', limit:2, orderBy: ['time', 'desc']}
     ])
 )(Dashboard)

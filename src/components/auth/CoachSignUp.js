@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { coachSignUp } from '../../store/actions/authActions'
 
 import Select from 'react-select'
+import data from '../../_ref/chapters'
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate', id: 1234 },
-  { value: 'strawberry', label: 'Strawberry', id: 6789 },
-  { value: 'vanilla', label: 'Vanilla', id: 101112 }
-]
+const options = data
 
 
 class CoachSignUp extends Component {
@@ -18,7 +16,9 @@ class CoachSignUp extends Component {
         password: '',
         firstName: '',
         lastName: '',
-        chapter:''
+        chapter: '',
+        chapter_id: '',
+        coach: true
     }
     handleChange = (e) => {
         this.setState({
@@ -28,24 +28,30 @@ class CoachSignUp extends Component {
     }
 
     handleOptionsChange = chapter => {
-        this.setState({ chapter: chapter.id });
+        this.setState({ 
+            chapter_id: chapter.id,
+            chapter: chapter.value
+         });
         console.log(`Option selected:`, chapter);
-      };
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
-        // this.props.coachSignUp(this.state)
+        this.props.coachSignUp(this.state)
     }
     render() {
         const { auth, authError } = this.props
-        const { chapter } = this.state
         if (auth.uid) return <Redirect to='/' />
         return (
 
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">Sign Up</h5>
+                    <h5 className="grey-text text-darken-3">Chapter Coach Sign Up</h5>
+                    <h6 className="pink lighten-5" style={{padding:10}}>This form is a sign up for chapter coaches
+                        If you are a parent or guardian of an orator, please sign up 
+                        <Link to="/signup"> here</Link>.
+                    </h6>
                     <div className="input-field">
                         <label htmlFor="firstName">First Name</label>
                         <input type="text" id="firstName" onChange={this.handleChange} />
@@ -63,19 +69,20 @@ class CoachSignUp extends Component {
                         <input type="password" id="password" onChange={this.handleChange} />
                     </div>
 
-                    <Select style={{height:10}}
-                    
-    defaultValue={'Select an option'}
-    value={chapter}
-    options={options}
-    onChange={this.handleOptionsChange}
-    
-  />
+                    <Select
+
+                        defaultValue={'Select an option'}
+                        value={this.state.value}
+                        options={options}
+                        onChange={this.handleOptionsChange}
+                        hideSelectedOptions={false}
+
+                    />
 
                     <div className="input-field">
                         <button className="btn deep-purple lighten-1 z-depth-0">Sign Up</button>
                         <div className="red-text center">
-                            { authError ? <p>{authError}</p>: null}
+                            {authError ? <p>{authError}</p> : null}
                         </div>
                     </div>
                 </form>
