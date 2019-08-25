@@ -68,7 +68,7 @@ class CoachSignUp extends Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" onChange={this.handleChange} />
                     </div>
-
+                    <h6>Select your chapter:</h6>
                     <Select
 
                         defaultValue={'Select an option'}
@@ -78,6 +78,7 @@ class CoachSignUp extends Component {
                         hideSelectedOptions={false}
 
                     />
+                   
 
                     <div className="input-field">
                         <button className="btn deep-purple lighten-1 z-depth-0">Sign Up</button>
