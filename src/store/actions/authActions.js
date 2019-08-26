@@ -30,6 +30,7 @@ export const signOut = () => {
 
         firebase.auth().signOut()
         .then(()=> {
+            window.location.reload();
             dispatch({ type: SIGNOUT_SUCCESS})
         }).catch(function(error) {
             console.log(error)
