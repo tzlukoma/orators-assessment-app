@@ -14,15 +14,19 @@ import fbConfig from './config/fbConfig'
 
 
 
-const store = createStore(rootReducer,composeWithDevTools(
+const store = createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reactReduxFirebase(fbConfig, { useFirestoreForProfile:true, userProfile:'users', attachAuthIsReady: true }), // redux binding for firebase
+    reactReduxFirebase(fbConfig, { useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true }), // redux binding for firebase
     reduxFirestore(fbConfig) // redux bindings for firestore
 ));
 
 store.firebaseAuthIsReady.then(() => {
-    ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
-    serviceWorker.unregister();
+    fbConfig.auth().onAuthStateChanged((user) => {
+        console.log('user:',user)
+        ReactDOM.render(<Provider store={store}><App user={user}/></Provider>, document.getElementById('root'));
+        serviceWorker.unregister();
+    })
+
 })
 
 
