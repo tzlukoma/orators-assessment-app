@@ -12,7 +12,6 @@ class Dashboard extends Component {
     render() {
         // console.log(this.props)
         const { assessments, orators, notifications, auth, profile } = this.props
-        
         if(!auth.uid) return <Redirect to='/signin'/>
         
         return (
@@ -39,7 +38,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         assessments: state.firestore.ordered.assessments,
         orators: state.firestore.ordered.orators,
