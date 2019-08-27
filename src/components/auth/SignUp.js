@@ -3,12 +3,18 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { signUp } from '../../store/actions/authActions'
 
+import chapters from '../../_ref/chapters'
+
+
+
 class SignUp extends Component {
     state = {
         email: '',
         password: '',
         firstName: '',
         lastName: '',
+        chapter_id: '',
+        chapter: ''
     }
     handleChange = (e) => {
         this.setState({
@@ -16,11 +22,24 @@ class SignUp extends Component {
         })
 
     }
+    handleChapterChange = (e) => {
+        const userChapter = e.target.value && chapters.find(x => x.id === e.target.value)
+                                ? chapters.find(x => x.id === e.target.value)
+                                : {chapter_id:'',chapter:''};
+        
+            this.setState({
+                chapter_id: userChapter.id ,
+                chapter: userChapter.value
+            })
+
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
-        this.props.signUp(this.state)
+       this.props.signUp(this.state)
     }
+
     render() {
         const { auth, authError } = this.props
         if (auth.uid) return <Redirect to='/' />
@@ -44,6 +63,11 @@ class SignUp extends Component {
                     <div className="input-field">
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" onChange={this.handleChange} />
+                    </div>
+                    <p className="blue lighten-5" style={{padding: 10}}>Please enter the Chapter code you were provided below:</p>
+                    <div className="input-field">
+                        <label htmlFor="chapter_id">Chapter Code</label>
+                        <input type="text" id="chapter_id" onChange={this.handleChapterChange} />
                     </div>
 
                     <div className="input-field">
