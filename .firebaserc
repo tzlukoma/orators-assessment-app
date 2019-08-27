@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "orators-app-refactored",
+    "staging": "speek-orators"
+  }
+}

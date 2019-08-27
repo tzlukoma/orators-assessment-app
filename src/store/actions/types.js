@@ -1,0 +1,13 @@
+export const LOGIN_ERROR = 'login_error';
+export const LOGIN_SUCCESS = 'login_success';
+export const SIGNOUT_SUCCESS = 'signout_success';
+export const SIGNUP_SUCCESS = 'signup_success';
+export const SIGNUP_ERROR = 'signup_error';
+export const COACH_SIGNUP_SUCCESS = 'coach_signup_success';
+export const COACH_SIGNUP_ERROR = 'coach_signup_error';
+export const CREATE_ASSESSMENT = 'create_assessment';
+export const CREATE_ASSESSMENT_ERROR = 'create_assessment_error'
+export const ADD_ORATOR = 'add_orator';
+export const ADD_ORATOR_ERROR = 'add_orator_error'
+export const GET_CHAPTER_ORATORS = 'get_chapter_orators'
+export const GET_CHAPTER_ORATORS_ERROR = 'get_chapter_orators_error'
