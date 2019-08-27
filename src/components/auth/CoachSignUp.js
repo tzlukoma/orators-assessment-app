@@ -5,9 +5,9 @@ import { Redirect } from 'react-router-dom'
 import { coachSignUp } from '../../store/actions/authActions'
 
 import Select from 'react-select'
-import data from '../../_ref/chapters'
+import chapters from '../../_ref/chapters'
 
-const options = data
+const options = chapters
 
 
 class CoachSignUp extends Component {
