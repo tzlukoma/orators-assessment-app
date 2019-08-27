@@ -9,6 +9,7 @@ import AddOrator from './components/orators/AddOrator'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CoachSignUp from './components/auth/CoachSignUp'
+import CoachWelcome from './components/onboarding/CoachWelcome'
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
           <Route path='/add_orator/:chapter_id/:family_id' component={AddOrator} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
+          <Route path='/coachwelcome' component={CoachWelcome} />
           <Route path='/coachsignup' component={CoachSignUp} />
+          
         </Switch>
       </div>
     </BrowserRouter>

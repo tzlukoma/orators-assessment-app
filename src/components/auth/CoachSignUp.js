@@ -38,11 +38,11 @@ class CoachSignUp extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
-        this.props.coachSignUp(this.state)
+        this.props.coachSignUp(this.state);
     }
     render() {
         const { auth, authError } = this.props
-        if (auth.uid) return <Redirect to='/' />
+        if (auth.uid) return <Redirect to='/coachwelcome'/>
         return (
 
             <div className="container">
