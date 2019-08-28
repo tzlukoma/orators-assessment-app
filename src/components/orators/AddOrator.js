@@ -12,8 +12,8 @@ class AddOrator extends Component {
         e.parent_id = parent_id;
         e.chapter_id = chapter_id;
         e.chapter = chapter
-        console.log(e)
-        // this.props.addOrator(e)
+        // console.log(e)
+        this.props.addOrator(e)
     }
 
     renderInputField(field) {
@@ -32,8 +32,6 @@ class AddOrator extends Component {
 
     render() {
         const { auth, profile, authError } = this.props
-        // console.log(auth)
-        // if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />
         return (
 
             <div className="container">
@@ -66,25 +64,6 @@ class AddOrator extends Component {
                         <button className="btn deep-purple lighten-1 z-depth-0">Add Orator</button>
                     </div>
                 </form>
-
-                {/* <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">Add Orator</h5>
-                    <div className="input-field">
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <h6>Date of Birth</h6>
-                        <input type="date" id="dateOfBirth" onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <button className="btn deep-purple lighten-1 z-depth-0">Register Orator</button>
-                    </div>
-                </form> */}
             </div>
 
         );
@@ -98,7 +77,7 @@ const mapStateToProps = (state) => {
         profile: state.firebase.profile
     }
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         addOrator: (orator) => {
             dispatch(addOrator(orator))
