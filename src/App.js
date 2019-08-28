@@ -34,7 +34,7 @@ function App(props) {
           <PrivateRoute {...props} path={`${ROUTES.CREATE_ASSESSMENT}/:id/:firstname/:lastname`} component={CreateAssessment}/>
           <PrivateRoute {...props} path={ROUTES.ADD_ORATOR} component={AddOrator}/>
           <Route {...props} path={ROUTES.PARENT_WELCOME} component={ParentWelcome}/>
-          <PrivateRoute {...props} path={ROUTES.COACH_WELCOME} component={CoachWelcome}/>
+          <Route {...props} path={ROUTES.COACH_WELCOME} component={CoachWelcome}/>
           <Route component={NotFound} />
         </Switch>
       </div>
