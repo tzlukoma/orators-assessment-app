@@ -7,12 +7,14 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
+import * as ROUTES from '../../constants/routes'
+
 class Dashboard extends Component {
     
     render() {
         // console.log(this.props)
         const { assessments, orators, notifications, auth, profile } = this.props
-        if(!auth.uid) return <Redirect to='/signin'/>
+        if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
         
         return (
             <div className="dashboard container">

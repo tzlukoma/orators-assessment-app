@@ -3,7 +3,7 @@ import {
   ADD_ORATOR_ERROR,
   GET_CHAPTER_ORATORS,
   GET_CHAPTER_ORATORS_ERROR
-} from '../actions/types'
+} from '../../constants/types'
 
 const initState = {
     orators:''

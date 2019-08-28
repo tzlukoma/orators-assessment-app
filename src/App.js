@@ -10,6 +10,7 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CoachSignUp from './components/auth/CoachSignUp'
 import CoachWelcome from './components/onboarding/CoachWelcome'
+import * as ROUTES from './constants/routes';
 
 function App() {
   return (
@@ -17,16 +18,30 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path='/' component={Dashboard} />
-          <Route path='/assessment/:id' component={AssessmentDetails} />
-          <Route path='/orator/:id' component={OratorDetails} />
-          <Route path='/create_assessment/:id/:firstname/:lastname' component={CreateAssessment} />
-          <Route path='/add_orator/:chapter_id/:family_id' component={AddOrator} />
-          <Route path='/signin' component={SignIn} />
-          <Route path='/signup' component={SignUp} />
-          <Route path='/coachwelcome' component={CoachWelcome} />
-          <Route path='/coachsignup' component={CoachSignUp} />
-          
+          <Route
+            exact
+            path={ROUTES.DASHBOARD}
+            component={Dashboard} />
+          <Route
+            path={`${ROUTES.ASSESSMENT}/:id`}
+            component={AssessmentDetails}
+          />
+          <Route
+            path={`${ROUTES.ORATOR}/:id`}
+            component={OratorDetails} />
+          <Route
+            path={`${ROUTES.CREATE_ASSESSMENT}/:id/:firstname/:lastname`}
+            component={CreateAssessment}
+          />
+          <Route
+            path={`${ROUTES.ADD_ORATOR}/:chapter_id/:family_id`}
+            component={AddOrator}
+          />
+          <Route path={ROUTES.SIGN_IN} component={SignIn} />
+          <Route path={ROUTES.SIGN_UP} component={SignUp} />
+          <Route path={ROUTES.COACH_SIGNUP} component={CoachSignUp} />
+          <Route path={ROUTES.COACH_WELCOME} component={CoachWelcome} />
+          {/* <Route component={NotFound} /> */}
         </Switch>
       </div>
     </BrowserRouter>

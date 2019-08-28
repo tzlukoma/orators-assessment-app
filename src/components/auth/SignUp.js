@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { signUp } from '../../store/actions/authActions'
 
+import * as ROUTES from '../../constants/routes'
+
 import chapters from '../../_ref/chapters'
 
 
@@ -42,7 +44,7 @@ class SignUp extends Component {
 
     render() {
         const { auth, authError } = this.props
-        if (auth.uid) return <Redirect to='/' />
+        if (auth.uid) return <Redirect to={ROUTES.DASHBOARD} />
         return (
 
             <div className="container">
