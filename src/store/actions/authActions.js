@@ -49,7 +49,7 @@ export const signUp = (newUser) => {
             newUser.password
         ).then((resp) => {
             const index = chapters.findIndex(function(chapter) {
-                return chapter.id == newUser.chapter_id
+                return chapter.id === newUser.chapter_id
               })
             return firestore.collection('users').doc(resp.user.uid).set({
                 firstName: newUser.firstName,
