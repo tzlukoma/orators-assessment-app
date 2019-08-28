@@ -5,16 +5,11 @@ import Notifications from './Notifications'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
-
-import * as ROUTES from '../../constants/routes'
 
 class Dashboard extends Component {
     
     render() {
-        // console.log(this.props)
-        const { assessments, orators, notifications, auth, profile } = this.props
-        if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
+        const { assessments, orators, notifications, profile } = this.props
         
         return (
             <div className="dashboard container">
@@ -43,7 +38,6 @@ const mapStateToProps = (state) => {
     return {
         assessments: state.firestore.ordered.assessments,
         orators: state.firestore.ordered.orators,
-        auth: state.firebase.auth,
         profile: state.firebase.profile,
         notifications: state.firestore.ordered.notifications
     }

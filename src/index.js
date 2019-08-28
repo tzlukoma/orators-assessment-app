@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css'
 import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import rootReducer from './store/reducers/rootReducer'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
@@ -22,7 +22,6 @@ const store = createStore(rootReducer, composeWithDevTools(
 
 store.firebaseAuthIsReady.then(() => {
     fbConfig.auth().onAuthStateChanged((user) => {
-        console.log('user:',user)
         ReactDOM.render(<Provider store={store}><App user={user}/></Provider>, document.getElementById('root'));
         serviceWorker.unregister();
     })
