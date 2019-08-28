@@ -13,34 +13,8 @@ import chapters from '../../_ref/chapters'
 
 
 class SignUp extends Component {
-    state = {
-        email: '',
-        password: '',
-        firstName: '',
-        lastName: '',
-        chapter_id: '',
-        chapter: ''
-    }
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
-
-    }
-    handleChapterChange = (e) => {
-        const userChapter = e.target.value && chapters.find(x => x.id === e.target.value)
-            ? chapters.find(x => x.id === e.target.value)
-            : { chapter_id: '', chapter: '' };
-
-        this.setState({
-            chapter_id: userChapter.id,
-            chapter: userChapter.value
-        })
-
-    }
 
     onSubmit = (e) => {
-        // e.preventDefault();
         console.log(e)
         this.props.signUp(e)
     }
