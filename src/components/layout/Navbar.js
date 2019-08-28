@@ -16,7 +16,7 @@ const Navbar = (props) => {
             <nav className="nav-wrapper white ">
                 <div className="container">
                     <ul className="left">
-                        <Link to={ROUTES.DASHBOARD} className="brand-logo"><img className="orator-logo" alt="coach-logo" src="/img/Logo-Long.png"></img></Link>
+                        <Link to={ROUTES.HOME} className="brand-logo"><img className="orator-logo" alt="coach-logo" src="/img/Logo-Long.png"></img></Link>
                     </ul>
                     {links}
                 </div>
