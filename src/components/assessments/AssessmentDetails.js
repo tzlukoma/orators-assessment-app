@@ -5,16 +5,18 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect, Link } from 'react-router-dom'
 
+import * as ROUTES from '../../constants/routes'
+
 const AssessmentDetails = (props) => {
     // console.log(props)
     const { assessment, auth } = props;
-    if(!auth.uid) return <Redirect to='/signin'/>
+    if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
     if (assessment) {
         return (
             <div className="container section asessment-details">
                 <div className="card z-depth-1">
                     <div className="card-content">
-                        <span className="card-title">Assessment for <Link to={`/orator/${assessment.orator_id}`}>{assessment.firstname} {assessment.lastname}</Link></span>
+                        <span className="card-title">Assessment for <Link to={`${ROUTES.ORATOR}/${assessment.orator_id}`}>{assessment.firstname} {assessment.lastname}</Link></span>
                         <p>{assessment.comment}</p>
                         <p>{assessment.remarks}</p>
                         <div className="divider" style={{ marginTop: 10, marginBottom: 10 }}></div>

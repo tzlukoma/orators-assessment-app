@@ -6,7 +6,7 @@ import {
     SIGNUP_ERROR,
     COACH_SIGNUP_SUCCESS,
     COACH_SIGNUP_ERROR
-} from '../actions/types'
+} from '../../constants/types'
 
 const initState = {
     authError: null

@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { coachSignUp } from '../../store/actions/authActions'
 
+import * as ROUTES from '../../constants/routes'
+
 import Select from 'react-select'
 import chapters from '../../_ref/chapters'
 
@@ -42,7 +44,7 @@ class CoachSignUp extends Component {
     }
     render() {
         const { auth, authError } = this.props
-        if (auth.uid) return <Redirect to='/coachwelcome'/>
+        if (auth.uid) return <Redirect to={ROUTES.COACH_WELCOME}/>
         return (
 
             <div className="container">
@@ -50,7 +52,7 @@ class CoachSignUp extends Component {
                     <h5 className="grey-text text-darken-3">Chapter Coach Sign Up</h5>
                     <h6 className="pink lighten-5" style={{padding:10}}>This form is a sign up for chapter coaches
                         If you are a parent or guardian of an orator, please sign up 
-                        <Link to="/signup"> here</Link>.
+                        <Link to={ROUTES.SIGN_UP}> here</Link>.
                     </h6>
                     <div className="input-field">
                         <label htmlFor="firstName">First Name</label>
@@ -70,16 +72,12 @@ class CoachSignUp extends Component {
                     </div>
                     <h6>Select your chapter:</h6>
                     <Select
-
                         defaultValue={'Select an option'}
                         value={this.state.value}
                         options={options}
                         onChange={this.handleOptionsChange}
                         hideSelectedOptions={false}
-
                     />
-                   
-
                     <div className="input-field">
                         <button className="btn deep-purple lighten-1 z-depth-0">Sign Up</button>
                         <div className="red-text center">

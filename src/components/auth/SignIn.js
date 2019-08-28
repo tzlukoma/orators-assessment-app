@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Link } from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
+
+import * as ROUTES from '../../constants/routes'
 
 class SignIn extends Component {
     state = {
@@ -20,8 +21,7 @@ class SignIn extends Component {
         this.props.signIn(this.state)
     }
     render() {
-        const { authError, auth } = this.props
-        if(auth.uid) return <Redirect to='/'/>
+        const { authError} = this.props
         return (
             
             <div className="container">
@@ -37,7 +37,7 @@ class SignIn extends Component {
                     </div>
                     <div className="input-field">
                         <button className="btn deep-purple lighten-1 z-depth-0">Login</button>
-                        <Link to="/signup" className="btn grey z-depth-0" style={{marginLeft:10}}>Sign Up</Link>
+                        <Link to={ROUTES.SIGN_UP} className="btn grey z-depth-0" style={{marginLeft:10}}>Sign Up</Link>
                         <div className="red-text center">
                             { authError ? <p>{authError}</p>:null}
                         </div>
@@ -51,8 +51,7 @@ class SignIn extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        authError: state.auth.authError,
-        auth: state.firebase.auth
+        authError: state.auth.authError
     }
 }
 
