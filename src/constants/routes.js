@@ -6,5 +6,6 @@ export const CREATE_ASSESSMENT = "/create_assessment";
 export const ADD_ORATOR = "/add_orator";
 export const SIGN_IN = "/signin";
 export const SIGN_UP = "/signup";
+export const PARENT_WELCOME = "/parentwelcome";
 export const COACH_SIGNUP = "/coachsignup";
 export const COACH_WELCOME = "/coachwelcome";
