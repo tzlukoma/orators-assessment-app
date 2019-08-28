@@ -42,7 +42,7 @@ class SignUp extends Component {
     onSubmit = (e) => {
         // e.preventDefault();
         console.log(e)
-        //    this.props.signUp(this.state)
+        this.props.signUp(e)
     }
 
     renderInputField(field) {
@@ -101,10 +101,10 @@ class SignUp extends Component {
                         component={this.renderInputField}
                     />
                     <div className="input-field">
-                        <button className="btn deep-purple lighten-1 z-depth-0">Sign Up</button>
                         <div className="red-text center">
-                            {authError ? <p>{authError}</p> : null}
+                            {authError ? <p className="pink-text">{authError}</p> : null}
                         </div>
+                        <button className="btn deep-purple lighten-1 z-depth-0">Sign Up</button>
                     </div>
                 </form>
 

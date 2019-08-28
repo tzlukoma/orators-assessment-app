@@ -7,6 +7,8 @@ import {
     COACH_SIGNUP_SUCCESS,
     COACH_SIGNUP_ERROR
 } from '../../constants/types'
+import chapters from '../../_ref/chapters'
+
 
 
 export const signIn = (credentials) => {
@@ -42,17 +44,19 @@ export const signUp = (newUser) => {
     return (dispatch, getState, { getFirebase, getFirestore}) => {
         const firebase = getFirebase();
         const firestore = getFirestore();
-
         firebase.auth().createUserWithEmailAndPassword(
             newUser.email,
             newUser.password
         ).then((resp) => {
+            const index = chapters.findIndex(function(chapter) {
+                return chapter.id == newUser.chapter_id
+              })
             return firestore.collection('users').doc(resp.user.uid).set({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 initials: newUser.firstName[0] + newUser.lastName[0],
                 chapter_id: newUser.chapter_id,
-                chapter: newUser.chapter,
+                chapter: chapters[index].label
             })
         }).then(() => {
             dispatch({ type: SIGNUP_SUCCESS})
