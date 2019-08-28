@@ -4,6 +4,8 @@ import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from 'react-redux'
 
+import * as ROUTES from '../../constants/routes'
+
 
 const Navbar = (props) => {
     const { auth, profile } = props
@@ -14,7 +16,7 @@ const Navbar = (props) => {
             <nav className="nav-wrapper white ">
                 <div className="container">
                     <ul className="left">
-                        <Link to='/' className="brand-logo"><img className="orator-logo" alt="coach-logo" src="/img/Logo-Long.png"></img></Link>
+                        <Link to={ROUTES.HOME} className="brand-logo"><img className="orator-logo" alt="coach-logo" src="/img/Logo-Long.png"></img></Link>
                     </ul>
                     {links}
                 </div>

@@ -1,7 +1,7 @@
 import {
     CREATE_ASSESSMENT,
     CREATE_ASSESSMENT_ERROR
-} from '../actions/types'
+} from '../../constants/types'
 
 export const createAssessment = (assessment) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {

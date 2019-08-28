@@ -6,7 +6,7 @@ import {
     SIGNUP_ERROR,
     COACH_SIGNUP_SUCCESS,
     COACH_SIGNUP_ERROR
-} from '../actions/types'
+} from '../../constants/types'
 
 const initState = {
     authError: null
@@ -37,7 +37,7 @@ const authReducer = (state = initState,action) => {
                 authError: null
             }
         case SIGNUP_ERROR:
-            console.log('signup error');
+            console.log('signup error', action.err.message);
             return {
                 ...state,
                 authError: action.err.message

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { addOrator } from '../../store/actions/oratorActions'
 import { Redirect } from 'react-router-dom'
 
+import * as ROUTES from '../../constants/routes'
+
 class AddOrator extends Component {
     state = {
         firstName: '',
@@ -24,7 +26,7 @@ class AddOrator extends Component {
     }
     render() {
         const { auth } = this.props
-        if(!auth.uid) return <Redirect to='/signin'/>
+        if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
         return (
             
             <div className="container">

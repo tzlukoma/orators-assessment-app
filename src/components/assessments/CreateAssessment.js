@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { createAssessment } from '../../store/actions/assessmentActions'
 import { Redirect } from 'react-router-dom'
 
+import * as ROUTES from '../../constants/routes'
+
 class CreateAssessment extends Component {
     state = {
         orator_id: 'N1TrGaoB4rBHb8EUVIZe',
@@ -33,7 +35,7 @@ class CreateAssessment extends Component {
     }
     render() {
         const { auth } = this.props
-        if(!auth.uid) return <Redirect to='/signin'/>
+        if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
         return (
 
             <div className="container" style={{ paddingBottom: 64 }}>

@@ -5,10 +5,12 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 
+import * as ROUTES from '../../constants/routes'
+
 const OratorDetails = (props) => {
     console.log(props)
     const { orator, auth } = props;
-    if(!auth.uid) return <Redirect to='/signin'/>
+    if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
     if(orator) {
         return (
             <div className="container section asessment-details">
