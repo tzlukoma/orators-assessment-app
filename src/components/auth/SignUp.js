@@ -107,38 +107,6 @@ class SignUp extends Component {
                         <button className="btn deep-purple lighten-1 z-depth-0">Sign Up</button>
                     </div>
                 </form>
-
-                {/* <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">Sign Up</h5>
-                    <div className="input-field">
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" onChange={this.handleChange} />
-                    </div>
-                    <p className="blue lighten-5" style={{padding: 10}}>Please enter the Chapter code you were provided below:</p>
-                    <div className="input-field">
-                        <label htmlFor="chapter_id">Chapter Code</label>
-                        <input type="text" id="chapter_id" onChange={this.handleChapterChange} />
-                    </div>
-
-                    <div className="input-field">
-                        <button className="btn deep-purple lighten-1 z-depth-0">Sign Up</button>
-                        <div className="red-text center">
-                            { authError ? <p>{authError}</p>: null}
-                        </div>
-                    </div>
-                </form> */}
             </div>
 
         );
@@ -170,10 +138,12 @@ function validate(values) {
     }
     if (!values.email) {
         errors.email = "The email is empty"
+    } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+        errors.email = "This is not a valid email address"
     }
-    // if(!values.password){
-    //     errors.password = "The password is empty"
-    // }
+    if(!values.password){
+        errors.password = "The password is empty"
+    }
     if (!values.chapter_id) {
         errors.chapter_id = "The chapter code is empty"
     } else if (!isValidChapter) {
