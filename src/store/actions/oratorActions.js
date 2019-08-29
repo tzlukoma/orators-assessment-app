@@ -2,7 +2,8 @@ import {
     ADD_ORATOR,
     ADD_ORATOR_ERROR,
     GET_CHAPTER_ORATORS,
-    GET_CHAPTER_ORATORS_ERROR
+    GET_CHAPTER_ORATORS_ERROR,
+    ADD_ORATOR_SUCCESS
 } from '../../constants/types'
 
 export const addOrator = (orator) => {
@@ -14,7 +15,8 @@ export const addOrator = (orator) => {
             ...orator,
             createdAt: new Date()
         }).then(() => {
-            dispatch({ type: ADD_ORATOR, orator })
+            dispatch({ type: ADD_ORATOR, orator });
+            dispatch({ type: ADD_ORATOR_SUCCESS})
         }).catch((err) => {
             dispatch({ type: ADD_ORATOR_ERROR, err })
         })
