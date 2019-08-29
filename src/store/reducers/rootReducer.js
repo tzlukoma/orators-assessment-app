@@ -5,6 +5,7 @@ import { combineReducers } from 'redux'
 import { firestoreReducer } from 'redux-firestore'
 import { firebaseReducer } from 'react-redux-firebase'
 import { reducer as formReducer } from 'redux-form'
+import { ADD_ORATOR_SUCCESS } from '../../constants/types'
 
 const rootReducer = combineReducers({
     auth: authReducer,
@@ -12,7 +13,16 @@ const rootReducer = combineReducers({
     orator: oratorReducer,
     firestore: firestoreReducer,
     firebase: firebaseReducer,
-    form: formReducer
+    form: formReducer.plugin({
+        addOratorDetails: (state, action) => {
+            switch(action.type) {
+                case ADD_ORATOR_SUCCESS:
+                    return undefined
+                default:
+                    return state
+            }
+        }
+    })
 })
 
 export default rootReducer
