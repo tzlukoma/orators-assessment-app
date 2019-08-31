@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import OratorSummary from '../OratorSummary'
 import moment from 'moment'
 
-describe('Coment Card', () => {
+describe('Orator Summary', () => {
     test('it renders the first name, last name, age and parent of the orator', () => {
 
         //Arrange
