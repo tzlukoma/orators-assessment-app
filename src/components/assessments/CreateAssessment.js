@@ -10,8 +10,8 @@ import * as ROUTES from '../../constants/routes'
 class CreateAssessment extends Component {
     state = {
         orator_id: 'N1TrGaoB4rBHb8EUVIZe',
-        firstname: 'Ssanyu',
-        lastname: 'Lukoma',
+        firstName: 'Ssanyu',
+        lastName: 'Lukoma',
         projection_rating: '',
         tone_rating: '',
         poise_rating: '',
@@ -40,7 +40,7 @@ class CreateAssessment extends Component {
 
             <div className="container" style={{ paddingBottom: 64 }}>
                 <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">{`New Assessment for ${this.state.firstname} ${this.state.lastname}`}</h5>
+                    <h5 className="grey-text text-darken-3">{`New Assessment for ${this.state.firstName} ${this.state.lastName}`}</h5>
                     {moment.utc(Date()).format("LLL")}
                     <div className="input-field col s12">
                         <h5>Ratings</h5>

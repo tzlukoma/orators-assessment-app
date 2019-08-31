@@ -34,7 +34,7 @@ function App(props) {
           <PrivateRoute {...props} exact path={ROUTES.PROFILE} component={Profile}/>
           <PrivateRoute {...props} path={`${ROUTES.ASSESSMENT}/:id`} component={AssessmentDetails}/>
           <PrivateRoute {...props} path={`${ROUTES.ORATOR}/:id`} component={OratorDetails}/>
-          <PrivateRoute {...props} path={`${ROUTES.CREATE_ASSESSMENT}/:id/:firstname/:lastname`} component={CreateAssessment}/>
+          <PrivateRoute {...props} path={`${ROUTES.CREATE_ASSESSMENT}/:id/:firstName/:lastName`} component={CreateAssessment}/>
           <PrivateRoute {...props} path={ROUTES.ADD_ORATOR} component={AddOrator}/>
           <Route {...props} path={ROUTES.PARENT_WELCOME} component={ParentWelcome}/>
           <Route {...props} path={ROUTES.COACH_WELCOME} component={CoachWelcome}/>

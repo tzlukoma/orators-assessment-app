@@ -19,9 +19,10 @@ class AddOrator extends Component {
         })
     }
 
-    onSubmit = (e, parent_id, chapter_id, chapter, isLoading) => {
+    onSubmit = (e, parent_id, firstName, lastName, chapter_id, chapter, isLoading) => {
         console.log(this.state.isLoading)
         e.parent_id = parent_id;
+        e.parentName = firstName+' '+lastName
         e.chapter_id = chapter_id;
         e.chapter = chapter
         // console.log(e)
@@ -53,7 +54,7 @@ class AddOrator extends Component {
 
             <div className="container">
 
-                <form onSubmit={this.props.handleSubmit((event) => this.onSubmit(event, auth.uid, profile.chapter_id, profile.chapter, isLoading))}>
+                <form onSubmit={this.props.handleSubmit((event) => this.onSubmit(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, profile.chapter, isLoading))}>
 
                     <Field
                         myLabel="First Name"

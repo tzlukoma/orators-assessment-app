@@ -8,18 +8,10 @@ import { compose } from 'redux'
 
 class Dashboard extends Component {
     
-    render() {
-        const { assessments, orators, notifications, profile } = this.props
-        
-        return (
-            <div className="dashboard container">
-                <div className="row">
-                    {profile.coach ? `This is the coach view`: null}
-                    <div className="col s12 m6 l4">
-                        <h4>Assessments</h4>
-                        <AssessmentList assessments={assessments} />
-                    </div>
-                    <div className="col s12 m5 l4 offset-m1">
+    renderCoachView = (notifications, orators) => {
+        return(
+            <div>
+            <div className="col s12 m5 l4 offset-m1">
                         <h4>Notifications</h4>
                         <Notifications notifications={notifications}/>
                     </div>
@@ -27,7 +19,35 @@ class Dashboard extends Component {
                         <h4>Orators</h4>
                         <OratorList orators={orators}/>
                     </div>
-                    
+            </div>
+        )
+    }
+
+    renderParentView = (assessments, orators) => {
+        return(<div>
+            <div className="col s12 m5 l4 offset-m1">
+                        <h4>Assessments</h4>
+                        <AssessmentList assessments={assessments}/>
+                    </div>
+                    <div className="col s12 m5 l4 offset-m1">
+                        <h4>Orators</h4>
+                        <OratorList orators={orators}/>
+                    </div>
+            </div>
+        )
+    }
+
+    render() {
+        const { assessments, orators, notifications, profile } = this.props
+        
+        return (
+            <div className="dashboard container">
+                <div className="row">
+                    {profile.coach ? 
+                        this.renderCoachView(notifications, orators)
+                        : 
+                        this.renderParentView(assessments, orators)
+                    }
                 </div>
             </div>
         );
