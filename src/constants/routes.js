@@ -1,5 +1,6 @@
 export const HOME = "/"
 export const DASHBOARD = "/dashboard";
+export const PROFILE = "/profile"
 export const ASSESSMENT = "/assessment";
 export const ORATOR = "/orator";
 export const CREATE_ASSESSMENT = "/create_assessment";
