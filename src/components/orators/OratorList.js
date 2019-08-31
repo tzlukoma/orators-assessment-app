@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 
 const OratorList = ({ orators }) => {
+    
     return (
         <div className="orator-list section">
             {orators ? orators.map(orator => {

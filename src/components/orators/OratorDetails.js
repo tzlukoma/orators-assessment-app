@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import moment from 'moment'
 
 import * as ROUTES from '../../constants/routes'
@@ -10,18 +10,24 @@ import * as ROUTES from '../../constants/routes'
 const OratorDetails = (props) => {
     console.log(props)
     const { orator, auth } = props;
-    if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
-    if(orator) {
+    if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />
+    if (orator) {
         return (
             <div className="container section asessment-details">
                 <div className="card z-depth-0">
                     <div className="card-content">
                         <span className="card-title">{orator.firstName} {orator.lastName}</span>
-                        <p>{moment().diff(orator.dateOfBirth, 'years',false)} years old</p>
+                        <p>{moment().diff(orator.dateOfBirth, 'years', false)} years old</p>
                     </div>
+                    <Link 
+                        to={`${ROUTES.CREATE_ASSESSMENT}/${props.match.params.id}/${orator.firstName}/${orator.lastName}`}
+                        style={{ margin: 20 }}  className="btn blue lignten-2 z-depth-0">
+                            <i className="material-icons left">add</i>
+                            Assess {orator.firstName}
+                    </Link>
                     <div className="card-action grey lighten-4 grey-text">
-                        <div>{orator.family} Family </div>
-                        <div>{orator.chapter}</div>
+                        <div>{orator.parentName}'s Family</div>
+                        <div>{orator.chapter} Chapter</div>
                     </div>
                 </div>
             </div>
@@ -33,7 +39,7 @@ const OratorDetails = (props) => {
             </div>
         );
     }
-    
+
 };
 
 const mapStateToProps = (state, ownProps) => {
