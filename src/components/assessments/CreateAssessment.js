@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import moment from 'moment'
 import { Select } from 'react-materialize';
+import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
 import { createAssessment } from '../../store/actions/assessmentActions'
 import { Redirect } from 'react-router-dom'
 
@@ -9,9 +11,9 @@ import * as ROUTES from '../../constants/routes'
 
 class CreateAssessment extends Component {
     state = {
-        orator_id: 'N1TrGaoB4rBHb8EUVIZe',
-        firstName: 'Ssanyu',
-        lastName: 'Lukoma',
+        orator_id: this.props.match.params.id,
+        firstName: '',
+        lastName: '',
         projection_rating: '',
         tone_rating: '',
         poise_rating: '',
@@ -34,13 +36,14 @@ class CreateAssessment extends Component {
         this.props.history.push('/')
     }
     render() {
-        const { auth } = this.props
+        const { auth, orator } = this.props
+        console.log(this.props)
         if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
+        if(!orator) return <div></div>
         return (
-
             <div className="container" style={{ paddingBottom: 64 }}>
                 <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">{`New Assessment for ${this.state.firstName} ${this.state.lastName}`}</h5>
+                    <h5 className="grey-text text-darken-3">{`New Assessment for ${orator.firstName} ${orator.lastName}`}</h5>
                     {moment.utc(Date()).format("LLL")}
                     <div className="input-field col s12">
                         <h5>Ratings</h5>
@@ -198,11 +201,17 @@ class CreateAssessment extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    // console.log(state)
+    const id = ownProps.match.params.id
+    const orators = state.firestore.data.orators
+    const orator = orators ? orators[id] : null
     return {
+        orator: orator,
         auth: state.firebase.auth
     }
 }
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createAssessment: (assessment) => {
@@ -211,4 +220,11 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateAssessment);
+
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect([
+        { collection: 'orators' }
+    ])
+)(CreateAssessment);
