@@ -16,7 +16,7 @@ const AssessmentDetails = (props) => {
             <div className="container section asessment-details">
                 <div className="card z-depth-1">
                     <div className="card-content">
-                        <span className="card-title">Assessment for <Link to={`${ROUTES.ORATOR}/${assessment.orator_id}`}>{assessment.firstname} {assessment.lastname}</Link></span>
+                        <span className="card-title">Assessment for <Link to={`${ROUTES.ORATOR}/${assessment.orator_id}`}>{assessment.firstName} {assessment.lastName}</Link></span>
                         <p>{assessment.comment}</p>
                         <p>{assessment.remarks}</p>
                         <div className="divider" style={{ marginTop: 10, marginBottom: 10 }}></div>
