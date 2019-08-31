@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 import OratorList from '../OratorList'
+import moment from 'moment'
 
 
 describe('Orator List', () => {
@@ -40,11 +41,29 @@ describe('Orator List', () => {
 
         //Assert
         
-        const nameNode = getByText(`${orator1.firstName} ${orator1.lastName}`)
-        const parentNode = getAllByText(`${orator1.parentName}'s Family`)
+        const nameNode1 = getByText(`${orator1.firstName} ${orator1.lastName}`)
+        const dobNode1 = getByText(`${moment().diff(orator1.dateOfBirth, 'years', false)} years old`)
+        const parentNode1 = getAllByText(`${orator1.parentName}'s Family`)
 
-        expect(nameNode).toBeDefined()
-        expect(parentNode).toBeDefined()
+        expect(nameNode1).toBeDefined()
+        expect(dobNode1).toBeDefined()
+        expect(parentNode1).toBeDefined()
+
+        const nameNode2 = getByText(`${orator2.firstName} ${orator2.lastName}`)
+        const dobNode2 = getByText(`${moment().diff(orator1.dateOfBirth, 'years', false)} years old`)
+        const parentNode2 = getAllByText(`${orator1.parentName}'s Family`)
+
+        expect(nameNode2).toBeDefined()
+        expect(dobNode2).toBeDefined()
+        expect(parentNode2).toBeDefined()
+
+        const nameNode3 = getByText(`${orator3.firstName} ${orator3.lastName}`)
+        const dobNode3 = getByText(`${moment().diff(orator3.dateOfBirth, 'years', false)} years old`)
+        const parentNode3 = getAllByText(`${orator1.parentName}'s Family`)
+
+        expect(nameNode3).toBeDefined()
+        expect(dobNode3).toBeDefined()
+        expect(parentNode3).toBeDefined()
 
 
     })
