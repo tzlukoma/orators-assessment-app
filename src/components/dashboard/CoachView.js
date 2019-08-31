@@ -45,7 +45,6 @@ class CoachView extends Component {
 
     render() {
         const { assessments, orators, notifications, profile } = this.props
-        console.log(this.props)
         return (
             <div className="row">
                 <div className="col s12 m6 l6">
@@ -72,7 +71,6 @@ class CoachView extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
     const coach_id = state.firebase.auth.uid
     const orators = state.firestore.ordered.orators
     const assessments = state.firestore.ordered.assessments
@@ -81,11 +79,8 @@ const mapStateToProps = (state, ownProps) => {
         return orator.chapter_id === chapter_id;
     })
     const coachAssessments = assessments && assessments.filter(function (assessment) {
-        return assessment.coach_id === chapter_id;
+        return assessment.coach_id === coach_id;
     })
-    chapter_id && chapter_id && console.log('chapterOrators:', chapterOrators)
-    coach_id && console.log('coachID', coach_id)
-    orators && console.log('orators', orators)
     return {
         assessments: coachAssessments,
         orators: chapterOrators,
