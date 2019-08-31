@@ -5,7 +5,8 @@ import moment from 'moment'
 
 describe('Assessment Summary', () => {
     test('it renders the first name, last name, comment, coach name and post time', () => {
-
+        
+        expect(false).toBeTruthy()
         //Arrange
         const props = {
             assessment: {
@@ -14,22 +15,23 @@ describe('Assessment Summary', () => {
                 comment: 'Be sure to practice more',
                 coachFirstName: 'Pam',
                 coachLastName: 'Hardy',
-                createdAt: 1567259148
+                createdAt: 1567261076
             }
         }
 
         //Act
-        const { getByText } = render(<AssessmentSummary {...props} />)
+        
+        // const { getByText } = render(<AssessmentSummary {...props} />)
 
-        //Assert
-        const nameNode = getByText(`${props.assessment.firstName} ${props.assessment.lastName}`)
-        const commentNode = getByText(props.assessment.comment)
-        const coachNode = getByText(`${props.assessment.coachFirstName} ${props.assessment.coachLastName}`)
-        const timestampNode = getByText(moment(props.assessment.createdAt.toDate()).fromNow())
+        // //Assert
+        // const nameNode = getByText(`Assessment for ${props.assessment.firstName} ${props.assessment.lastName}`)
+        // const commentNode = getByText(props.assessment.comment)
+        // const coachNode = getByText(`Posted by ${props.coachFirstName} ${props.coachLastName}`)
+        // const timestampNode = getByText(moment(props.createdAt).fromNow())
 
-        expect(nameNode).toBeDefined()
-        expect(commentNode).toBeDefined()
-        expect(coachNode).toBeDefined()
-        expect(timestampNode).toBeDefined()
+        // expect(nameNode).toBeDefined()
+        // expect(commentNode).toBeDefined()
+        // expect(coachNode).toBeDefined()
+        // expect(timestampNode).toBeDefined()
     })
 })
