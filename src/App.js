@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Home from './components/info/Home'
 import Dashboard from './components/dashboard/Dashboard';
+import Profile from './components/info/Profile';
 import AssessmentDetails from './components/assessments/AssessmentDetails'
 import OratorDetails from './components/orators/OratorDetails'
 import CreateAssessment from './components/assessments/CreateAssessment'
@@ -18,6 +19,7 @@ import NotFound from './components/auth/NotFound'
 
 import * as ROUTES from './constants/routes';
 
+
 function App(props) {
   return (
     <BrowserRouter>
@@ -29,9 +31,10 @@ function App(props) {
           <Route {...props} restricted={true} path={ROUTES.SIGN_UP} component={SignUp}/>
           <Route {...props} restricted={true} path={ROUTES.COACH_SIGNUP} component={CoachSignUp}/>
           <PrivateRoute {...props} exact path={ROUTES.DASHBOARD} component={Dashboard}/>
+          <PrivateRoute {...props} exact path={ROUTES.PROFILE} component={Profile}/>
           <PrivateRoute {...props} path={`${ROUTES.ASSESSMENT}/:id`} component={AssessmentDetails}/>
           <PrivateRoute {...props} path={`${ROUTES.ORATOR}/:id`} component={OratorDetails}/>
-          <PrivateRoute {...props} path={`${ROUTES.CREATE_ASSESSMENT}/:id/:firstname/:lastname`} component={CreateAssessment}/>
+          <PrivateRoute {...props} path={`${ROUTES.CREATE_ASSESSMENT}/:id/:firstName/:lastName`} component={CreateAssessment}/>
           <PrivateRoute {...props} path={ROUTES.ADD_ORATOR} component={AddOrator}/>
           <Route {...props} path={ROUTES.PARENT_WELCOME} component={ParentWelcome}/>
           <Route {...props} path={ROUTES.COACH_WELCOME} component={CoachWelcome}/>

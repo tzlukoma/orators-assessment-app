@@ -1,51 +1,57 @@
 import React, { Component } from 'react';
-import AssessmentList from '../assessments/AssessmentList'
+import { Link } from 'react-router-dom'
 import OratorList from '../orators/OratorList'
 import Notifications from './Notifications'
-import CoachView from './CoachView'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
+
+import * as ROUTES from '../../constants/routes'
 
 class FamilyView extends Component {
-    
-
     render() {
-        // console.log(this.props)
-        const { orators, notifications } = this.props
-                return (
-                    <div className="dashboard container">
-                        <div className="row">
-
-                            <div className="col s12 m5 l4 offset-m1">
-                                <h4>Notifications</h4>
-                                <Notifications notifications={notifications}/>
-                            </div>
-                            <div className="col s12 m5 l4 offset-m1">
-                                <h4>Orators</h4>
-                                <OratorList orators={orators}/>
-                            </div>
-                            
-                        </div>
-                    </div>
-                );
-            }
-        
+        const { orators, assessments, notifications, profile} = this.props
+        return (
+            <div className="row">
+                <div className="col s12 m6 l6">
+                    <h4>My Family's Orators</h4>
+                    <h5>{profile.chapter} Chapter</h5>
+                    <h6>{orators && orators.length} Orators</h6>
+                    <OratorList orators={orators} assessments={assessments} />
+                    <Link to={ROUTES.ADD_ORATOR} className="btn grey z-depth-0"><i className="material-icons left">add</i>Add an Orator</Link>
+                </div>
+                <div className="col s12 m16 l6">
+                    <h4>Notifications</h4>
+                    <Notifications notifications={notifications} />
+                </div>
+            </div>
+        );
     }
+}
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    const parent_id = state.firebase.auth.uid
+    const orators = state.firestore.ordered.orators
+    const chapter_id = state.firebase.profile.chapter_id
+    const assessments = state.firestore.ordered.assessments
+    const familyOrators = orators && orators.filter(function (orator) {
+        return orator.parent_id === parent_id;
+    })
+    const familyAssessments = assessments && assessments.filter(function (assessment) {
+        return assessment.chapter_id === chapter_id;
+    })
     return {
-        orators: state.firestore.ordered.orators,
-        notifications: state.firestore.ordered.notifications
+        orators: familyOrators,
+        assessments: familyAssessments,
+        notifications: state.firestore.ordered.notifications,
+        profile: state.firebase.profile
     }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'orators', limit: 2, orderBy: ['dateOfBirth', 'asc']},
-        { collection: 'notifications', limit:2, orderBy: ['time', 'desc']}
+        { collection: 'orators', limit: 5, orderBy: ['dateOfBirth', 'asc'] },
+        { collection: 'notifications', limit: 2, orderBy: ['time', 'desc'] }
     ])
 )(FamilyView)
