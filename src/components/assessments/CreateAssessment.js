@@ -51,7 +51,7 @@ class CreateAssessment extends Component {
         if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
         if(!orator) return <div></div>
         return (
-            <div className="container" style={{ marginTop: -30, paddingBottom: 64 }}>
+            <div className="container" style={{ marginTop: -25, paddingBottom: 64 }}>
                 
                 <form onSubmit={(event) => this.handleSubmit(event)} className="form-input white" style={{paddingTop:'10px !important'}}>
                 <h5 className="grey-text text-darken-3">{`New Assessment for ${orator.firstName} ${orator.lastName}`}</h5>
