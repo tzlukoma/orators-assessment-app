@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'orators', limit: 5, orderBy: ['dateOfBirth', 'asc'] },
+        { collection: 'orators', orderBy: ['dateOfBirth', 'asc'] },
         { collection: 'notifications', limit: 2, orderBy: ['time', 'desc'] }
     ])
 )(FamilyView)
