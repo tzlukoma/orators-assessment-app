@@ -24,7 +24,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const OratorDetails = (props) => {
     console.log(props)
-    const { orator, auth } = props;
+    const { orator, auth, profile } = props;
 
 
     const [open, setOpen] = React.useState(false);
@@ -41,15 +41,19 @@ const OratorDetails = (props) => {
     if (orator) {
         return (
             <div className="container section asessment-details">
-                <div className="card z-depth-0">
-                    <div className="card-content">
+                <div className="card z-depth-1">
+                    <div className="card-content" style={{paddingBottom: 10}}>
                         <span className="card-title">{orator.firstName} {orator.lastName}</span>
                         <p>{moment().diff(orator.dateOfBirth, 'years', false)} years old</p>
                     </div>
-                    <button onClick={handleClickOpen} className="btn blue lighten-2 z-depth-0" style={{ margin: 20 }} >
-                        <i className="material-icons left">add</i>
-                        Assess {orator.firstName}
-                    </button>
+                    {
+                        profile.isCoach ? 
+                            <button onClick={handleClickOpen} className="btn blue lighten-2 z-depth-0" style={{ margin: '5px 10px 10px 10px' }} >
+                                <i className="material-icons left">add</i>
+                                Assess {orator.firstName}
+                            </button>
+                            : null
+                    }
                     <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                         <AppBar >
                             <Toolbar>
@@ -60,7 +64,7 @@ const OratorDetails = (props) => {
                         </AppBar>
                         <CreateAssessment {...props} handleClose={handleClose}/>
                     </Dialog>
-                    <div className="card-action grey lighten-4 grey-text">
+                    <div className="card-action grey lighten-4 grey-text" style={{padding: '8px 10px'}}>
                         <div>{orator.parentName}'s Family</div>
                         <div>{orator.chapter} Chapter</div>
                     </div>
@@ -84,7 +88,8 @@ const mapStateToProps = (state, ownProps) => {
     const orator = orators ? orators[id] : null
     return {
         orator: orator,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 
