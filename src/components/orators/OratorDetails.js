@@ -48,7 +48,7 @@ const OratorDetails = (props) => {
                     </div>
                     {
                         profile.isCoach ? 
-                            <button onClick={handleClickOpen} className="btn blue lighten-2 z-depth-0" style={{ margin: '5px 10px 10px 10px' }} >
+                            <button onClick={handleClickOpen} className="btn blue lighten-2 z-depth-0" style={{ margin: '5px 10px 15px 20px' }} >
                                 <i className="material-icons left">add</i>
                                 Assess {orator.firstName}
                             </button>
@@ -64,7 +64,7 @@ const OratorDetails = (props) => {
                         </AppBar>
                         <CreateAssessment {...props} handleClose={handleClose}/>
                     </Dialog>
-                    <div className="card-action grey lighten-4 grey-text" style={{padding: '8px 10px'}}>
+                    <div className="card-action grey lighten-4 grey-text" style={{padding: '8px 10px', marginBottom:5}}>
                         <div>{orator.parentName}'s Family</div>
                         <div>{orator.chapter} Chapter</div>
                     </div>
