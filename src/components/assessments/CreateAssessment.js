@@ -11,153 +11,186 @@ import * as ROUTES from '../../constants/routes'
 
 class CreateAssessment extends Component {
     state = {
-        orator_id: this.props.match.params.id,
+        orator_id: '',
         firstName: '',
         lastName: '',
-        projection_rating: '',
-        tone_rating: '',
-        poise_rating: '',
-        focus_rating: '',
-        presentation_rating: '',
+        vocabulary: '',
+        filler_words: '',
+        projection_volume: '',
+        enunciation: '',
+        eye_contact: '',
+        posture: '',
         comment: '',
         remarks: ''
     }
-    handleChange = (e) => {
+    handleChange = (e, coach_id, coachFirstName, coachLastName, chapter_id, oratorID, oratorFirstName, oratorLastName) => {
+        console.log(oratorFirstName)
         this.setState({
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value,
+            coach_id: coach_id,
+            coachFirstName: coachFirstName,
+            coachLastName: coachLastName,
+            chapter_id: chapter_id,
+            orator_id: oratorID,
+            firstName: oratorFirstName,
+            lastName: oratorLastName
         })
 
 
     }
-    handleSubmit = (e) => {
+    handleSubmit = (e, ) => {
         e.preventDefault();
-        // console.log(this.state)
+        
+        console.log(this.state)
         this.props.createAssessment(this.state)
         this.props.history.push('/')
     }
     render() {
-        const { auth, orator } = this.props
+        const { auth, orator, profile } = this.props
         console.log(this.props)
         if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
         if(!orator) return <div></div>
         return (
-            <div className="container" style={{ paddingBottom: 64 }}>
-                <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">{`New Assessment for ${orator.firstName} ${orator.lastName}`}</h5>
-                    {moment.utc(Date()).format("LLL")}
+            <div className="container" style={{ marginTop: -25, paddingBottom: 64 }}>
+                
+                <form onSubmit={(event) => this.handleSubmit(event)} className="form-input white" style={{paddingTop:'10px !important'}}>
+                <h5 className="grey-text text-darken-3">{`New Assessment for ${orator.firstName} ${orator.lastName}`}</h5>
+                {moment.utc(Date()).format("LLL")}
                     <div className="input-field col s12">
                         <h5>Ratings</h5>
-                        <Select type="select" id="projection_rating" value={this.state.projection_rating} onChange={this.handleChange}>
+                        <Select type="select" id="vocabulary" value={this.state.vocabulary} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
                             <option value="" disabled>
-                                Voice Projection : Select a rating
+                                Word Choice / Vocabulary : Select a rating
                             </option>
                             <option value="1">
-                                Voice Projection : 1
+                                Word Choice / Vocabulary : 1
                             </option>
                             <option value="2">
-                                Voice Projection : 2
+                                Word Choice / Vocabulary : 2
                             </option>
                             <option value="3">
-                                Voice Projection : 3
+                                Word Choice / Vocabulary : 3
                             </option>
                             <option value="4">
-                                Voice Projection : 4
+                                Word Choice / Vocabulary : 4
                             </option>
                             <option value="5">
-                                Voice Projection : 5
+                                Word Choice / Vocabulary : 5
                             </option>
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="tone_rating" value={this.state.tone_rating} onChange={this.handleChange}>
+                        <Select type="select" id="filler_words" value={this.state.filler_words} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
                             <option value="" disabled>
-                                Voice / Tone Variation : Select a rating
+                                Filler Words : Select a rating
                             </option>
                             <option value="1">
-                                Voice / Tone Variation : 1
+                                Filler Words : 1
                             </option>
                             <option value="2">
-                                Voice / Tone Variation : 2
+                                Filler Words : 2
                             </option>
                             <option value="3">
-                                Voice / Tone Variation : 3
+                                Filler Words : 3
                             </option>
                             <option value="4">
-                                Voice / Tone Variation : 4
+                                Filler Words : 4
                             </option>
                             <option value="5">
-                                Voice / Tone Variation : 5
+                                Filler Words : 5
                             </option>
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="poise_rating" value={this.state.poise_rating} onChange={this.handleChange}>
+                        <Select type="select" id="projection_volume" value={this.state.projection_volume} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
                             <option value="" disabled>
-                                Poise / Posture : Select a rating
+                                Projection & Volume : Select a rating
                             </option>
                             <option value="1">
-                                Poise / Posture : 1
+                                Projection & Volume : 1
                             </option>
                             <option value="2">
-                                Poise / Posture : 2
+                                Projection & Volume : 2
                             </option>
                             <option value="3">
-                                Poise / Posture : 3
+                                Projection & Volume : 3
                             </option>
                             <option value="4">
-                                Poise / Posture : 4
+                                Projection & Volume : 4
                             </option>
                             <option value="5">
-                                Poise / Posture : 5
+                                Projection & Volume : 5
                             </option>
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="focus_rating" value={this.state.focus_rating} onChange={this.handleChange}>
+                        <Select type="select" id="enunciation" value={this.state.enunciation} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
                             <option value="" disabled>
-                                Focus / Coachability : Select a rating
+                                Enunciation : Select a rating
                             </option>
                             <option value="1">
-                                Focus / Coachability : 1
+                                Enunciation : 1
                             </option>
                             <option value="2">
-                                Focus / Coachability : 2
+                                Enunciation : 2
                             </option>
                             <option value="3">
-                                Focus / Coachability : 3
+                                Enunciation : 3
                             </option>
                             <option value="4">
-                                Focus / Coachability : 4
+                                Enunciation : 4
                             </option>
                             <option value="5">
-                                Focus / Coachability : 5
+                                Enunciation : 5
                             </option>
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="presentation_rating" value={this.state.presentation_rating} onChange={this.handleChange}>
+                        <Select type="select" id="eye_contact" value={this.state.eye_contact} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
                             <option value="" disabled>
-                                Presentation Style : Select a rating
+                                Eye Contact : Select a rating
                             </option>
                             <option value="1">
-                                Presentation Style : 1
+                                Eye Contact : 1
                             </option>
                             <option value="2">
-                                Presentation Style : 2
+                                Eye Contact : 2
                             </option>
                             <option value="3">
-                                Presentation Style : 3
+                                Eye Contact : 3
                             </option>
                             <option value="4">
-                                Presentation Style : 4
+                                Eye Contact : 4
                             </option>
                             <option value="5">
-                                Presentation Style : 5
+                                Eye Contact : 5
                             </option>
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="comment" value={this.state.comment} onChange={this.handleChange}>
+                        <Select type="select" id="posture" value={this.state.posture} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                            <option value="" disabled>
+                                Posture : Select a rating
+                            </option>
+                            <option value="1">
+                                Posture : 1
+                            </option>
+                            <option value="2">
+                                Posture : 2
+                            </option>
+                            <option value="3">
+                                Posture : 3
+                            </option>
+                            <option value="4">
+                                Posture : 4
+                            </option>
+                            <option value="5">
+                                Posture : 5
+                            </option>
+                        </Select>
+                    </div>
+                    <div className="input-field col s12">
+                        <Select type="select" id="comment" value={this.state.comment} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
                             <option value="" disabled>
                                 Comment : Select a comment
                             </option>
@@ -188,7 +221,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field">
-                        <textarea id="remarks" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                        <textarea id="remarks" className="materialize-textarea" onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}></textarea>
                         <label htmlFor="remarks">Additional Remarks</label>
                     </div>
                     <div className="input-field">
@@ -205,10 +238,12 @@ const mapStateToProps = (state, ownProps) => {
     // console.log(state)
     const id = ownProps.match.params.id
     const orators = state.firestore.data.orators
-    const orator = orators ? orators[id] : null
+    const orator = orators ? orators[id] : []
+    orator['id'] = id
     return {
         orator: orator,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 
