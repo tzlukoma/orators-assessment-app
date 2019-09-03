@@ -4,6 +4,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Link, Redirect } from 'react-router-dom'
 import CreateAssessment from '../assessments/CreateAssessment'
+import AssessmentList from '../assessments/AssessmentList'
 
 
 import Dialog from '@material-ui/core/Dialog';
@@ -24,7 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const OratorDetails = (props) => {
     console.log(props)
-    const { orator, auth, profile } = props;
+    const { orator, assessments, auth, profile } = props;
 
 
     const [open, setOpen] = React.useState(false);
@@ -69,6 +70,8 @@ const OratorDetails = (props) => {
                         <div>{orator.chapter} Chapter</div>
                     </div>
                 </div>
+                <h5 style={{padding: 10, marginBottom:0}}>{orator.firstName}'s Assessments</h5>
+                <AssessmentList assessments={assessments} />
             </div>
         );
     } else {
@@ -85,9 +88,14 @@ const mapStateToProps = (state, ownProps) => {
     console.log(state)
     const id = ownProps.match.params.id
     const orators = state.firestore.data.orators
+    const assessments = state.firestore.ordered.assessments
     const orator = orators ? orators[id] : null
+    const oratorAssessments = assessments && assessments.filter(function (assessment) {
+        return assessment.orator_id === id;
+    })
     return {
         orator: orator,
+        assessments: oratorAssessments,
         auth: state.firebase.auth,
         profile: state.firebase.profile
     }
@@ -96,6 +104,7 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'orators' }
+        { collection: 'orators' },
+        { collection: 'assessments', orderBy: ['createdAt', 'desc'] },
     ])
 )(OratorDetails);
