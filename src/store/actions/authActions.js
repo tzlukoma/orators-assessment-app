@@ -81,7 +81,7 @@ export const coachSignUp = (newUser) => {
                 initials: newUser.firstName[0] + newUser.lastName[0],
                 chapter_id: newUser.chapter_id,
                 chapter: newUser.chapter,
-                isCoach: newUser.isCoach
+                role: {isCoach: newUser.isCoach}
             })
         }).then(() => {
             dispatch({ type: COACH_SIGNUP_SUCCESS})

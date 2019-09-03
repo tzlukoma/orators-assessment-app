@@ -47,7 +47,7 @@ const OratorDetails = (props) => {
                         <p>{moment().diff(orator.dateOfBirth, 'years', false)} years old</p>
                     </div>
                     {
-                        profile.isCoach ? 
+                        profile.role && profile.role.isCoach ? 
                             <button onClick={handleClickOpen} className="btn blue lighten-2 z-depth-0" style={{ margin: '5px 10px 15px 20px' }} >
                                 <i className="material-icons left">add</i>
                                 Assess {orator.firstName}
