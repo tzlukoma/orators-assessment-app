@@ -9,7 +9,7 @@ class Dashboard extends Component {
         
         return (
             <div className="dashboard container">
-                    {profile.coach ? 
+                    {profile.role && profile.role.isCoach? 
                          <CoachView />
                         : 
                         <FamilyView />

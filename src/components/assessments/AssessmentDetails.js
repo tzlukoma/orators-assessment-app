@@ -23,44 +23,52 @@ const AssessmentDetails = (props) => {
                         <p className="light-blue-text" style={{paddingBottom:10}}>Ratings</p>
                         <div className="row">
                             <div className="col s8 m3">
-                                Voice Projection:
+                            Word Choice / Vocabulary:
                             </div>
                             <div className="col s4">
-                                {assessment.projection_rating}
+                                {assessment.vocabulary}
                             </div>
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
-                                Voice / Tone Variation:
+                            Filler Words:
                             </div>
                             <div className="col s4">
-                                {assessment.tone_rating}
+                                {assessment.filler_words}
                             </div>
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
-                                Poise / Posture:
+                            Projection & Volume:
                             </div>
                             <div className="col s4">
-                                {assessment.poise_rating}
+                                {assessment.projection_volume}
                             </div>
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
-                                Focus / Coachability:
+                            Enunciation:
                             </div>
                             <div className="col s4">
-                                {assessment.focus_rating}
+                                {assessment.enunciation}
                             </div>
                         </div> 
                         <div className="row">
                             <div className="col s8 m3">
-                                Presentation Style:
+                            Eye Contact
                             </div>
                             <div className="col s4">
-                                {assessment.presentation_rating}
+                                {assessment.eye_contact}
                             </div>
-                        </div>                 
+                        </div>
+                        <div className="row">
+                            <div className="col s8 m3">
+                            Posture
+                            </div>
+                            <div className="col s4">
+                                {assessment.posture}
+                            </div>
+                        </div>                  
                         </div>
                     <div className="card-action grey lighten-4 grey-text">
                         <div>Posted by {assessment.coachFirstName} {assessment.coachLastName}</div>

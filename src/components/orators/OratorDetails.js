@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import CreateAssessment from '../assessments/CreateAssessment'
+import AssessmentList from '../assessments/AssessmentList'
 
 
 import Dialog from '@material-ui/core/Dialog';
@@ -24,7 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const OratorDetails = (props) => {
     console.log(props)
-    const { orator, auth } = props;
+    const { orator, assessments, auth, profile } = props;
 
 
     const [open, setOpen] = React.useState(false);
@@ -41,15 +42,19 @@ const OratorDetails = (props) => {
     if (orator) {
         return (
             <div className="container section asessment-details">
-                <div className="card z-depth-0">
-                    <div className="card-content">
+                <div className="card z-depth-1">
+                    <div className="card-content" style={{paddingBottom: 10}}>
                         <span className="card-title">{orator.firstName} {orator.lastName}</span>
                         <p>{moment().diff(orator.dateOfBirth, 'years', false)} years old</p>
                     </div>
-                    <button onClick={handleClickOpen} className="btn blue lighten-2 z-depth-0" style={{ margin: 20 }} >
-                        <i className="material-icons left">add</i>
-                        Assess {orator.firstName}
-                    </button>
+                    {
+                        profile.role && profile.role.isCoach ? 
+                            <button onClick={handleClickOpen} className="btn blue lighten-2 z-depth-0" style={{ margin: '5px 10px 15px 20px' }} >
+                                <i className="material-icons left">add</i>
+                                Assess {orator.firstName}
+                            </button>
+                            : null
+                    }
                     <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                         <AppBar >
                             <Toolbar>
@@ -60,11 +65,13 @@ const OratorDetails = (props) => {
                         </AppBar>
                         <CreateAssessment {...props} handleClose={handleClose}/>
                     </Dialog>
-                    <div className="card-action grey lighten-4 grey-text">
+                    <div className="card-action grey lighten-4 grey-text" style={{padding: '8px 10px', marginBottom:5}}>
                         <div>{orator.parentName}'s Family</div>
                         <div>{orator.chapter} Chapter</div>
                     </div>
                 </div>
+                <h5 style={{padding: 10, marginBottom:0}}>{orator.firstName}'s Assessments</h5>
+                <AssessmentList assessments={assessments} />
             </div>
         );
     } else {
@@ -81,16 +88,23 @@ const mapStateToProps = (state, ownProps) => {
     console.log(state)
     const id = ownProps.match.params.id
     const orators = state.firestore.data.orators
+    const assessments = state.firestore.ordered.assessments
     const orator = orators ? orators[id] : null
+    const oratorAssessments = assessments && assessments.filter(function (assessment) {
+        return assessment.orator_id === id;
+    })
     return {
         orator: orator,
-        auth: state.firebase.auth
+        assessments: oratorAssessments,
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'orators' }
+        { collection: 'orators' },
+        { collection: 'assessments', orderBy: ['createdAt', 'desc'] },
     ])
 )(OratorDetails);

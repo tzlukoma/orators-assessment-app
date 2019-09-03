@@ -20,7 +20,7 @@ class CoachSignUp extends Component {
         lastName: '',
         chapter: '',
         chapter_id: '',
-        coach: true
+        isCoach: true
     }
     handleChange = (e) => {
         this.setState({
