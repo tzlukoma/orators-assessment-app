@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import CreateAssessment from '../assessments/CreateAssessment'
 import AssessmentList from '../assessments/AssessmentList'
 
