@@ -93,7 +93,7 @@ export default compose(
     connect(mapStateToProps),
     firestoreConnect([
         { collection: 'assessments', limit: 5, orderBy: ['createdAt', 'desc'] },
-        { collection: 'orators', limit: 5, orderBy: ['dateOfBirth', 'asc'] },
+        { collection: 'orators', orderBy: ['dateOfBirth', 'asc'] },
         { collection: 'notifications', limit: 2, orderBy: ['time', 'desc'] }
     ])
 )(CoachView)
