@@ -16,7 +16,6 @@ const AssessmentList = ({assessments}) => {
                     + parseInt(assessment.eye_contact)
                     + parseInt(assessment.posture)
                     )/6
-                console.log(avg)
                 return (
                     <Link to={ROUTES.ASSESSMENT+'/'+assessment.orator_id+'/'+assessment.id} key={assessment.id}>
                         <AssessmentSummary avg={avg} assessment={assessment} key={assessment.id} />

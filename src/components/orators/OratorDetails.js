@@ -24,7 +24,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const OratorDetails = (props) => {
-    console.log(props)
     const { orator, assessments, auth, profile } = props;
 
 
@@ -85,7 +84,6 @@ const OratorDetails = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
     const id = ownProps.match.params.id
     const orators = state.firestore.data.orators
     const assessments = state.firestore.ordered.assessments

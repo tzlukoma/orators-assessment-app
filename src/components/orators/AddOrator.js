@@ -20,12 +20,10 @@ class AddOrator extends Component {
     }
 
     onSubmit = (e, parent_id, firstName, lastName, chapter_id, chapter, isLoading) => {
-        console.log(this.state.isLoading)
         e.parent_id = parent_id;
         e.parentName = firstName+' '+lastName
         e.chapter_id = chapter_id;
         e.chapter = chapter
-        // console.log(e)
         this.props.addOrator(e)
     }
 
@@ -45,10 +43,6 @@ class AddOrator extends Component {
 
     render() {
         const { auth, profile, authError, isLoading, submitting } = this.props
-        console.log('redux submitting:', submitting)
-        console.log('form submitted:', this.state.formSubmitted)
-        console.log(this.props.anyTouched)
-
 
         return (
 

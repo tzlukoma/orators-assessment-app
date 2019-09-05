@@ -15,7 +15,6 @@ import chapters from '../../_ref/chapters'
 class SignUp extends Component {
 
     onSubmit = (e) => {
-        console.log(e)
         this.props.signUp(e)
     }
 
