@@ -30,28 +30,30 @@ class FamilyView extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const parent_id = state.firebase.auth.uid
-    const orators = state.firestore.ordered.orators
-    const chapter_id = state.firebase.profile.chapter_id
-    const assessments = state.firestore.ordered.assessments
-    const familyOrators = orators && orators.filter(function (orator) {
-        return orator.parent_id === parent_id;
-    })
-    const familyAssessments = assessments && assessments.filter(function (assessment) {
-        return assessment.chapter_id === chapter_id;
-    })
     return {
-        orators: familyOrators,
-        assessments: familyAssessments,
+        orators: state.firestore.ordered.orators,
         notifications: state.firestore.ordered.notifications,
         profile: state.firebase.profile
     }
 }
 
+
+
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'orators', orderBy: ['dateOfBirth', 'asc'] },
-        { collection: 'notifications', limit: 2, orderBy: ['time', 'desc'] }
-    ])
-)(FamilyView)
+    firestoreConnect((props) => {
+      return [
+        { 
+            collection: 'orators', 
+            where: [
+                ['parent_id', '==', props.uid]
+              ]
+        },
+        { 
+            collection: 'notifications', 
+            limit: 2, 
+            orderBy: ['time', 'desc'] }
+      ]
+    }
+    )
+  )(FamilyView)
