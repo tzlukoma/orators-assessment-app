@@ -6,57 +6,22 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
-function compare(a, b) {
-    // Use toUpperCase() to ignore character casing
-    const firstNameA = a.firstName.toUpperCase();
-    const firstNameB = b.firstName.toUpperCase();
+// function compare(a, b) {
+//     // Use toUpperCase() to ignore character casing
+//     const firstNameA = a.firstName.toUpperCase();
+//     const firstNameB = b.firstName.toUpperCase();
   
-    let comparison = 0;
-    if (firstNameA > firstNameB) {
-      comparison = 1;
-    } else if (firstNameA < firstNameB) {
-      comparison = -1;
-    }
-    return comparison;
-  }
+//     let comparison = 0;
+//     if (firstNameA > firstNameB) {
+//       comparison = 1;
+//     } else if (firstNameA < firstNameB) {
+//       comparison = -1;
+//     }
+//     return comparison;
+//   }
   
 
 class CoachView extends Component {
-
-    renderCoachView = (assessments, orators) => {
-        return (
-            <div>
-                <div className="col s12 m5 l4 offset-m1">
-                    <h4>My Assessments</h4>
-                    {
-                        !assessments ? <div>No Assessments to Show</div>
-                            : <AssessmentList assessments={assessments} />
-                    }
-                </div>
-                <div className="col s12 m5 l4 offset-m1">
-                    <h4>Orators</h4>
-                    <OratorList orators={orators} />
-                </div>
-            </div>
-        )
-    }
-
-    renderParentView = (assessments, orators) => {
-        return (<div>
-            <div className="col s12 m5 l4 offset-m1">
-                <h4>My Assessments</h4>
-                {
-                    !assessments ? <div>No Assessments to Show</div>
-                        : <AssessmentList assessments={assessments} />
-                }
-            </div>
-            <div className="col s12 m5 l4 offset-m1">
-                <h4>Orators</h4>
-                <OratorList orators={orators} />
-            </div>
-        </div>
-        )
-    }
 
     render() {
         const { assessments, orators, notifications, profile } = this.props
