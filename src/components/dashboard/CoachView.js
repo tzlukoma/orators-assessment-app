@@ -86,30 +86,39 @@ class CoachView extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const coach_id = state.firebase.auth.uid
-    const orators = state.firestore.ordered.orators
-    const assessments = state.firestore.ordered.assessments
-    const chapter_id = state.firebase.profile.chapter_id
-    const chapterOrators = orators && orators.filter(function (orator) {
-        return orator.chapter_id === chapter_id;
-    })
-    const chapterOratorsSorted = chapterOrators && chapterOrators.sort(compare)
-    const coachAssessments = assessments && assessments.filter(function (assessment) {
-        return assessment.coach_id === coach_id;
-    })
     return {
-        assessments: coachAssessments,
-        orators: chapterOratorsSorted,
+        assessments: state.firestore.ordered.assessments,
+        orators: state.firestore.ordered.orators,
         profile: state.firebase.profile,
         notifications: state.firestore.ordered.notifications
     }
 }
 
+
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'assessments', limit: 5, orderBy: ['createdAt', 'desc'] },
-        { collection: 'orators', orderBy: ['lastName', 'asc'] },
-        { collection: 'notifications', limit: 2, orderBy: ['time', 'desc'] }
-    ])
-)(CoachView)
+    firestoreConnect((props) => {
+      console.log(props)
+      return [
+        { 
+            collection: 'assessments', 
+            where: [
+                ['chapter_id', '==', props.profile.chapter_id]
+              ],
+            orderBy: ['createdAt', 'desc'] 
+        },
+        { 
+            collection: 'orators', 
+            where: [
+                ['chapter_id', '==', props.profile.chapter_id]
+              ],
+            orderBy: ['lastName', 'asc'] 
+        },
+        { 
+            collection: 'notifications', 
+            limit: 2, 
+            orderBy: ['time', 'desc'] }
+      ]
+    }
+    )
+  )(CoachView)
