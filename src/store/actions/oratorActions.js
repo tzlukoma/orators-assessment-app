@@ -1,8 +1,6 @@
 import {
     ADD_ORATOR,
     ADD_ORATOR_ERROR,
-    GET_CHAPTER_ORATORS,
-    GET_CHAPTER_ORATORS_ERROR,
     ADD_ORATOR_SUCCESS
 } from '../../constants/types'
 
