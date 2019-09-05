@@ -11,8 +11,8 @@ const OratorList = ({ orators }) => {
             {orators ? orators.map(orator => {
                 return (
                     <Fragment key={orator.id}>
-                        <Link className="orator-item" to={ROUTES.ORATOR+'/'+orator.id}  >
-                        <OratorSummary orator={orator} />
+                        <Link className="orator-item" to={ROUTES.ORATOR+'/'+orator.id} key={orator.id} >
+                        <OratorSummary orator={orator} key={orator.id}/>
                         </Link>
                     </Fragment>
                 )
