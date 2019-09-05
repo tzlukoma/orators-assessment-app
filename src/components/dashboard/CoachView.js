@@ -6,6 +6,21 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
+function compare(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const firstNameA = a.firstName.toUpperCase();
+    const firstNameB = b.firstName.toUpperCase();
+  
+    let comparison = 0;
+    if (firstNameA > firstNameB) {
+      comparison = 1;
+    } else if (firstNameA < firstNameB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+  
+
 class CoachView extends Component {
 
     renderCoachView = (assessments, orators) => {
@@ -78,12 +93,13 @@ const mapStateToProps = (state, ownProps) => {
     const chapterOrators = orators && orators.filter(function (orator) {
         return orator.chapter_id === chapter_id;
     })
+    const chapterOratorsSorted = chapterOrators && chapterOrators.sort(compare)
     const coachAssessments = assessments && assessments.filter(function (assessment) {
         return assessment.coach_id === coach_id;
     })
     return {
         assessments: coachAssessments,
-        orators: chapterOrators,
+        orators: chapterOratorsSorted,
         profile: state.firebase.profile,
         notifications: state.firestore.ordered.notifications
     }
@@ -93,7 +109,7 @@ export default compose(
     connect(mapStateToProps),
     firestoreConnect([
         { collection: 'assessments', limit: 5, orderBy: ['createdAt', 'desc'] },
-        { collection: 'orators', orderBy: ['dateOfBirth', 'asc'] },
+        { collection: 'orators', orderBy: ['lastName', 'asc'] },
         { collection: 'notifications', limit: 2, orderBy: ['time', 'desc'] }
     ])
 )(CoachView)
