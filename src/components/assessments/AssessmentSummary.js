@@ -11,7 +11,7 @@ const AssessmentSummary = (props) => {
                 <h6 className="deep-purple-text"style={{padding: '5px 0'}}>Average Rating: {props.avg.toFixed(2)}</h6>
                 <div className="card-action grey lighten-4 grey-text" style={{padding: '5px 10px'}}>
                     <div>Posted by {coachFirstName} {coachLastName}</div>
-                    <div>{moment(createdAt.toDate()).fromNow()}</div>
+                    <div>{moment.unix(createdAt).fromNow()}</div>
                 </div>
             </div>
         </div>
