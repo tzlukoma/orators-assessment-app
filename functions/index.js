@@ -2,10 +2,6 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin')
 admin.initializeApp(functions.config().firebase);
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello Orators!");
-});
-
 const createNotification = (notification => {
     return admin.firestore().collection('notifications')
     .add(notification)
@@ -18,7 +14,7 @@ exports.assessmentCreated = functions.firestore
 
         const assessment = doc.data();
         const notification = {
-            content: 'Added a new assessment',
+            content: `added a new assessment for ${assessment.firstName} ${assessment.lastName}`,
             user: `${assessment.coachFirstName} ${assessment.coachLastName}`,
             time: admin.firestore.FieldValue.serverTimestamp()
         }
@@ -34,7 +30,7 @@ exports.userJoined = functions.auth.user()
 
         const newUser = doc.data();
         const notification = {
-            content: 'Joined the party',
+            content: `signed up with the Orator's App`,
             user: `${newUser.firstName} ${newUser.lastName}`,
             time: admin.firestore.FieldValue.serverTimestamp()
         }
