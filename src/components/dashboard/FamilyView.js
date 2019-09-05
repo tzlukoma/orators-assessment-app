@@ -10,7 +10,7 @@ import * as ROUTES from '../../constants/routes'
 
 class FamilyView extends Component {
     render() {
-        const { orators, assessments, notifications, profile} = this.props
+        const { orators, assessments, notifications, profile } = this.props
         return (
             <div className="row">
                 <div className="col s12 m6 l6">
@@ -42,18 +42,19 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect((props) => {
-      return [
-        { 
-            collection: 'orators', 
-            where: [
-                ['parent_id', '==', props.uid]
-              ]
-        },
-        { 
-            collection: 'notifications', 
-            limit: 2, 
-            orderBy: ['time', 'desc'] }
-      ]
+        return [
+            {
+                collection: 'orators',
+                where: [
+                    ['parent_id', '==', props.uid]
+                ]
+            },
+            {
+                collection: 'notifications',
+                limit: 2,
+                orderBy: ['time', 'desc']
+            }
+        ]
     }
     )
-  )(FamilyView)
+)(FamilyView)

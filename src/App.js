@@ -32,7 +32,7 @@ function App(props) {
           <Route {...props} restricted={true} path={ROUTES.COACH_SIGNUP} component={CoachSignUp}/>
           <PrivateRoute {...props} exact path={ROUTES.DASHBOARD} component={Dashboard}/>
           <PrivateRoute {...props} exact path={ROUTES.PROFILE} component={Profile}/>
-          <PrivateRoute {...props} path={`${ROUTES.ASSESSMENT}/:id`} component={AssessmentDetails}/>
+          <PrivateRoute {...props} path={`${ROUTES.ASSESSMENT}/:orator_id/:id`} component={AssessmentDetails}/>
           <PrivateRoute {...props} path={`${ROUTES.ORATOR}/:id`} component={OratorDetails}/>
           <PrivateRoute {...props} path={`${ROUTES.CREATE_ASSESSMENT}/:id/:firstName/:lastName`} component={CreateAssessment}/>
           <PrivateRoute {...props} path={ROUTES.ADD_ORATOR} component={AddOrator}/>
