@@ -10,7 +10,7 @@ const AssessmentSummary = (props) => {
                 <h6 style={{marginBottom:10}}>{comment} </h6>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>Posted by {coachFirstName} {coachLastName}</div>
-                    <div>{moment(createdAt.toDate()).fromNow()}</div>
+                    <div>{moment.unix(createdAt).fromNow()}</div>
                 </div>
             </div>
         </div>
