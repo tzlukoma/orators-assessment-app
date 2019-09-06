@@ -4,6 +4,9 @@ import { addOrator } from '../../store/actions/oratorActions'
 import { compose } from 'redux'
 
 import { Field, reduxForm } from 'redux-form'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+
+import * as ROUTES from '../../constants/routes'
 
 
 class AddOrator extends Component {
@@ -77,6 +80,7 @@ class AddOrator extends Component {
                             ? <button className="btn deep-purple lighten-1 z-depth-0">Submitting ...</button>
                             : <button onClick={this.onButtonClick} className="btn deep-purple lighten-1 z-depth-0">Add Orator</button>
                         }
+                        <Link to={ROUTES.DASHBOARD}style={{marginLeft: 10}}className="btn blue lighten-2 z-depth-0">Go to Dashboard</Link>
                     </div>
                 </form>
             </div>
