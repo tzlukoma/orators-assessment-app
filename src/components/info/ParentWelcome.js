@@ -5,7 +5,6 @@ import { Link, Redirect } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 
 const ParentWelcome = ({ auth, profile }) => {
-    console.log(auth, profile)
     if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
     else { 
         return (

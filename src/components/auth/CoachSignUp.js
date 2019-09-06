@@ -34,12 +34,10 @@ class CoachSignUp extends Component {
             chapter_id: chapter.id,
             chapter: chapter.value
          });
-        console.log(`Option selected:`, chapter);
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
         this.props.coachSignUp(this.state);
     }
     render() {

@@ -5,7 +5,6 @@ import { Link, Redirect } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 
 const CoachWelcome = ({ auth }) => {
-    console.log(auth)
     if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
     else { 
         return (

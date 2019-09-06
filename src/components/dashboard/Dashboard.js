@@ -5,14 +5,14 @@ import FamilyView from './FamilyView'
 
 class Dashboard extends Component {
     render() {
-        const { profile } = this.props
+        const { profile, uid } = this.props
         
         return (
             <div className="dashboard container">
                     {profile.role && profile.role.isCoach? 
                          <CoachView />
                         : 
-                        <FamilyView />
+                        <FamilyView uid={uid}/>
                     }
                 </div>
         );
@@ -22,6 +22,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     return {
         profile: state.firebase.profile,
+        uid: state.firebase.auth.uid
     }
 }
 

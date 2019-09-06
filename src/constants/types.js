@@ -10,5 +10,3 @@ export const CREATE_ASSESSMENT_ERROR = 'create_assessment_error'
 export const ADD_ORATOR = 'add_orator';
 export const ADD_ORATOR_ERROR = 'add_orator_error';
 export const ADD_ORATOR_SUCCESS = 'add_orator_success';
-export const GET_CHAPTER_ORATORS = 'get_chapter_orators'
-export const GET_CHAPTER_ORATORS_ERROR = 'get_chapter_orators_error'
