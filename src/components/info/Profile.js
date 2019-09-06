@@ -14,7 +14,7 @@ const Profile = ({signOut, profile, auth}) => {
                 <div className="container center">
                     <h4 className="deep-purple-text" style={{padding: 20}}>
                     {profile.firstName} {profile.lastName}</h4>
-                    <btn onClick={signOut} className="btn white-text blue lighten-3 center z-depth-0">Sign Out</btn>
+                    <button onClick={signOut} className="btn white-text blue lighten-3 center z-depth-0">Sign Out</button>
                 </div>
             </div>
     
