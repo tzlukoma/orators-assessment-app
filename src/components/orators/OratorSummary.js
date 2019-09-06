@@ -15,7 +15,7 @@ class OratorSummary extends Component {
                     <li className="collection-item avatar">
                         <img src={`https://robohash.org/${firstName}${lastName}.png`} alt="" className="circle"></img>
                         <span style={{color:'black'}}className="title card-title">{firstName} {lastName} </span>
-      <p>      {moment().diff(dateOfBirth, 'years', false)} years old<br></br>
+      <p className="grey-text">      {moment().diff(dateOfBirth, 'years', false)} years old<br></br>
       {parentName}'s Family
       </p>
                     </li>
