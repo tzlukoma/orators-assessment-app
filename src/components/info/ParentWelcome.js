@@ -14,11 +14,17 @@ const ParentWelcome = ({ auth, profile }) => {
                     <h4 className="deep-purple-text" 
                         style={{padding: 30}}>
                             Welcome <br></br>{profile.firstName} {profile.lastName}</h4>
-                            <img style={{margin: '20px 10px'}}alt="illustration of young people"src="/img/orators-in-action.png"></img>
+                            <img style={{margin: '10px 10px'}}alt="illustration of young people"src="/img/orators-in-action.png"></img>
 
-                    <h5 style={{padding:'10px 30px'}}>You are signed in as a member of the</h5>
+                    <h5 style={{padding:'5px 30px'}}>You are signed in as a member of the</h5>
                     <h4 className="deep-purple-text"style={{padding:25}}> {profile.chapter} Chapter </h4>
-                    <Link to={ROUTES.ADD_ORATOR} className="btn white-text blue lighten-2 center z-depth-0">Add an Orator</Link>
+                    <Link 
+                        to={ROUTES.ADD_ORATOR} 
+                        className="btn white-text blue lighten-2 center z-depth-0"
+                        style={{marginBottom:40}}
+                    >
+                        Add an Orator
+                    </Link>
                 </div>
             </div>
     
