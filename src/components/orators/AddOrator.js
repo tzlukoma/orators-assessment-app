@@ -42,7 +42,7 @@ class AddOrator extends Component {
     }
 
     render() {
-        const { auth, profile, authError, isLoading, submitting } = this.props
+        const { auth, profile, authError, isLoading } = this.props
 
         return (
 
