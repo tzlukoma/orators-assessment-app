@@ -43,7 +43,7 @@ const OratorDetails = (props) => {
             <div className="container section asessment-details">
                 <div className="card z-depth-1">
                     <div className="card-content" style={{paddingBottom: 10}}>
-                        <span className="card-title">{orator.firstName} {orator.lastName}</span>
+                        <span><img style={{width: 100}}src={`https://robohash.org/${orator.firstName}${orator.lastName}.png`} alt="" className="circle"></img></span><span className="card-title">{orator.firstName} {orator.lastName}</span>
                         <p>{moment().diff(orator.dateOfBirth, 'years', false)} years old</p>
                     </div>
                     {
