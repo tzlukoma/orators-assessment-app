@@ -51,7 +51,6 @@ class CoachView extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-
     return {
         profile: state.firebase.profile,
         assessments: state.firestore.ordered.assessments,
@@ -64,13 +63,13 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect((props) => {
-      return [
+        return [
         { 
             collection: 'assessments', 
             where: [
                 ['chapter_id', '==', props.profile.chapter_id]
               ],
-            orderBy: ['createdAt', 'desc'] 
+            // orderBy: ['createdAt', 'desc'] 
         },
         { 
             collection: 'orators', 
