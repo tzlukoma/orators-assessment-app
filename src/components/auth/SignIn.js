@@ -41,6 +41,7 @@ class SignIn extends Component {
                         <div className="red-text center">
                             { authError ? <p>{authError}</p>:null}
                         </div>
+                        <div><Link to={ROUTES.COACH_SIGNUP}>Coach Sign Up</Link></div>
                     </div>
                 </form>
             </div>
