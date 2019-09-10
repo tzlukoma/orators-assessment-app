@@ -6,8 +6,13 @@
 image: node:10.15.3
 
 pipelines:
-  default:
-    - step:
-        script:
-          - echo "Hello world"
+  branches:
+    master:
+      - step:
+          script:
+            - echo "this script only runs on commits to master branch."
+    develop:
+      - step:
+          script: 
+            - echo "this script only runs on commits to develop branch."
 
