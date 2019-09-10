@@ -9,6 +9,8 @@ pipelines:
   branches:
     master:
       - step:
+          caches:
+            - node
           script:
             - echo "this script only runs on commits to master branch."
     develop:
