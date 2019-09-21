@@ -8,4 +8,4 @@ This is an app to help the orators organization manage assessments and assignmen
 - Redux
 - Firebase
 
-Testing pipeline
+Testing develop pipeline
