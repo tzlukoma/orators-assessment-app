@@ -15,6 +15,14 @@ pipelines:
             - echo "this script only runs on commits to master branch."
     develop:
       - step:
-          script: 
+          caches:
+            - node
+          script:
             - echo "this script only runs on commits to develop branch."
+    staging:
+      - step:
+          caches:
+            - node
+          script:
+            - echo "this script only runs on commits to staging branch."
 
