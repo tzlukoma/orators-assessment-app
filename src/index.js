@@ -12,6 +12,8 @@ import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbConfig from './config/fbConfig'
 
+// require('dotenv').config()
+
 
 
 const store = createStore(rootReducer, composeWithDevTools(

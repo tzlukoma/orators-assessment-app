@@ -2,16 +2,23 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
+const setFireBaseConfig = () => {
+    return (
+      {
+        apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+        authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+        databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+        projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+        storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+        appId: process.env.REACT_APP_FIREBASE_APP_ID
+      }
+    )
+}
+
 // Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyC7YVYGCdh1DDdDKABl6UajKmLFUINwBeQ",
-  authDomain: "orators-app-refactored.firebaseapp.com",
-  databaseURL: "https://orators-app-refactored.firebaseio.com",
-  projectId: "orators-app-refactored",
-  storageBucket: "orators-app-refactored.appspot.com",
-  messagingSenderId: "594510966465",
-  appId: "1:594510966465:web:696f15c317c8e469"
-};
+var firebaseConfig = setFireBaseConfig()
+
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
