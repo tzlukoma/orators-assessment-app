@@ -7,3 +7,5 @@ This is an app to help the orators organization manage assessments and assignmen
 - React
 - Redux
 - Firebase
+
+Testing pipeline
