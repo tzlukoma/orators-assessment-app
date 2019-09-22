@@ -15,7 +15,6 @@ pipelines:
   branches:
     develop:
      - step:
-        deployment: dev
         script:
          - yarn install
          - yarn run build:dev
