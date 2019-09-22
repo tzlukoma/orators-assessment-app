@@ -14,4 +14,7 @@ pipelines:
     develop:
      - step:
         script:
-         - node -v
+         - yarn install
+         - yarn run build:dev
+         - firebase use dev
+         - yarn run deploy:ci
