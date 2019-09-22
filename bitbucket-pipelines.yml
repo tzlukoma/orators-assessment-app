@@ -5,6 +5,8 @@
 # You can specify a custom docker image from Docker Hub as your build environment.
 image: node:10.15.3
 
+
+
 pipelines:
   default:
     - step:
@@ -16,5 +18,11 @@ pipelines:
         script:
          - yarn install
          - yarn run build:dev
-         - firebase use dev
-         - yarn run deploy:ci
+         - pipe: atlassian/firebase-deploy:0.3.3
+           variables:
+             FIREBASE_TOKEN: $FIREBASE_TOKEN
+             PROJECT_ID: 'dev'
+             # MESSAGE: '<string>' # Optional.
+             # EXTRA_ARGS: '<string>' # Optional.
+             DEBUG: 'true' # Optional.
+         - echo 'deployment to dev complete'
