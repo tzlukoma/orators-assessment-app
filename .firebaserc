@@ -1,6 +1,9 @@
 {
   "projects": {
-    "default": "orators-app-refactored",
-    "staging": "speek-orators"
+    "default": "orators-app-dev",
+    "staging": "orators-app-staging",
+    "beta": "orators-app-beta",
+    "dev": "orators-app-dev",
+    "prod": "orators-app-prod"
   }
 }
