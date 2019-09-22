@@ -6,17 +6,42 @@
 image: node:10.15.3
 
 pipelines:
+  default:
+    - step:
+        script:
+          - node -v
   branches:
     develop:
      - step:
+        name: deploy to dev
+        deployment: Development
+        caches:
+          - node
         script:
-         - node -v
-
-
-
-
-
-
-      
-
-
+         - yarn install
+         - yarn run build:dev
+         - pipe: atlassian/firebase-deploy:0.3.3
+           variables:
+             FIREBASE_TOKEN: $FIREBASE_TOKEN
+             PROJECT_ID: 'dev'
+             # MESSAGE: '<string>' # Optional.
+             # EXTRA_ARGS: '<string>' # Optional.
+             DEBUG: 'true' # Optional.
+         - echo 'deployment to dev complete'
+    staging:
+     - step:
+        name: deploy to staging
+        deployment: Staging
+        caches:
+          - node
+        script:
+         - yarn install
+         - yarn run build:staging
+         - pipe: atlassian/firebase-deploy:0.3.3
+           variables:
+             FIREBASE_TOKEN: $FIREBASE_TOKEN
+             PROJECT_ID: 'staging'
+             # MESSAGE: '<string>' # Optional.
+             # EXTRA_ARGS: '<string>' # Optional.
+             DEBUG: 'true' # Optional.
+         - echo 'deployment to staging complete'
