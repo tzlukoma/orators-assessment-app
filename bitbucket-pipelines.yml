@@ -13,16 +13,13 @@ pipelines:
   branches:
     master:
      - step:
-        name: build optimized package
-        caches:
-         - node
-        script:
-          - yarn install
-          - yarn run build:prod
-     - step:
-        name: deploy to firebase [PROD]
+        name: deploy to production
         deployment: Production
+        caches:
+          - node
         script:
+         - yarn install
+         - yarn run build:prod
          - pipe: atlassian/firebase-deploy:0.3.3
            variables:
              FIREBASE_TOKEN: $FIREBASE_TOKEN
