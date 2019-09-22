@@ -7,12 +7,15 @@ image: node:10.15.3
 
 pipelines:
   branches:
-    develop: #only runs on commits to develop branch
+    develop:
      - step:
-      caches:
-        - node
-      script:
-        - echo "this script only runs on commits to develop"
+        script:
+         - node -v
+
+
+
+
+
 
       
 
