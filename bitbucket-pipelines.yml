@@ -11,6 +11,23 @@ pipelines:
         script:
           - node -v
   branches:
+    master:
+     - step:
+        name: deploy to production
+        deployment: Production
+        caches:
+          - node
+        script:
+         - yarn install
+         - yarn run build:prod
+         - pipe: atlassian/firebase-deploy:0.3.3
+           variables:
+             FIREBASE_TOKEN: $FIREBASE_TOKEN
+             PROJECT_ID: 'prod'
+             # MESSAGE: '<string>' # Optional.
+             # EXTRA_ARGS: '<string>' # Optional.
+             DEBUG: 'true' # Optional.
+         - echo 'deployment to production complete'
     develop:
      - step:
         name: deploy to dev
