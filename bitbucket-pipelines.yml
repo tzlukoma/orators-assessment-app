@@ -7,7 +7,7 @@ image: node:10.15.3
 
 pipelines:
   branches:
-    master:
+    develop:
      - step:
         script:
          - node -v
