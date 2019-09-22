@@ -43,7 +43,7 @@
     "deploy": "firebase deploy",
     "watch": "cra-build-watch",
     "test": "react-scripts test --verbose --watch --coverage",
-    "test:deploy": "react-scripts test",
+    "test:deploy": "ci=true && react-scripts test --watchAll --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
