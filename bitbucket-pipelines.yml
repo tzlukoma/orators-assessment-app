@@ -6,15 +6,16 @@
 image: node:10.15.3
 
 pipelines:
-  default:
-    - step:
-        script:
-          - node -v
   branches:
-    develop:
+    master:
      - step:
         script:
          - node -v
+
+
+
+
+
 
       
 
