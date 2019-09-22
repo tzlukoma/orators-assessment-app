@@ -19,11 +19,13 @@ pipelines:
         script:
           - yarn install
      - step:
+        name: build optimized package
+        script:
+         - yarn run build:prod
+     - step:
         name: deploy to production
         deployment: Production
         script:
-         - yarn install
-         - yarn run build:prod
          - pipe: atlassian/firebase-deploy:0.3.3
            variables:
              FIREBASE_TOKEN: $FIREBASE_TOKEN
