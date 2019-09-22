@@ -14,7 +14,7 @@ pipelines:
     develop:
      - step:
         script:
-         - echo "this script runs when deployments happen in develop"
+         - node -v
 
       
 
