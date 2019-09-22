@@ -5,8 +5,6 @@
 # You can specify a custom docker image from Docker Hub as your build environment.
 image: node:10.15.3
 
-
-
 pipelines:
   default:
     - step:
@@ -15,6 +13,8 @@ pipelines:
   branches:
     develop:
      - step:
+        name: deploy to dev
+        deployment: Development
         caches:
           - node
         script:
