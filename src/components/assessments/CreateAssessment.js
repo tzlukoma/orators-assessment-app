@@ -16,6 +16,7 @@ class CreateAssessment extends Component {
         lastName: '',
         vocabulary: '',
         filler_words: '',
+        content: '',
         projection_volume: '',
         enunciation: '',
         eye_contact: '',
@@ -94,6 +95,28 @@ class CreateAssessment extends Component {
                             </option>
                             <option value="5">
                                 Filler Words : 5
+                            </option>
+                        </Select>
+                    </div>
+                    <div className="input-field col s12">
+                        <Select type="select" id="content" value={this.state.content} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                            <option value="" disabled>
+                                Content : Select a rating
+                            </option>
+                            <option value="1">
+                                Content : 1
+                            </option>
+                            <option value="2">
+                                Content : 2
+                            </option>
+                            <option value="3">
+                                Content : 3
+                            </option>
+                            <option value="4">
+                                Content : 4
+                            </option>
+                            <option value="5">
+                                Content : 5
                             </option>
                         </Select>
                     </div>
