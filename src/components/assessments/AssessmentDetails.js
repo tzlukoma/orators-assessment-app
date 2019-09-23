@@ -39,6 +39,14 @@ const AssessmentDetails = (props) => {
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
+                            Content:
+                            </div>
+                            <div className="col s4">
+                                {assessment.content}
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s8 m3">
                             Projection & Volume:
                             </div>
                             <div className="col s4">
