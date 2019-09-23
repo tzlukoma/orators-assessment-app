@@ -36,9 +36,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "deploy:dev": "env-cmd -f .env.development react-scripts build; firebase use dev; firebase deploy",
+    "deploy:staging": "env-cmd -f .env.staging react-scripts build; firebase use staging; firebase deploy",
+    "deploy:prod": "react-scripts build; firebase use prod; firebase deploy",
     "build:dev": "env-cmd -f .env.development react-scripts build",
     "build:staging": "env-cmd -f .env.staging react-scripts build",
-    "build:beta": "env-cmd -f .env.beta react-scripts build",
     "build:prod": "react-scripts build",
     "deploy": "firebase deploy",
     "watch": "cra-build-watch",
