@@ -18,6 +18,7 @@ const Profile = ({signOut, profile, auth}) => {
                     <div>
                         <a href='http://bit.ly/orators-app-feedback' style={{margin:20}}>Provide feedback</a>
                     </div>
+                    <div>App version {process.env.REACT_APP_VERSION}</div>
                 </div>
             </div>
     
