@@ -39,6 +39,14 @@ const AssessmentDetails = (props) => {
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
+                            Content:
+                            </div>
+                            <div className="col s4">
+                                {assessment.content}
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s8 m3">
                             Projection & Volume:
                             </div>
                             <div className="col s4">
@@ -89,7 +97,7 @@ const AssessmentDetails = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log(state)
+    console.log(state)
     const id = ownProps.match.params.id
     const assessments = state.firestore.data.assessments
     const assessment = assessments ? assessments[id] : null
@@ -101,7 +109,16 @@ const mapStateToProps = (state, ownProps) => {
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'assessments' }
-    ])
-)(AssessmentDetails);
+    firestoreConnect((props) => {
+        console.log(props)
+        return [
+            {
+                collection: 'assessments',
+                where: [
+                    ['orator_id', '==', props.match.params.orator_id]
+                ]
+            }
+        ]
+    }
+    )
+)(AssessmentDetails)

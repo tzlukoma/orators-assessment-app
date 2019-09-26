@@ -1,8 +1,6 @@
 import {
   ADD_ORATOR,
   ADD_ORATOR_ERROR,
-  GET_CHAPTER_ORATORS,
-  GET_CHAPTER_ORATORS_ERROR
 } from '../../constants/types'
 
 const initialState = {
@@ -17,12 +15,6 @@ const initialState = {
       case ADD_ORATOR_ERROR:
         console.log('add orator error', action.err);
         return state;
-      case GET_CHAPTER_ORATORS:
-        console.log('orators returned',action.orators)  
-        return {...state, orators:action.orators};
-      case GET_CHAPTER_ORATORS_ERROR:
-          console.log("error getting orators for chapter: ", action.err);
-          return state;
       default:
         return state;
     }

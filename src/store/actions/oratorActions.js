@@ -1,8 +1,6 @@
 import {
     ADD_ORATOR,
     ADD_ORATOR_ERROR,
-    GET_CHAPTER_ORATORS,
-    GET_CHAPTER_ORATORS_ERROR,
     ADD_ORATOR_SUCCESS
 } from '../../constants/types'
 
@@ -24,34 +22,3 @@ export const addOrator = (orator) => {
     }
 }
 
-export const getChapterOrators = (chapter_id) => {
-    return (dispatch, getState, { getFirebase, getFirestore }) => {
-        const firestore = getFirestore();
-        // const orators = []
-        
-        try {
-            const result = firestore.collection('orators').where("chapter_id", "==", chapter_id).get();
-            let orators = result.docs.map(function (documentSnapshot) {
-                return documentSnapshot.data();
-            });
-            dispatch( {  type: GET_CHAPTER_ORATORS, orators })
-        }
-        catch (err) {
-            dispatch({ type: GET_CHAPTER_ORATORS_ERROR, err })
-        }
-        
-        // firestore.collection('orators').where("chapter_id", "==", chapter_id).get()
-        //     .then((result) => {
-                
-        //         let orators = result.docs.map(function (documentSnapshot) {
-        //             return documentSnapshot.data();
-        //         });
-        //         console.log(orators);
-        //         return orators
-        //     }).then( )
-        //     .catch((err) => {
-        //         dispatch({ type: GET_CHAPTER_ORATORS_ERROR, err })
-
-        //     })
-    }
-}

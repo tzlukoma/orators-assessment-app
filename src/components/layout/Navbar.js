@@ -9,16 +9,28 @@ import * as ROUTES from '../../constants/routes'
 
 const Navbar = (props) => {
     const { auth, profile } = props
-    //console.log(auth)
-    const links = auth.uid ? <SignedInLinks profile={profile} />: <SignedOutLinks />
+    const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />
     return (
         <div>
             <nav className="nav-wrapper white ">
                 <div className="container">
                     <ul className="left">
-                        <Link to={ROUTES.HOME} className="brand-logo"><img className="orator-logo" alt="coach-logo" src="/img/Logo-Long.png"></img></Link>
+                        <Link
+                            to={ROUTES.HOME} className="brand-logo">
+                            <img
+                                className="orator-logo"
+                                alt="coach-logo"
+                                src="/img/Logo-Long.png">
+                            </img>
+                        </Link>
+                        <li style={{color:'black', marginLeft:300}}>
+                    {process.env.REACT_APP_ENV_INDICATOR}
+                    </li>
                     </ul>
+                    
+
                     {links}
+                    
                 </div>
             </nav>
         </div>
@@ -26,7 +38,6 @@ const Navbar = (props) => {
 };
 
 const mapStateToProps = (state) => {
-//    console.log(state)
     return {
         auth: state.firebase.auth,
         profile: state.firebase.profile

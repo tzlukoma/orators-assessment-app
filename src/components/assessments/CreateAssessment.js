@@ -16,6 +16,7 @@ class CreateAssessment extends Component {
         lastName: '',
         vocabulary: '',
         filler_words: '',
+        content: '',
         projection_volume: '',
         enunciation: '',
         eye_contact: '',
@@ -24,7 +25,6 @@ class CreateAssessment extends Component {
         remarks: ''
     }
     handleChange = (e, coach_id, coachFirstName, coachLastName, chapter_id, oratorID, oratorFirstName, oratorLastName) => {
-        console.log(oratorFirstName)
         this.setState({
             [e.target.id]: e.target.value,
             coach_id: coach_id,
@@ -40,14 +40,11 @@ class CreateAssessment extends Component {
     }
     handleSubmit = (e, ) => {
         e.preventDefault();
-        
-        console.log(this.state)
         this.props.createAssessment(this.state)
         this.props.history.push('/')
     }
     render() {
         const { auth, orator, profile } = this.props
-        console.log(this.props)
         if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
         if(!orator) return <div></div>
         return (
@@ -98,6 +95,28 @@ class CreateAssessment extends Component {
                             </option>
                             <option value="5">
                                 Filler Words : 5
+                            </option>
+                        </Select>
+                    </div>
+                    <div className="input-field col s12">
+                        <Select type="select" id="content" value={this.state.content} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                            <option value="" disabled>
+                                Content : Select a rating
+                            </option>
+                            <option value="1">
+                                Content : 1
+                            </option>
+                            <option value="2">
+                                Content : 2
+                            </option>
+                            <option value="3">
+                                Content : 3
+                            </option>
+                            <option value="4">
+                                Content : 4
+                            </option>
+                            <option value="5">
+                                Content : 5
                             </option>
                         </Select>
                     </div>
@@ -235,7 +254,6 @@ class CreateAssessment extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log(state)
     const id = ownProps.match.params.id
     const orators = state.firestore.data.orators
     const orator = orators ? orators[id] : []

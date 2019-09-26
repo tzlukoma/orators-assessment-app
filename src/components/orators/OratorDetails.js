@@ -24,7 +24,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const OratorDetails = (props) => {
-    console.log(props)
     const { orator, assessments, auth, profile } = props;
 
 
@@ -44,7 +43,7 @@ const OratorDetails = (props) => {
             <div className="container section asessment-details">
                 <div className="card z-depth-1">
                     <div className="card-content" style={{paddingBottom: 10}}>
-                        <span className="card-title">{orator.firstName} {orator.lastName}</span>
+                        <span><img style={{width: 100}}src={`https://robohash.org/${orator.firstName}${orator.lastName}.png`} alt="" className="circle"></img></span><span className="card-title">{orator.firstName} {orator.lastName}</span>
                         <p>{moment().diff(orator.dateOfBirth, 'years', false)} years old</p>
                     </div>
                     {
@@ -85,7 +84,6 @@ const OratorDetails = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
     const id = ownProps.match.params.id
     const orators = state.firestore.data.orators
     const assessments = state.firestore.ordered.assessments

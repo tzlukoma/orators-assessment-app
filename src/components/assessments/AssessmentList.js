@@ -11,14 +11,14 @@ const AssessmentList = ({assessments}) => {
                 const avg = 
                     ( parseInt(assessment.vocabulary)
                     + parseInt(assessment.filler_words)
+                    + parseInt(assessment.content)
                     + parseInt(assessment.projection_volume)
                     + parseInt(assessment.enunciation)
                     + parseInt(assessment.eye_contact)
                     + parseInt(assessment.posture)
-                    )/6
-                console.log(avg)
+                    )/7
                 return (
-                    <Link to={ROUTES.ASSESSMENT+'/'+assessment.id} key={assessment.id}>
+                    <Link to={ROUTES.ASSESSMENT+'/'+assessment.orator_id+'/'+assessment.id} key={assessment.id}>
                         <AssessmentSummary avg={avg} assessment={assessment} key={assessment.id} />
                     </Link>
                     
