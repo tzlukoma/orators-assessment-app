@@ -3,11 +3,11 @@ import {
   ADD_ORATOR_ERROR,
 } from '../../constants/types'
 
-const initState = {
+const initialState = {
     orators:''
   }
   
-  const oratorReducer = (state = initState, action) => {
+  const oratorReducer = (state = initialState, action) => {
     switch (action.type) {
       case ADD_ORATOR:
         console.log('add orator successful', action.orator)

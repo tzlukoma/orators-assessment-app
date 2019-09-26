@@ -1,7 +1,9 @@
 import React from 'react'
-import { render } from '@testing-library/react'
 import OratorSummary from '../OratorSummary'
 import moment from 'moment'
+
+import renderWithRedux from '../../../utils/testFunctions'
+
 
 describe('Orator Summary', () => {
     test('it renders the first name, last name, age and parent of the orator', () => {
@@ -16,8 +18,17 @@ describe('Orator Summary', () => {
             }
         }
 
+
         //Act
-        const { getByText } = render(<OratorSummary {...props} />)
+        const { getByText } = renderWithRedux(<OratorSummary {...props} />, {
+            initialState: {
+                orator:{id:1}},
+                firestore: {
+                    ordered: {
+                        assessments: {}
+                    }
+                }
+        })
 
         //Assert
         const nameNode = getByText(`${props.orator.firstName} ${props.orator.lastName}`)

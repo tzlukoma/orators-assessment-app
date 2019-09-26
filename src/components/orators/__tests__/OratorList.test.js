@@ -1,8 +1,9 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import { render } from '@testing-library/react'
 import OratorList from '../OratorList'
 import moment from 'moment'
+
+import renderWithRedux from '../../../utils/testFunctions'
 
 
 describe('Orator List', () => {
@@ -34,7 +35,7 @@ describe('Orator List', () => {
         const props = [orator1, orator2, orator3]
 
         //Act
-        const {getByText, getAllByText} = render(<BrowserRouter>
+        const {getByText, getAllByText} = renderWithRedux(<BrowserRouter>
                                         <OratorList orators={props} />
                                     </BrowserRouter>)
 
