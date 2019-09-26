@@ -24,7 +24,6 @@ const Navbar = (props) => {
                             </img>
                         </Link>
                         <li style={{color:'black', marginLeft:300}}>
-                    {process.env.REACT_APP_ENV_INDICATOR}
                     </li>
                     </ul>
                     
