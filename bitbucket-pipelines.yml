@@ -19,6 +19,7 @@ pipelines:
           - node
         script:
          - yarn install
+         - yarn test:deploy
          - yarn run build:prod
          - pipe: atlassian/firebase-deploy:0.3.3
            variables:

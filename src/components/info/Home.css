@@ -2,3 +2,21 @@
     background-image: url("/img/BG-Purple.png");
     height: 60rem
 }
+.kids-illustration {
+    height: 18rem;
+    text-align: center;
+    display: block;
+    padding: 10px;
+}
+
+.orators-logo {
+    height: 10rem;
+    text-align: center;
+    display: block;
+    padding: 30px;
+}
+
+.orators-logo img {
+    width: 10rem;
+    margin: auto;
+}
