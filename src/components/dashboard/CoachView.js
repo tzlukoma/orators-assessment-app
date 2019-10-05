@@ -69,7 +69,7 @@ export default compose(
             where: [
                 ['chapter_id', '==', props.profile.chapter_id]
               ],
-            // orderBy: ['createdAt', 'desc'] 
+            orderBy: ['createdAt', 'desc'] 
         },
         { 
             collection: 'orators', 
