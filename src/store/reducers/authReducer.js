@@ -5,20 +5,22 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_ERROR,
     COACH_SIGNUP_SUCCESS,
-    COACH_SIGNUP_ERROR
+    COACH_SIGNUP_ERROR,
+    PASSWORD_RESET_EMAIL_SUCCESS,
+    PASSWORD_RESET_EMAIL_ERROR
 } from '../../constants/types'
 
 const initState = {
     authError: null
 }
 
-const authReducer = (state = initState,action) => {
-    switch(action.type){
+const authReducer = (state = initState, action) => {
+    switch (action.type) {
         case LOGIN_ERROR:
-            console.log('login error');   
+            console.log('login error');
             return {
-                    ...state,
-                    authError: 'Login failed'
+                ...state,
+                authError: 'Login failed'
             }
         case LOGIN_SUCCESS:
             console.log('login success');
@@ -42,7 +44,7 @@ const authReducer = (state = initState,action) => {
                 ...state,
                 authError: action.err.message
             }
-         case COACH_SIGNUP_SUCCESS:
+        case COACH_SIGNUP_SUCCESS:
             console.log('coach signup success');
             return {
                 ...state,
@@ -50,6 +52,18 @@ const authReducer = (state = initState,action) => {
             }
         case COACH_SIGNUP_ERROR:
             console.log('coach signup error');
+            return {
+                ...state,
+                authError: action.err.message
+            }
+        case PASSWORD_RESET_EMAIL_SUCCESS:
+            console.log('password reset email success');
+            return {
+                ...state,
+                authError: null
+            }
+        case PASSWORD_RESET_EMAIL_ERROR:
+            console.log('password reset email error');
             return {
                 ...state,
                 authError: action.err.message

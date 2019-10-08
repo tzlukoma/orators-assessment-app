@@ -41,7 +41,8 @@ class SignIn extends Component {
                         <div className="red-text center">
                             { authError ? <p>{authError}</p>:null}
                         </div>
-                        <div><Link to={ROUTES.COACH_SIGNUP}>Coach Sign Up</Link></div>
+                        <div style={{paddingBottom: 10}}><Link to={ROUTES.PASSWORD_FORGET}>Forgot your password?</Link></div>
+                        <div ><Link className="grey-text" to={ROUTES.COACH_SIGNUP}>Coach Sign Up</Link></div>
                     </div>
                 </form>
             </div>
