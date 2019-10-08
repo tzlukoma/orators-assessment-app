@@ -10,6 +10,7 @@ import CreateAssessment from './components/assessments/CreateAssessment'
 import AddOrator from './components/orators/AddOrator'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
+import PasswordForget from './components/auth/PasswordForget'
 import CoachSignUp from './components/auth/CoachSignUp'
 import CoachWelcome from './components/info/CoachWelcome'
 import ParentWelcome from './components/info/ParentWelcome'
@@ -29,6 +30,7 @@ function App(props) {
           <PublicRoute {...props} exact path={ROUTES.HOME} component={Home} />
           <PublicRoute {...props} restricted={true} path={ROUTES.SIGN_IN} component={SignIn}/>
           <Route {...props} restricted={true} path={ROUTES.SIGN_UP} component={SignUp}/>
+          <Route {...props} restricted={true} path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
           <Route {...props} restricted={true} path={ROUTES.COACH_SIGNUP} component={CoachSignUp}/>
           <PrivateRoute {...props} exact path={ROUTES.DASHBOARD} component={Dashboard}/>
           <PrivateRoute {...props} exact path={ROUTES.PROFILE} component={Profile}/>

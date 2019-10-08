@@ -10,3 +10,8 @@ export const CREATE_ASSESSMENT_ERROR = 'create_assessment_error'
 export const ADD_ORATOR = 'add_orator';
 export const ADD_ORATOR_ERROR = 'add_orator_error';
 export const ADD_ORATOR_SUCCESS = 'add_orator_success';
+export const PASSWORD_RESET_EMAIL_SUCCESS = 'password_reset_success';
+export const PASSWORD_RESET_EMAIL_ERROR = 'password_reset_error';
+
+
+    
