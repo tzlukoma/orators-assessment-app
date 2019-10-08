@@ -10,3 +10,4 @@ export const SIGN_UP = "/signup";
 export const PARENT_WELCOME = "/parentwelcome";
 export const COACH_SIGNUP = "/coachsignup";
 export const COACH_WELCOME = "/coachwelcome";
+export const PASSWORD_FORGET = "/password_forget"
