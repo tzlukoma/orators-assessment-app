@@ -54,7 +54,7 @@ class ResetPassword extends Component {
                             <div className="input-field">
                                 <div className="red-text center">
                                     {authError ? <p className="pink-text">{authError}</p> : null}
-                                    {!authError && this.state.emailSent ? <p>Reset Email Sent</p> : null }
+                                    {!authError && this.state.emailSent ? <p className="green-text">Reset Email Sent</p> : null }
                                 </div>
                                 <button className="btn deep-purple lighten-1 z-depth-0">Submit</button>
                             </div>
