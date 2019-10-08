@@ -5,7 +5,9 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_ERROR,
     COACH_SIGNUP_SUCCESS,
-    COACH_SIGNUP_ERROR
+    COACH_SIGNUP_ERROR,
+    PASSWORD_RESET_EMAIL_SUCCESS,
+    PASSWORD_RESET_EMAIL_ERROR
 } from '../../constants/types'
 import chapters from '../../_ref/chapters'
 
@@ -87,6 +89,24 @@ export const coachSignUp = (newUser) => {
             dispatch({ type: COACH_SIGNUP_SUCCESS})
         }).catch(err => {
             dispatch({ type: COACH_SIGNUP_ERROR, err})
+        })
+    }
+}
+
+export const resetPassword = (userEmail) => {
+    return (dispatch, getState, { getFirebase }) => {
+        const firebase = getFirebase();
+
+        firebase.auth().sendPasswordResetEmail(
+            userEmail
+        ).then(() => {
+
+            //Email Sent
+
+        }).then(() => {
+            dispatch({ type: PASSWORD_RESET_EMAIL_SUCCESS})
+        }).catch(err => {
+            dispatch({ type: PASSWORD_RESET_EMAIL_ERROR, err})
         })
     }
 }
