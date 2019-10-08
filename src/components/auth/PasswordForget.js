@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Redirect, Link } from 'react-router-dom'
-import { resetPassword, clearAuthError } from '../../store/actions/authActions'
+import { resetPassword } from '../../store/actions/authActions'
 import { compose } from 'redux'
-
-import * as ROUTES from '../../constants/routes'
 
 import { Field, reduxForm } from 'redux-form'
 
