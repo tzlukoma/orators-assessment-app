@@ -11,6 +11,7 @@ export const createAssessment = (assessment) => {
         const coach_id = getState().firebase.auth.uid;
         firestore.collection('assessments').add({
             ...assessment, 
+            parent_email: `tzlukoma@gmail.com`,
             coachFirstName: profile.firstName,
             coachLastName: profile.lastName,
             coach_id: coach_id,
