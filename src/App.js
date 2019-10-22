@@ -28,7 +28,7 @@ function App(props) {
         <Navbar />
         <Switch>
           <PublicRoute {...props} exact path={ROUTES.HOME} component={Home} />
-          <PublicRoute path={`${ROUTES.ASSESSMENT}/:orator_id/:id`} component={AssessmentDetails}/>
+          <PublicRoute exact path={`${ROUTES.ASSESSMENT}/:orator_id/:id`} component={AssessmentDetails}/>
           <PublicRoute exact path={`${ROUTES.ORATOR}/:id`} component={OratorDetails}/>
           <PublicRoute {...props} restricted={true} path={ROUTES.SIGN_IN} component={SignIn}/>
           <Route {...props} restricted={true} path={ROUTES.SIGN_UP} component={SignUp}/>
