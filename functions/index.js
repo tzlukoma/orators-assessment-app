@@ -103,8 +103,7 @@ exports.emailAssessment = functions.firestore
             enunciation: `${assessment.enunciation}`,
             eye_contact: `${assessment.eye_contact}`,
             posture: `${assessment.posture}`,
-            remarks: `${assessment.remarks}`,
-            createdAt: new Date()
+            remarks: `${assessment.remarks}`
         }
 
         return sendAssessmentEmail(emailAssessment);
