@@ -5,9 +5,13 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { createAssessment } from '../../store/actions/assessmentActions'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+
+import firebase from '../../config/fbConfig';
 
 import * as ROUTES from '../../constants/routes'
+
+const storageRef = firebase.storage().ref();
 
 class CreateAssessment extends Component {
     state = {
@@ -22,7 +26,11 @@ class CreateAssessment extends Component {
         eye_contact: '',
         posture: '',
         comment: '',
-        remarks: ''
+        remarks: '',
+        attachmentURL: '',
+        attachment: null,
+        attachmentName: '',
+        progress: 0
     }
     handleChange = (e, coach_id, coachFirstName, coachLastName, chapter_id, oratorID, oratorFirstName, oratorLastName) => {
         this.setState({
@@ -38,6 +46,37 @@ class CreateAssessment extends Component {
 
 
     }
+    handleFileChange = e => {
+        e.stopPropagation();
+        e.preventDefault()
+        if (e.target.files[0]) {
+            const attachment = e.target.files[0];
+            this.setState(() => ({ attachment }));
+        }
+    }
+
+    handleFileUpload = () => {
+        const { attachment } = this.state;
+        this.setState({attachmentName: attachment.name})
+        const uploadTask = storageRef.child(`attachments/${attachment.name}`).put(attachment);
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                // progrss function ....
+                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                this.setState({ progress });
+            },
+            (error) => {
+                // error function ....
+                console.log(error);
+            },
+            () => {
+                // complete function ....
+                firebase.storage().ref('attachments').child(attachment.name).getDownloadURL().then(url => {
+                    console.log(url);
+                    this.setState({ attachmentURL: url, attachment: 'uploaded' });
+                })
+            });
+    }
     handleSubmit = (e, ) => {
         e.preventDefault();
         this.props.createAssessment(this.state)
@@ -45,17 +84,30 @@ class CreateAssessment extends Component {
     }
     render() {
         const { auth, orator, profile } = this.props
-        if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
-        if(!orator) return <div></div>
+        if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />
+        if (!orator) return <div></div>
         return (
-            <div className="container" style={{ marginTop: -25, paddingBottom: 64 }}>
-                
-                <form onSubmit={(event) => this.handleSubmit(event)} className="form-input white" style={{paddingTop:'10px !important'}}>
+            <div className="container" style={{ paddingBottom: 10 }}>
                 <h5 className="grey-text text-darken-3">{`New Assessment for ${orator.firstName} ${orator.lastName}`}</h5>
-                {moment.utc(Date()).format("LLL")}
+                <p>{moment.utc(Date()).format("LLL")}</p>
+
+                {!this.state.attachmentURL ?
+                    <div className="pink lighten-5" style={{padding:10}}>
+                        <p style={{margin:0}}>Upload an attachment for this assessment (optional)</p>
+                        <progress value={this.state.progress} max="100" />
+                        <br />
+                        <input type="file" onChange={this.handleFileChange} />
+                        <button onClick={this.handleFileUpload}>Upload</button>
+                    </div>
+                    :
+                    <div className="pink lighten-5" style={{padding:10}}>
+                        <a href={this.state.attachmentURL} target="_blank" rel="noopener noreferrer" >Attachment: {this.state.attachmentName}</a>
+                    </div>
+                }
+                <form onSubmit={(event) => this.handleSubmit(event)} className="form-input white assessment" >
                     <div className="input-field col s12">
                         <h5>Ratings</h5>
-                        <Select type="select" id="vocabulary" value={this.state.vocabulary} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="vocabulary" value={this.state.vocabulary} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}>
                             <option value="" disabled>
                                 Word Choice / Vocabulary : Select a rating
                             </option>
@@ -77,7 +129,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="filler_words" value={this.state.filler_words} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="filler_words" value={this.state.filler_words} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}>
                             <option value="" disabled>
                                 Filler Words : Select a rating
                             </option>
@@ -99,7 +151,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="content" value={this.state.content} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="content" value={this.state.content} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}>
                             <option value="" disabled>
                                 Content : Select a rating
                             </option>
@@ -121,7 +173,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="projection_volume" value={this.state.projection_volume} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="projection_volume" value={this.state.projection_volume} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}>
                             <option value="" disabled>
                                 Projection & Volume : Select a rating
                             </option>
@@ -143,7 +195,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="enunciation" value={this.state.enunciation} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="enunciation" value={this.state.enunciation} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}>
                             <option value="" disabled>
                                 Enunciation : Select a rating
                             </option>
@@ -165,7 +217,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="eye_contact" value={this.state.eye_contact} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="eye_contact" value={this.state.eye_contact} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}>
                             <option value="" disabled>
                                 Eye Contact : Select a rating
                             </option>
@@ -187,7 +239,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="posture" value={this.state.posture} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="posture" value={this.state.posture} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}>
                             <option value="" disabled>
                                 Posture : Select a rating
                             </option>
@@ -209,7 +261,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="comment" value={this.state.comment} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="comment" value={this.state.comment} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}>
                             <option value="" disabled>
                                 Comment : Select a comment
                             </option>
@@ -240,13 +292,18 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field">
-                        <textarea id="remarks" className="materialize-textarea" onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}></textarea>
+                        <textarea id="remarks" className="materialize-textarea" onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName, orator.lastName)}></textarea>
                         <label htmlFor="remarks">Additional Remarks</label>
                     </div>
+
+
+
                     <div className="input-field">
                         <button className="btn deep-purple lighten-1 z-depth-0">Submit Assessment</button>
                     </div>
                 </form>
+
+
             </div>
 
         );
@@ -254,6 +311,7 @@ class CreateAssessment extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log('createAssessment:', ownProps)
     const id = ownProps.match.params.id
     const orators = state.firestore.data.orators
     const orator = orators ? orators[id] : []

@@ -103,7 +103,9 @@ exports.emailAssessment = functions.firestore
             enunciation: `${assessment.enunciation}`,
             eye_contact: `${assessment.eye_contact}`,
             posture: `${assessment.posture}`,
-            remarks: `${assessment.remarks}`
+            remarks: `${assessment.remarks}`,
+            attachmentName: `${assessment.attachmentName}`,
+            attachmentURL: `${assessment.attachmentURL}`
         }
 
         return sendAssessmentEmail(emailAssessment);
@@ -111,7 +113,13 @@ exports.emailAssessment = functions.firestore
 async function sendAssessmentEmail(assessment) {
     const mailOptions = {
         from: `${APP_NAME} <noreply@firebase.com>`,
-        to: `${assessment.email}, llukoma@gmail.com`
+        to: `${assessment.email}, llukoma@gmail.com`,
+        attachments: [
+            {   // use URL as an attachment
+                filename: assessment.attachmentName,
+                href: assessment.attachmentURL
+            }
+        ]
     };
 
     mailOptions.subject = `Orator Assessment - ${assessment.orator}`;
@@ -162,7 +170,7 @@ async function sendAssessmentEmail(assessment) {
 <p><strong>Additional Remarks</strong></p
 <p>${assessment.remarks}</p>
 
-<p>View ${assessment.orator}'s full report <a href="https://orators-app-dev.firebaseapp.com/orator/${assessment.orator_id}">here</a>.</p>
+<p>View ${assessment.orator}'s full report <a href="https://${process.env.GCLOUD_PROJECT}.firebaseapp.com/orator/${assessment.orator_id}">here</a>.</p>
 
 <hr style="border-top:1px #d3d3d3">  
 This email is automatically generated.
