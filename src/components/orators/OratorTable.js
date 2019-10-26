@@ -11,7 +11,7 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import * as ROUTES from '../../constants/routes'
 
 const OratorTable = (props) => {
-    console.log(props)
+    props && console.log(props)
     const { orators } = props
 
     const columnDefs = [
@@ -72,9 +72,6 @@ const OratorTable = (props) => {
         </div>
     );
 };
-
-
-
 
 const mapStateToProps = (state) => {
     return {
