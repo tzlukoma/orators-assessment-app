@@ -37,7 +37,7 @@ const OratorDetails = (props) => {
         setOpen(false);
     }
 
-    if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />
+    // if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />
     if (orator) {
         return (
             <div className="container section asessment-details">
@@ -76,7 +76,7 @@ const OratorDetails = (props) => {
     } else {
         return (
             <div className="container center">
-                <p>Loading assessment ...</p>
+                <p>Loading orator report ...</p>
             </div>
         );
     }
