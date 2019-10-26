@@ -6,20 +6,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
-// function compare(a, b) {
-//     // Use toUpperCase() to ignore character casing
-//     const firstNameA = a.firstName.toUpperCase();
-//     const firstNameB = b.firstName.toUpperCase();
-  
-//     let comparison = 0;
-//     if (firstNameA > firstNameB) {
-//       comparison = 1;
-//     } else if (firstNameA < firstNameB) {
-//       comparison = -1;
-//     }
-//     return comparison;
-//   }
-  
+ 
 
 class CoachView extends Component {
 

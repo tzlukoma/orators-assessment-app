@@ -18,6 +18,7 @@ class CreateAssessment extends Component {
         orator_id: '',
         firstName: '',
         lastName: '',
+        parentEmail: '',
         vocabulary: '',
         filler_words: '',
         content: '',
@@ -32,6 +33,7 @@ class CreateAssessment extends Component {
         attachmentName: '',
         progress: 0
     }
+    
     handleChange = (e, coach_id, coachFirstName, coachLastName, chapter_id, oratorID, oratorFirstName, oratorLastName, oratorParentEmail) => {
         this.setState({
             [e.target.id]: e.target.value,
@@ -42,11 +44,11 @@ class CreateAssessment extends Component {
             orator_id: oratorID,
             firstName: oratorFirstName,
             lastName: oratorLastName,
-            parentEmail: oratorParentEmail
+            parentEmail: `${this.state.parentEmail ? this.state.parentEmail: 'tzlukoma@gmail.com'}`
         })
 
-
     }
+    
     handleFileChange = e => {
         e.stopPropagation();
         e.preventDefault()
@@ -89,7 +91,7 @@ class CreateAssessment extends Component {
         if (!orator) return <div></div>
         return (
             <div className="container" style={{ paddingBottom: 10 }}>
-                <h5 className="grey-text text-darken-3">{`New Assessment for ${orator.firstName} ${orator.lastName}`}</h5>
+                <h5 className="grey-text text-darken-3">{`New Assessment for ${orator[0].firstName} ${orator[0].lastName}`}</h5>
                 <p>{moment.utc(Date()).format("LLL")}</p>
 
                 {!this.state.attachmentURL ?
@@ -108,7 +110,7 @@ class CreateAssessment extends Component {
                 <form onSubmit={(event) => this.handleSubmit(event)} className="form-input white assessment" >
                     <div className="input-field col s12">
                         <h5>Ratings</h5>
-                        <Select type="select" id="vocabulary" value={this.state.vocabulary} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
+                        <Select type="select" id="vocabulary" value={this.state.vocabulary} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}>
                             <option value="" disabled>
                                 Word Choice / Vocabulary : Select a rating
                             </option>
@@ -130,7 +132,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="filler_words" value={this.state.filler_words} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
+                        <Select type="select" id="filler_words" value={this.state.filler_words} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}>
                             <option value="" disabled>
                                 Filler Words : Select a rating
                             </option>
@@ -152,7 +154,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="content" value={this.state.content} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
+                        <Select type="select" id="content" value={this.state.content} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}>
                             <option value="" disabled>
                                 Content : Select a rating
                             </option>
@@ -174,7 +176,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="projection_volume" value={this.state.projection_volume} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
+                        <Select type="select" id="projection_volume" value={this.state.projection_volume} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}>
                             <option value="" disabled>
                                 Projection & Volume : Select a rating
                             </option>
@@ -196,7 +198,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="enunciation" value={this.state.enunciation} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
+                        <Select type="select" id="enunciation" value={this.state.enunciation} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}>
                             <option value="" disabled>
                                 Enunciation : Select a rating
                             </option>
@@ -218,7 +220,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="eye_contact" value={this.state.eye_contact} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
+                        <Select type="select" id="eye_contact" value={this.state.eye_contact} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}>
                             <option value="" disabled>
                                 Eye Contact : Select a rating
                             </option>
@@ -240,7 +242,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="posture" value={this.state.posture} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
+                        <Select type="select" id="posture" value={this.state.posture} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}>
                             <option value="" disabled>
                                 Posture : Select a rating
                             </option>
@@ -262,7 +264,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="comment" value={this.state.comment} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
+                        <Select type="select" id="comment" value={this.state.comment} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}>
                             <option value="" disabled>
                                 Comment : Select a comment
                             </option>
@@ -293,7 +295,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field">
-                        <textarea id="remarks" className="materialize-textarea" onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}></textarea>
+                        <textarea id="remarks" className="materialize-textarea" onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator[0].id, orator[0].firstName,orator[0].lastName, orator[0].parentEmail)}></textarea>
                         <label htmlFor="remarks">Additional Remarks</label>
                     </div>
 
@@ -312,13 +314,8 @@ class CreateAssessment extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('createAssessment:', ownProps)
-    const id = ownProps.match.params.id
-    const orators = state.firestore.data.orators
-    const orator = orators ? orators[id] : []
-    orator['id'] = id
     return {
-        orator: orator,
+        orator: state.firestore.ordered.orators,
         auth: state.firebase.auth,
         profile: state.firebase.profile
     }
@@ -332,11 +329,16 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-
-
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
-    firestoreConnect([
-        { collection: 'orators' }
-    ])
+    firestoreConnect((props) => {
+        return [
+            {
+                collection: 'orators',
+                doc: props.match.params.id
+
+            }
+        ]
+    })
+
 )(CreateAssessment);
