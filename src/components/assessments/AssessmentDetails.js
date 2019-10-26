@@ -10,7 +10,8 @@ import * as ROUTES from '../../constants/routes'
 const AssessmentDetails = (props) => {
     // console.log(props)
     const { assessment, auth } = props;
-    if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
+    assessment && console.log(moment.unix(assessment.createdAt.seconds).format("LLLL"))
+    // if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
     if (assessment) {
         return (
             <div className="container section asessment-details">
@@ -97,7 +98,6 @@ const AssessmentDetails = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
     const id = ownProps.match.params.id
     const assessments = state.firestore.data.assessments
     const assessment = assessments ? assessments[id] : null
@@ -110,7 +110,6 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect((props) => {
-        console.log(props)
         return [
             {
                 collection: 'assessments',

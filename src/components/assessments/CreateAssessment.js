@@ -24,7 +24,7 @@ class CreateAssessment extends Component {
         comment: '',
         remarks: ''
     }
-    handleChange = (e, coach_id, coachFirstName, coachLastName, chapter_id, oratorID, oratorFirstName, oratorLastName) => {
+    handleChange = (e, coach_id, coachFirstName, coachLastName, chapter_id, oratorID, oratorFirstName, oratorLastName, oratorParentEmail) => {
         this.setState({
             [e.target.id]: e.target.value,
             coach_id: coach_id,
@@ -33,7 +33,8 @@ class CreateAssessment extends Component {
             chapter_id: chapter_id,
             orator_id: oratorID,
             firstName: oratorFirstName,
-            lastName: oratorLastName
+            lastName: oratorLastName,
+            parentEmail: oratorParentEmail
         })
 
 
@@ -55,7 +56,7 @@ class CreateAssessment extends Component {
                 {moment.utc(Date()).format("LLL")}
                     <div className="input-field col s12">
                         <h5>Ratings</h5>
-                        <Select type="select" id="vocabulary" value={this.state.vocabulary} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="vocabulary" value={this.state.vocabulary} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
                             <option value="" disabled>
                                 Word Choice / Vocabulary : Select a rating
                             </option>
@@ -77,7 +78,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="filler_words" value={this.state.filler_words} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="filler_words" value={this.state.filler_words} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
                             <option value="" disabled>
                                 Filler Words : Select a rating
                             </option>
@@ -99,7 +100,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="content" value={this.state.content} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="content" value={this.state.content} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
                             <option value="" disabled>
                                 Content : Select a rating
                             </option>
@@ -121,7 +122,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="projection_volume" value={this.state.projection_volume} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="projection_volume" value={this.state.projection_volume} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
                             <option value="" disabled>
                                 Projection & Volume : Select a rating
                             </option>
@@ -143,7 +144,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="enunciation" value={this.state.enunciation} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="enunciation" value={this.state.enunciation} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
                             <option value="" disabled>
                                 Enunciation : Select a rating
                             </option>
@@ -165,7 +166,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="eye_contact" value={this.state.eye_contact} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="eye_contact" value={this.state.eye_contact} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
                             <option value="" disabled>
                                 Eye Contact : Select a rating
                             </option>
@@ -187,7 +188,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="posture" value={this.state.posture} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="posture" value={this.state.posture} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
                             <option value="" disabled>
                                 Posture : Select a rating
                             </option>
@@ -209,7 +210,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field col s12">
-                        <Select type="select" id="comment" value={this.state.comment} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}>
+                        <Select type="select" id="comment" value={this.state.comment} onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}>
                             <option value="" disabled>
                                 Comment : Select a comment
                             </option>
@@ -240,7 +241,7 @@ class CreateAssessment extends Component {
                         </Select>
                     </div>
                     <div className="input-field">
-                        <textarea id="remarks" className="materialize-textarea" onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName)}></textarea>
+                        <textarea id="remarks" className="materialize-textarea" onChange={(event) => this.handleChange(event, auth.uid, profile.firstName, profile.lastName, profile.chapter_id, orator.id, orator.firstName,orator.lastName, orator.parentEmail)}></textarea>
                         <label htmlFor="remarks">Additional Remarks</label>
                     </div>
                     <div className="input-field">

@@ -28,14 +28,14 @@ function App(props) {
         <Navbar />
         <Switch>
           <PublicRoute {...props} exact path={ROUTES.HOME} component={Home} />
+          <PublicRoute exact path={`${ROUTES.ASSESSMENT}/:orator_id/:id`} component={AssessmentDetails}/>
+          <PublicRoute exact path={`${ROUTES.ORATOR}/:id`} component={OratorDetails}/>
           <PublicRoute {...props} restricted={true} path={ROUTES.SIGN_IN} component={SignIn}/>
           <Route {...props} restricted={true} path={ROUTES.SIGN_UP} component={SignUp}/>
           <Route {...props} restricted={true} path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
           <Route {...props} restricted={true} path={ROUTES.COACH_SIGNUP} component={CoachSignUp}/>
           <PrivateRoute {...props} exact path={ROUTES.DASHBOARD} component={Dashboard}/>
           <PrivateRoute {...props} exact path={ROUTES.PROFILE} component={Profile}/>
-          <PrivateRoute {...props} path={`${ROUTES.ASSESSMENT}/:orator_id/:id`} component={AssessmentDetails}/>
-          <PrivateRoute {...props} path={`${ROUTES.ORATOR}/:id`} component={OratorDetails}/>
           <PrivateRoute {...props} path={`${ROUTES.CREATE_ASSESSMENT}/:id/:firstName/:lastName`} component={CreateAssessment}/>
           <PrivateRoute {...props} path={ROUTES.ADD_ORATOR} component={AddOrator}/>
           <Route {...props} path={ROUTES.PARENT_WELCOME} component={ParentWelcome}/>
