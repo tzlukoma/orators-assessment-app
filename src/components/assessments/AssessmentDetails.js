@@ -21,10 +21,10 @@ const AssessmentDetails = (props) => {
                         <p>{assessment.comment}</p>
                         <p>{assessment.remarks}</p>
                         <div className="divider" style={{ marginTop: 10, marginBottom: 10 }}></div>
-                        <p className="light-blue-text" style={{paddingBottom:10}}>Ratings</p>
+                        <p className="light-blue-text" style={{ paddingBottom: 10 }}>Ratings</p>
                         <div className="row">
                             <div className="col s8 m3">
-                            Word Choice / Vocabulary:
+                                Word Choice / Vocabulary:
                             </div>
                             <div className="col s4">
                                 {assessment.vocabulary}
@@ -32,7 +32,7 @@ const AssessmentDetails = (props) => {
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
-                            Filler Words:
+                                Filler Words:
                             </div>
                             <div className="col s4">
                                 {assessment.filler_words}
@@ -40,7 +40,7 @@ const AssessmentDetails = (props) => {
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
-                            Content:
+                                Content:
                             </div>
                             <div className="col s4">
                                 {assessment.content}
@@ -48,7 +48,7 @@ const AssessmentDetails = (props) => {
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
-                            Projection & Volume:
+                                Projection & Volume:
                             </div>
                             <div className="col s4">
                                 {assessment.projection_volume}
@@ -56,15 +56,15 @@ const AssessmentDetails = (props) => {
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
-                            Enunciation:
+                                Enunciation:
                             </div>
                             <div className="col s4">
                                 {assessment.enunciation}
                             </div>
-                        </div> 
+                        </div>
                         <div className="row">
                             <div className="col s8 m3">
-                            Eye Contact
+                                Eye Contact
                             </div>
                             <div className="col s4">
                                 {assessment.eye_contact}
@@ -72,13 +72,21 @@ const AssessmentDetails = (props) => {
                         </div>
                         <div className="row">
                             <div className="col s8 m3">
-                            Posture
+                                Posture
                             </div>
                             <div className="col s4">
                                 {assessment.posture}
                             </div>
-                        </div>                  
                         </div>
+                        {assessment.attachment ?
+                            <div>
+                                <div className="divider" style={{ marginTop: 10, marginBottom: 10 }}></div>
+                                <p className="light-blue-text" style={{ paddingBottom: 10 }}>Attachment</p>
+                                <a className="purple-text"href={assessment.attachmentURL} target="_blank" rel="noopener noreferrer" >{assessment.attachmentName}</a>
+                            </div>
+                            : null
+                        }
+                    </div>
                     <div className="card-action grey lighten-4 grey-text">
                         <div>Posted by {assessment.coachFirstName} {assessment.coachLastName}</div>
                         <div>{moment(assessment.createdAt.toDate()).calendar()}</div>
