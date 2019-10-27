@@ -6,8 +6,6 @@ import { compose } from 'redux'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
-import manualOratorData from '../../scripts/orators'
-
 import * as ROUTES from '../../constants/routes'
 
 
@@ -17,13 +15,11 @@ class AddOrator extends Component {
         formSubmitted: false
     }
 
-
     onButtonClick = () => {
         this.setState({
             formSubmitted: true
         })
     }
-
 
     onSubmit = (e, parent_id, firstName, lastName, chapter_id, chapter, isLoading) => {
         e.parent_id = parent_id;

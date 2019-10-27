@@ -3,15 +3,13 @@ import moment from 'moment';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import * as ROUTES from '../../constants/routes'
 
 const AssessmentDetails = (props) => {
-    // console.log(props)
-    const { assessment, auth } = props;
+    const { assessment } = props;
     assessment && console.log(moment.unix(assessment.createdAt.seconds).format("LLLL"))
-    // if(!auth.uid) return <Redirect to={ROUTES.SIGN_IN}/>
     if (assessment) {
         return (
             <div className="container section asessment-details">

@@ -4,13 +4,13 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { addOratorWithId } from '../../store/actions/oratorActions'
 
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
-import * as ROUTES from '../../constants/routes'
+// import * as ROUTES from '../../constants/routes'
 
 import manualOratorData from '../../scripts/orators'
 
