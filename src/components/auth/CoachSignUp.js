@@ -72,7 +72,7 @@ class CoachSignUp extends Component {
                     <Select
                         defaultValue={'Select an option'}
                         value={this.state.value}
-                        options={options}
+                        options={options} //replace with mapStateToProps pulling chapters from database
                         onChange={this.handleOptionsChange}
                         hideSelectedOptions={false}
                     />
