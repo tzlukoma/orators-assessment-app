@@ -24,3 +24,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .firebase
+
+/src/scripts/config.js
+/src/scripts/serviceAccount.json
