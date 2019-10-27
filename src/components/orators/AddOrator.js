@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addOrator } from '../../store/actions/oratorActions'
+import { addOrator, addOratorWithId } from '../../store/actions/oratorActions'
 import { compose } from 'redux'
 
 import { Field, reduxForm } from 'redux-form'
@@ -14,7 +14,6 @@ class AddOrator extends Component {
     state = {
         formSubmitted: false
     }
-
 
     onButtonClick = () => {
         this.setState({
@@ -101,6 +100,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addOrator: (orator) => {
             dispatch(addOrator(orator))
+        },
+        addOratorWithId: (orator) => {
+            dispatch(addOratorWithId(orator))
         }
     }
 }
