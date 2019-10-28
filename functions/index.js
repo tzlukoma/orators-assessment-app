@@ -114,10 +114,11 @@ async function sendAssessmentEmail(assessment) {
     const mailOptions = {
         from: `${APP_NAME} <noreply@firebase.com>`,
         to: `${assessment.email}`,
+        cc: `tzlukoma@gmail.com`,
         attachments: [
             {   // use URL as an attachment
-                filename: assessment.attachmentName,
-                href: assessment.attachmentURL
+                filename: `${assessment.attachmentName}`,
+                href: `${assessment.attachmentURL}`
             }
         ]
     };
