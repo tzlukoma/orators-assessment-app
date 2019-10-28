@@ -112,7 +112,7 @@ const OratorTable = (props) => {
                 </div>
                 <br></br>
                 <AgGridReact
-                    width={800}
+                    // width={800}
                     domLayout={'autoHeight'}
                     rowData={rowData}
                     resizeable={true}
