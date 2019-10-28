@@ -18,7 +18,7 @@ class CreateAssessment extends Component {
         orator_id: '',
         firstName: '',
         lastName: '',
-        parentEmail: '',
+        parentEmail: null,
         vocabulary: '',
         filler_words: '',
         content: '',
@@ -44,7 +44,7 @@ class CreateAssessment extends Component {
             orator_id: oratorID,
             firstName: oratorFirstName,
             lastName: oratorLastName,
-            parentEmail: `${this.state.parentEmail ? this.state.parentEmail: 'tzlukoma@gmail.com'}`
+            parentEmail: `${oratorParentEmail ? oratorParentEmail: 'tzlukoma@gmail.com'}`
         })
 
     }

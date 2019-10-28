@@ -3222,6 +3222,32 @@ const orators = [
       "parentEmail": "thomasandleslielukoma@gmail.com",
       "postedBy": "Thomas Lukoma",
       "createdAt": "10/25/2019"
+    },
+    {
+      "id": "LukomaNeo38353xxx",
+      "firstName": "Neo",
+      "lastName": "Lukoma",
+      "dateOfBirth": "1/7/07",
+      "age": 12,
+      "gender": "Female",
+      "chapter": "Perth Amboy",
+      "chapter_id": "NJ-PERAMB",
+      "chapter_membership_status": "Returned",
+      "school": "Homeschooled",
+      "dateJoined": "10/1/2012",
+      "parentName": "Leslie-ann Lukoma",
+      "grade": 9,
+      "mobileNumber": "(908)-553-6200",
+      "homeNumber": "(732)-727-5234",
+      "workNumber": "(908)-884-6626",
+      "region": "Central Jersey",
+      "group": "Purple",
+      "streetAddress": "14 Cypress Drive",
+      "city": "Parlin",
+      "state": "New Jersey",
+      "parentEmail": "",
+      "postedBy": "Thomas Lukoma",
+      "createdAt": "10/28/2019"
     }
   ]
 
