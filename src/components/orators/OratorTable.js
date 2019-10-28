@@ -18,39 +18,46 @@ import manualOratorData from '../../scripts/orators'
 const OratorTable = (props) => {
     const { orators } = props
 
-    const columnDefs = [
-        {
-            headerName: "First Name",
-            field: "firstName",
-            filter: "agTextColumnFilter",
-            width: 150,
-            sortable: true
-        },
-        {
-            headerName: "Last Name",
-            field: "lastName",
-            filter: "agTextColumnFilter",
-            width: 150,
-            sortable: true
-        }, {
-            headerName: "Age",
-            field: "age",
-            filter: "agNumberColumnFilter",
-            width: 120,
-            sortable: true
-        }, {
-            headerName: "Parent Name",
-            field: "parentName",
-            filter: "agTextColumnFilter",
-            width: 250,
-            sortable: true,
-        }, {
-            headerName: "Parent Email",
-            field: "parentEmail",
-            filter: "agTextColumnFilter",
-            width: 250, sortable: true
-        }
-    ]
+    const [gridProps, setGridProps] = useState({
+        columnDefs: [
+            {
+                headerName: "First Name",
+                field: "firstName",
+                filter: "agTextColumnFilter",
+                width: 150,
+                sortable: true
+            },
+            {
+                headerName: "Last Name",
+                field: "lastName",
+                filter: "agTextColumnFilter",
+                width: 150,
+                sortable: true
+            }, 
+            {
+                headerName: "Age",
+                field: "age",
+                filter: "agNumberColumnFilter",
+                width: 120,
+                sortable: true
+            }, 
+            {
+                headerName: "Parent Name",
+                field: "parentName",
+                filter: "agTextColumnFilter",
+                width: 250,
+                sortable: true,
+            }, 
+            {
+                headerName: "Parent Email",
+                field: "parentEmail",
+                filter: "agTextColumnFilter",
+                width: 250, sortable: true
+            }
+        ]
+    })
+
+
     
     const [gridApi, setGridApi] = useState(null)
     const [gridColumnApi, setGridColumnApi] = useState(null)
@@ -105,16 +112,16 @@ const OratorTable = (props) => {
                 </div>
                 <br></br>
                 <AgGridReact
+                    width={800}
                     domLayout={'autoHeight'}
                     rowData={rowData}
                     resizeable={true}
                     rowSelection={'single'}
                     onGridReady={onGridReady}
-                    columnDefs={columnDefs}
+                    columnDefs={gridProps.columnDefs}
                     onRowClicked={onRowClicked}
                     onRowDoubleClicked={onRowDoubleClicked}
                     >
-                    
                 </AgGridReact>
             </div>
         </div>
