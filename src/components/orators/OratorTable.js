@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { addOratorWithId } from '../../store/actions/oratorActions'
 
-import { Redirect } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
@@ -18,70 +18,41 @@ import manualOratorData from '../../scripts/orators'
 const OratorTable = (props) => {
     const { orators } = props
 
-    const [gridProps, setGridProps] = useState({
-        columnDefs: [
-            {
-                headerName: "First Name",
-                field: "firstName",
-                filter: "agTextColumnFilter",
-                width: 150,
-                sortable: true
-            },
-            {
-                headerName: "Last Name",
-                field: "lastName",
-                filter: "agTextColumnFilter",
-                width: 150,
-                sortable: true
-            }, 
-            {
-                headerName: "Age",
-                field: "age",
-                filter: "agNumberColumnFilter",
-                width: 120,
-                sortable: true
-            }, 
-            {
-                headerName: "Parent Name",
-                field: "parentName",
-                filter: "agTextColumnFilter",
-                width: 250,
-                sortable: true,
-            }, 
-            {
-                headerName: "Parent Email",
-                field: "parentEmail",
-                filter: "agTextColumnFilter",
-                width: 250, sortable: true
-            }
-        ]
-    })
+    const columnDefs = [
+        {
+            headerName: "First Name",
+            field: "firstName",
+            filter: "agTextColumnFilter",
+            width: 150,
+            sortable: true
+        },
+        {
+            headerName: "Last Name",
+            field: "lastName",
+            filter: "agTextColumnFilter",
+            width: 150,
+            sortable: true
+        }, {
+            headerName: "Age",
+            field: "age",
+            filter: "agNumberColumnFilter",
+            width: 120,
+            sortable: true
+        }, {
+            headerName: "Parent Name",
+            field: "parentName",
+            filter: "agTextColumnFilter",
+            width: 250,
+            sortable: true,
+        }, {
+            headerName: "Parent Email",
+            field: "parentEmail",
+            filter: "agTextColumnFilter",
+            width: 250, sortable: true
+        }
+    ]
 
-
-    
-    const [gridApi, setGridApi] = useState(null)
-    const [gridColumnApi, setGridColumnApi] = useState(null)
-    const onGridReady = useCallback((params) => {
-        setGridApi(params.api);
-        setGridColumnApi(params.columnApi);
-        params.api.sizeColumnsToFit();
-    }, [setGridApi, setGridColumnApi])
-    const [selectedOratorId, setSelectedOratorId] = useState(null);
-    const [selectedOrator, setSelectedOrator] = useState(null);
-    
     const rowData = orators
-
-    const onRowClicked = (data) => {
-        setSelectedOratorId(data.data.id)
-        setSelectedOrator(rowData[data.rowIndex])
-    }
-
-    const onRowDoubleClicked = () => {
-        return (
-            <Redirect to={`/orator/${selectedOratorId}`} />
-        )
-        
-    }
 
     const onClick = () => {   
         manualOratorData.map(orator => {
@@ -89,8 +60,6 @@ const OratorTable = (props) => {
         })
         
     }
-    console.log('SelectedOratorId: '+selectedOratorId)
-    console.log('SelectedOrator:',selectedOrator)
 
     return (
         <div className="orator-list section">
@@ -112,16 +81,11 @@ const OratorTable = (props) => {
                 </div>
                 <br></br>
                 <AgGridReact
-                    // width={800}
                     domLayout={'autoHeight'}
+                    columnDefs={columnDefs}
                     rowData={rowData}
-                    resizeable={true}
-                    rowSelection={'single'}
-                    onGridReady={onGridReady}
-                    columnDefs={gridProps.columnDefs}
-                    onRowClicked={onRowClicked}
-                    onRowDoubleClicked={onRowDoubleClicked}
-                    >
+                    resizeable={true}>
+
                 </AgGridReact>
             </div>
         </div>
