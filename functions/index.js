@@ -114,7 +114,7 @@ async function sendAssessmentEmail(assessment) {
     const mailOptions = {
         from: `${APP_NAME} <noreply@firebase.com>`,
         to: `${assessment.email}`,
-        cc: `tzlukoma@gmail.com`,
+        bcc: `speekorators@gmail.com`,
         attachments: [
             {   // use URL as an attachment
                 filename: `${assessment.attachmentName}`,
