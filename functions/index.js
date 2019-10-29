@@ -111,17 +111,23 @@ exports.emailAssessment = functions.firestore
         return sendAssessmentEmail(emailAssessment);
     })
 async function sendAssessmentEmail(assessment) {
+    
     const mailOptions = {
         from: `${APP_NAME} <noreply@firebase.com>`,
         to: `${assessment.email}`,
         bcc: `speekorators@gmail.com`,
-        attachments: [
-            {   // use URL as an attachment
-                filename: `${assessment.attachmentName}`,
-                href: `${assessment.attachmentURL}`
-            }
-        ]
+        // attachments: [
+        //     {   // use URL as an attachment
+        //         filename: `${assessment.attachmentName}`,
+        //         href: `${assessment.attachmentURL}`
+        //     }
+        // ]
     };
+
+    mailOptions.attachments = assessment.attachmentURL && {
+        filename: `${assessment.attachmentName}`,
+        href: `${assessment.attachmentURL}`
+    }
 
     mailOptions.subject = `Orator Assessment - ${assessment.orator}`;
     mailOptions.html = `
