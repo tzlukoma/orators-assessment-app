@@ -21,6 +21,7 @@
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-linkify": "^1.0.0-alpha",
     "react-materialize": "^3.3.4",
     "react-redux": "^5.0.7",
     "react-redux-firebase": "^2.1.6",
@@ -35,6 +36,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "release": "env-cmd -f .env.development react-scripts build; firebase use dev; firebase deploy; env-cmd -f .env.staging react-scripts build; firebase use staging; firebase deploy; react-scripts build; firebase use prod; firebase deploy",
     "deploy:dev": "env-cmd -f .env.development react-scripts build; firebase use dev; firebase deploy",
     "deploy:staging": "env-cmd -f .env.staging react-scripts build; firebase use staging; firebase deploy",
     "deploy:prod": "react-scripts build; firebase use prod; firebase deploy",
