@@ -93,6 +93,7 @@ exports.emailAssessment = functions.firestore
             orator_id: `${assessment.orator_id}`,
             orator: `${assessment.firstName} ${assessment.lastName}`,
             email: `${assessment.parentEmail}`,
+            coachEmail: `${assessment.coachEmail}`,
             coach: `${assessment.coachFirstName} ${assessment.coachLastName}`,
             time: `${assessment.createdAt}`,
             comment: `${assessment.comment}`,
@@ -115,7 +116,8 @@ async function sendAssessmentEmail(assessment) {
     const mailOptions = {
         from: `${APP_NAME} <noreply@firebase.com>`,
         to: `${assessment.email}`,
-        bcc: `speekorators@gmail.com`
+        bcc: `speekorators@gmail.com`,
+        replyTo: `${assessment.coachEmail}`
     };
 
     mailOptions.attachments = assessment.attachmentURL && {
