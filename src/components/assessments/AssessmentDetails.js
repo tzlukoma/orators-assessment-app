@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Link } from 'react-router-dom'
+import Linkify from 'react-linkify'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -16,8 +17,10 @@ const AssessmentDetails = (props) => {
                 <div className="card z-depth-1">
                     <div className="card-content">
                         <span className="card-title">Assessment for <Link to={`${ROUTES.ORATOR}/${assessment.orator_id}`}>{assessment.firstName} {assessment.lastName}</Link></span>
-                        <p>{assessment.comment}</p>
-                        <p>{assessment.remarks}</p>
+                        <Linkify>
+                            <p>{assessment.comment}</p>
+                            <p>{assessment.remarks}</p>
+                        </Linkify>
                         <div className="divider" style={{ marginTop: 10, marginBottom: 10 }}></div>
                         <p className="light-blue-text" style={{ paddingBottom: 10 }}>Ratings</p>
                         <div className="row">
@@ -80,7 +83,7 @@ const AssessmentDetails = (props) => {
                             <div>
                                 <div className="divider" style={{ marginTop: 10, marginBottom: 10 }}></div>
                                 <p className="light-blue-text" style={{ paddingBottom: 10 }}>Attachment</p>
-                                <a className="purple-text"href={assessment.attachmentURL} target="_blank" rel="noopener noreferrer" >{assessment.attachmentName}</a>
+                                <a className="purple-text" href={assessment.attachmentURL} target="_blank" rel="noopener noreferrer" >{assessment.attachmentName}</a>
                             </div>
                             : null
                         }
