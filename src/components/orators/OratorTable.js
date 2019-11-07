@@ -33,16 +33,16 @@ const OratorTable = (props) => {
             width: 150,
             sortable: true
         }, {
-            headerName: "Age",
-            field: "age",
-            filter: "agNumberColumnFilter",
+            headerName: "DOB",
+            field: "dateOfBirth",
+            filter: "agTextColumnFilter",
             width: 120,
             sortable: true
         }, {
             headerName: "Parent Name",
             field: "parentName",
             filter: "agTextColumnFilter",
-            width: 250,
+            width: 200,
             sortable: true,
         }, {
             headerName: "Parent Email",

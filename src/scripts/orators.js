@@ -361,7 +361,7 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "krnailey@yahoo.com",
     "postedBy": "Evelyn Hargrove",
-    "createdAt": 43736
+    "createdAt": "9/28/19"
   },
   {
     "id": "KhandaiSamaira403",
@@ -2675,7 +2675,7 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "bbbwdparker@yahoo.com",
     "postedBy": "Olivia Hall",
-    "createdAt": 43757
+    "createdAt": "10/19/19"
   },
   {
     "id": "RamirezTatianna41",
@@ -2727,7 +2727,7 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "shameica@hotmail.com",
     "postedBy": "Lenora Ross",
-    "createdAt": 43760
+    "createdAt": "10/22/19"
   },
   {
     "id": "HoweAbraham40498T",
@@ -3253,14 +3253,14 @@ const orators = [
     "id": "ShahAarush39906Ne",
     "firstName": "Aarush",
     "lastName": "Shah",
-    "dateOfBirth": 39906,
+    "dateOfBirth": "4/3/09",
     "age": 10,
     "gender": "Female",
     "chapter": "New Brunswick",
     "chapter_id": "NJ-NBRUNS",
     "chapter_membership_status": "New",
     "school": "Robertsville Elementary",
-    "dateJoined": 43722,
+    "dateJoined": "9/14/19",
     "parentName": "Ekata Shah",
     "grade": 5,
     "mobileNumber": "(732) 390-1275",
@@ -3273,20 +3273,20 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "amarekata@hotmail.com",
     "postedBy": "Devlin Ponte",
-    "createdAt": 43765
+    "createdAt": "10/27/19"
   },
   {
     "id": "AyyagariSaketh392",
     "firstName": "Saketh",
     "lastName": "Ayyagari",
-    "dateOfBirth": 39296,
+    "dateOfBirth": "8/2/07",
     "age": 12,
     "gender": "Male",
     "chapter": "New Brunswick",
     "chapter_id": "NJ-NBRUNS",
     "chapter_membership_status": "Returned",
     "school": "Marlboro Memorial Middle School",
-    "dateJoined": 43358,
+    "dateJoined": "9/15/18",
     "parentName": "Sarma Ayyagari",
     "grade": 7,
     "mobileNumber": "(732) 668-6779",
@@ -3299,20 +3299,20 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "sarma.ayyagari@gmail.com",
     "postedBy": "Devlin Ponte",
-    "createdAt": 43765
+    "createdAt": "10/27/19"
   },
   {
     "id": "AyyagariAniketh39",
     "firstName": "Aniketh",
     "lastName": "Ayyagari",
-    "dateOfBirth": 39850,
+    "dateOfBirth": "2/6/09",
     "age": 10,
     "gender": "Male",
     "chapter": "New Brunswick",
     "chapter_id": "NJ-NBRUNS",
     "chapter_membership_status": "Returned",
     "school": "Robertsville Elementary",
-    "dateJoined": 43358,
+    "dateJoined": "9/15/18",
     "parentName": "Sarma Ayyagari",
     "grade": 5,
     "mobileNumber": "(732) 668-6779",
@@ -3325,20 +3325,20 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "sarma.ayyagari@gmail.com",
     "postedBy": "Devlin Ponte",
-    "createdAt": 43765
+    "createdAt": "10/27/19"
   },
   {
     "id": "OkereChisom41122N",
     "firstName": "Chisom",
     "lastName": "Okere",
-    "dateOfBirth": 41122,
+    "dateOfBirth": "8/1/12",
     "age": 7,
     "gender": "Female",
     "chapter": "New Brunswick",
     "chapter_id": "NJ-NBRUNS",
     "chapter_membership_status": "New",
     "school": "Thomas Edison Energy Smart Charter",
-    "dateJoined": 43722,
+    "dateJoined": "9/14/19",
     "parentName": "Amanze Okere",
     "grade": 2,
     "mobileNumber": "(973) 930-7059",
@@ -3351,20 +3351,20 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "amanzeo@gmail.com",
     "postedBy": "Devlin Ponte",
-    "createdAt": 43765
+    "createdAt": "10/27/19"
   },
   {
     "id": "OkereAmaoge40652N",
     "firstName": "Amaoge",
     "lastName": "Okere",
-    "dateOfBirth": 40652,
+    "dateOfBirth": "4/19/11",
     "age": 8,
     "gender": "Female",
     "chapter": "New Brunswick",
     "chapter_id": "NJ-NBRUNS",
     "chapter_membership_status": "Returned",
     "school": "Thomas Edison Energy Smart Charter",
-    "dateJoined": 43484,
+    "dateJoined": "1/19/19",
     "parentName": "Amanze Okere",
     "grade": 3,
     "mobileNumber": "(973) 930-7059",
@@ -3377,20 +3377,20 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "amanzeo@gmail.com",
     "postedBy": "Devlin Ponte",
-    "createdAt": 43765
+    "createdAt": "10/27/19"
   },
   {
     "id": "IbironkeIkeolu407",
     "firstName": "Ikeolu",
     "lastName": "Ibironke",
-    "dateOfBirth": 40705,
+    "dateOfBirth": "6/11/11",
     "age": 8,
     "gender": "Male",
     "chapter": "New Brunswick",
     "chapter_id": "NJ-NBRUNS",
     "chapter_membership_status": "Returned",
     "school": "Elementary School",
-    "dateJoined": 43358,
+    "dateJoined": "9/15/18",
     "parentName": "Funmi Ibironke",
     "grade": 3,
     "mobileNumber": "(517) 316-5899",
@@ -3403,20 +3403,20 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "Ibironke09@gmail.com",
     "postedBy": "Devlin Ponte",
-    "createdAt": 43765
+    "createdAt": "10/27/19"
   },
   {
     "id": "IbironkeAbigail39",
     "firstName": "Abigail",
     "lastName": "Ibironke",
-    "dateOfBirth": 39118,
+    "dateOfBirth": "2/5/07",
     "age": 12,
     "gender": "Male",
     "chapter": "New Brunswick",
     "chapter_id": "NJ-NBRUNS",
     "chapter_membership_status": "Returned",
     "school": "Middle School",
-    "dateJoined": 42994,
+    "dateJoined": "9/16/17",
     "parentName": "Funmi Ibironke",
     "grade": 7,
     "mobileNumber": "(517) 316-5899",
@@ -3429,9 +3429,9 @@ const orators = [
     "state": "New Jersey",
     "parentEmail": "Ibironke09@gmail.com",
     "postedBy": "Devlin Ponte",
-    "createdAt": 43765
+    "createdAt": "10/27/19"
   },
-  {
+    {
     "id": "LukomaSsanyu38353",
     "firstName": "Ssanyu",
     "lastName": "Lukoma",
