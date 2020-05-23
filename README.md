@@ -28,4 +28,4 @@ Then run
 
 `yarn start`
 
-To use the deploy scripts, you will need the firebase cli which you can read about [here](https://firebase.google.com/docs/cli)
+To use the deploy scripts, you will need the firebase cli which you can read about [here](https://firebase.google.com/docs/cli). Each environment is a separate Firebase project within one account.
